@@ -8,23 +8,23 @@ const cookieParser = require('cookie-parser');
 const {environment} = require('./config');
 const isProduction = environment === 'production';
 
+const routes = require('./routes');
+
 const app = express();
+
 
 app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(express.json());
 
 if (!isProduction) {
-    // enable cors only in development
     app.use(cors());
   }
-  // helmet helps set a variety of headers to better secure your app
   app.use(
     helmet.crossOriginResourcePolicy({
       policy: "cross-origin"
     })
   );
-  // Set the _csrf token and create req.csrfToken method
   app.use(
     csurf({
       cookie: {
@@ -34,3 +34,9 @@ if (!isProduction) {
       }
     })
   );
+
+  app.use(routes);
+
+
+
+  module.exports = app;

@@ -4,7 +4,7 @@ import { Redirect } from "react-router-dom";
 import { signup } from "../../store/session";
 import './SignUpFormPage.css';
 
-export const SignupFormPage = () => {
+const SignupFormPage = () => {
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
 
@@ -26,8 +26,9 @@ export const SignupFormPage = () => {
                 const data = await res.json();
                 if(data && data.errors) setErrors(data.errors);
             })
-        }
+        }else {
         return setErrors(['Confirm Password field must be the same as the Password field']);
+        }
     }
 
 

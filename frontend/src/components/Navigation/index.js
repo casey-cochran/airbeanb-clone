@@ -15,7 +15,7 @@ const Navigation = ({isLoaded}) => {
         );
     } else {
         sessionLinks = (
-            <div>
+            <div className='signup-btn'>
                 <LoginFormModal />
                 <NavLink to='/signup'>Sign Up</NavLink>
             </div>
@@ -23,10 +23,13 @@ const Navigation = ({isLoaded}) => {
     }
 
     return (
-        <ul>
+        <ul className='testing'>
             <li>
                 <NavLink exact to='/'>Home</NavLink>
+            </li>
+            <li>
                 {isLoaded && sessionLinks}
+
             </li>
         </ul>
     )

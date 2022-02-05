@@ -1,0 +1,17 @@
+.testing{
+    display: flex;
+    justify-content: space-around;
+    gap: 300px;
+    margin-top: 50px;
+    padding-bottom: 50px;
+    border-bottom: 2px solid black;
+}
+
+.testing li {
+    list-style-type: none;
+}
+
+.signup-btn {
+    display: flex;
+    gap: 30px;
+}

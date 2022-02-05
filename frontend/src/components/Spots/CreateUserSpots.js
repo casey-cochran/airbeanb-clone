@@ -1,6 +1,6 @@
 import {useState} from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { useHistory, Redirect } from "react-router-dom";
 import { createUserSpot } from '../../store/spotReducer';
 
 
@@ -8,15 +8,17 @@ import { createUserSpot } from '../../store/spotReducer';
 
 const CreateUserSpots = () => {
     const dispatch = useDispatch()
+    const history = useHistory()
     const user = useSelector((state) => state.session.user)
+    const userId = user.id
 
-    const [name, setName] = useState()
-    const [address, setAddress] = useState()
-    const [city, setCity] = useState()
-    const [state, setState] = useState()
-    const [zipCode, setZipCode] = useState()
-    const [country, setCountry] = useState()
-    const [price, setPrice] = useState()
+    const [name, setName] = useState('')
+    const [address, setAddress] = useState('')
+    const [city, setCity] = useState('')
+    const [state, setState] = useState('')
+    const [zipCode, setZipCode] = useState('')
+    const [country, setCountry] = useState('')
+    const [price, setPrice] = useState('')
     const [errors, setErrors] = useState([]);
 
     if(!user) return <Redirect to='/' />;
@@ -25,6 +27,7 @@ const CreateUserSpots = () => {
         e.preventDefault();
 
         const spot = {
+            userId,
             name,
             address,
             city,
@@ -39,7 +42,15 @@ const CreateUserSpots = () => {
             if(data && data.errors) setErrors(data.errors)
         })
 
-        return <Redirect to='/' />
+        history.push('/')
+        
+        setName('')
+        setAddress('')
+        setCity('')
+        setState('')
+        setZipCode('')
+        setCountry('')
+        setPrice('')
     }
 
     return (

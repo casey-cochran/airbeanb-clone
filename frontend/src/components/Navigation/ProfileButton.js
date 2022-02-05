@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import {logout} from '../../store/session';
+import {NavLink} from 'react-router-dom';
+
 
 const ProfileButton = ({ user }) => {
   const dispatch = useDispatch();
@@ -23,6 +25,8 @@ const ProfileButton = ({ user }) => {
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
 
+
+
   const logoutUser = (e) => {
     e.preventDefault();
     dispatch(logout());
@@ -38,6 +42,11 @@ const ProfileButton = ({ user }) => {
           <li>{user.username}</li>
           <li>{user.email}</li>
           <li>
+            <button>
+              <NavLink to='/api/users/spots/new'>
+                Host your spot
+              </NavLink>
+            </button>
             <button onClick={logoutUser}>Log Out</button>
           </li>
         </ul>

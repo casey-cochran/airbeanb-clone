@@ -1,0 +1,131 @@
+import {useState} from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import { Redirect } from "react-router-dom";
+import { createUserSpot } from '../../store/spotReducer';
+
+
+
+
+const CreateUserSpots = () => {
+    const dispatch = useDispatch()
+    const user = useSelector((state) => state.session.user)
+
+    const [name, setName] = useState()
+    const [address, setAddress] = useState()
+    const [city, setCity] = useState()
+    const [state, setState] = useState()
+    const [zipCode, setZipCode] = useState()
+    const [country, setCountry] = useState()
+    const [price, setPrice] = useState()
+    const [errors, setErrors] = useState([]);
+
+    if(!user) return <Redirect to='/' />;
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        const spot = {
+            name,
+            address,
+            city,
+            state,
+            zipCode,
+            country,
+            price
+        }
+
+        dispatch(createUserSpot(spot)).catch(async(res) => {
+            const data = await res.json();
+            if(data && data.errors) setErrors(data.errors)
+        })
+
+        return <Redirect to='/' />
+    }
+
+    return (
+        <div>
+            <form onSubmit={handleSubmit}>
+                <ul>
+                    {errors.map((error, index) => <li key={index}>{error}</li>)}
+                </ul>
+                <div>
+                    <label htmlFor='name'>Spot Name</label>
+                    <input
+                        onChange={(e) => setName(e.target.value)}
+                        value={name}
+                        required
+                        type='text'
+                        id='name'
+                    />
+                </div>
+                <div>
+                    <label htmlFor='address'>Address</label>
+                    <input
+                        onChange={(e) => setAddress(e.target.value)}
+                        value={address}
+                        required
+                        type='text'
+                        id='address'
+                    />
+                </div>
+                <div>
+                    <label htmlFor='city'>City</label>
+                    <input
+                        onChange={(e) => setCity(e.target.value)}
+                        value={city}
+                        required
+                        type='text'
+                        id='city'
+                    />
+                </div>
+                <div>
+                    <label htmlFor='state'>State</label>
+                    <input
+                        onChange={(e) => setState(e.target.value)}
+                        value={state}
+                        required
+                        type='text'
+                        id='state'
+                    />
+                </div>
+                <div>
+                    <label htmlFor='zipcode'>Zip Code</label>
+                    <input
+                        onChange={(e) => setZipCode(e.target.value)}
+                        value={zipCode}
+                        required
+                        type='text'
+                        id='zipcode'
+                    />
+                </div>
+                <div>
+                    <label htmlFor='country'>Country</label>
+                    <input
+                        onChange={(e) => setCountry(e.target.value)}
+                        value={country}
+                        required
+                        type='text'
+                        id='country'
+                    />
+                </div>
+                <div>
+                    <label htmlFor='price'>Price</label>
+                    <input
+                        onChange={(e) => setPrice(e.target.value)}
+                        value={price}
+                        required
+                        type='text'
+                        id='price'
+                    />
+                </div>
+                <div>
+                    <button type='submit'>Host your Spot</button>
+                </div>
+            </form>
+        </div>
+    )
+}
+
+
+
+export default CreateUserSpots;

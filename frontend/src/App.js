@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import { restoreUser } from "./store/session";
-import SignupFormPage from "./components/SignUpFormPage";
+import SignupFormPage from "./components/SignUpFormModal";
 import Navigation from "./components/Navigation";
 
 function App() {

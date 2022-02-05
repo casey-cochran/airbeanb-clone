@@ -4,6 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import { restoreUser } from "./store/session";
 import SignupFormPage from "./components/SignUpFormModal";
 import Navigation from "./components/Navigation";
+import CreateUserSpots from "./components/Spots/CreateUserSpots";
 
 function App() {
   const dispatch = useDispatch();
@@ -18,7 +19,10 @@ function App() {
       {isLoaded && (
         <Switch>
           <Route path="/signup">
-            <SignupFormPage />
+            {/* <SignupFormPage /> */}
+          </Route>
+          <Route path='/api/users/spots/new'>
+            <CreateUserSpots />
           </Route>
         </Switch>
       )}

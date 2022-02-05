@@ -37,4 +37,6 @@ export const Modal = ({onClose, children}) => {
     );
 }
 
+
+
 export default ModalContext;

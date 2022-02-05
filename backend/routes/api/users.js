@@ -1,7 +1,7 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
-const {setTokenCookie, requireAuth} = require('../../utils/auth');
-const {User} = require('../../db/models');
+const {setTokenCookie, requireAuth, restoreUser} = require('../../utils/auth');
+const {User, Spot} = require('../../db/models');
 const {check} = require('express-validator');
 const {handleValidationErrors} = require('../../utils/validation');
 
@@ -37,6 +37,15 @@ router.post('/', validateSignup, asyncHandler(async(req,res) => {
     return res.json({user});
 }))
 
+
+router.post('/spots/new', requireAuth, asyncHandler(async(req,res) => {
+    const {name, address, city, state, zipCode, country, price, userId} = req.body;
+    const newSpot = {name, address, city, state, zipCode, country, price, userId}
+
+    const spot = await Spot.create(newSpot)
+    res.json({spot});
+
+}))
 
 
 

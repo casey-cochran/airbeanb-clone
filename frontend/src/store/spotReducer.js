@@ -5,8 +5,28 @@ import { useSelector } from "react-redux";
 
 
 
-const CREATE_SPOT = 'user/CREATE_SPOT'
-const SET_USER = 'session/SET_USER'
+const CREATE_SPOT = 'user/CREATE_SPOT';
+const SET_USER = 'session/SET_USER';
+const USER_SPOTS = 'user/USER_SPOTS';
+
+
+export const loadUserSpots = (data) => {
+    return ({
+        type: USER_SPOTS,
+        data,
+    })
+}
+
+export const fetchUserSpots = (userId) => async dispatch => {
+    const response = await fetch(`/api/users/${userId}/spots`);
+    const data = await response.json();
+    console.log(data, 'data inside fetch thunk?')
+    dispatch(loadUserSpots(data));
+    return response;
+}
+
+
+
 
 
 export const createSpot = (spotData) => {
@@ -27,8 +47,6 @@ export const createUserSpot = (spotData) => async dispatch => {
         })
     });
     const data = await response.json();
-    console.log(data, 'this is the data after api call in reducer')
-    console.log(data.spot, 'this is the console for data.spot')
     dispatch(createSpot(data.spot))
     return response;
 }
@@ -48,6 +66,10 @@ const spotReducer = (state = initialState, action) => {
         case CREATE_SPOT:
             newState = {...state}
             newState.user['spot'] = action.spotData;
+            return newState;
+        case USER_SPOTS:
+            newState = {...state}
+            newState.user['spot'] = action.data.spots;
             return newState;
         default:
             return state;

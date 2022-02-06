@@ -26,7 +26,7 @@ function App() {
           <Route path='/api/users/spots/new'>
             <CreateUserSpots />
           </Route>
-          <Route path={`/api/users/userId/spots`}>
+          <Route path={`/api/users/:userId/spots`}>
             <UserSpots />
           </Route>
         </Switch>

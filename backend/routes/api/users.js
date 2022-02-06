@@ -95,7 +95,6 @@ const validatePost = [
     handleValidationErrors
 ]
 
-
 router.post('/spots/new', validatePost, requireAuth, asyncHandler(async(req,res) => {
     const {name, address, city, state, zipCode, country, price, userId} = req.body;
     const newSpot = {name, address, city, state, zipCode, country, price, userId}
@@ -103,6 +102,11 @@ router.post('/spots/new', validatePost, requireAuth, asyncHandler(async(req,res)
     const spot = await Spot.create(newSpot)
     res.json({spot});
 
+}))
+router.get('/:userId/spots', asyncHandler(async(req,res) => {
+  const {userId }= req.params
+  const spots = await Spot.findAll({where: {userId}})
+  res.json({spots});
 }))
 
 

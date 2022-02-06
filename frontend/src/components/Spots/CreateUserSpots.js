@@ -39,18 +39,19 @@ const CreateUserSpots = () => {
 
         dispatch(createUserSpot(spot)).catch(async(res) => {
             const data = await res.json();
-            if(data && data.errors) setErrors(data.errors)
-        })
-
-        history.push('/')
-        
-        setName('')
-        setAddress('')
-        setCity('')
-        setState('')
-        setZipCode('')
-        setCountry('')
-        setPrice('')
+            console.log(data, ' this is the errors data being recieved frontend?')
+            if(data && data.errors) {
+                return setErrors(data.errors)
+            }
+        });
+        history.push('/');
+         setName('')
+         setAddress('')
+         setCity('')
+         setState('')
+         setZipCode('')
+         setCountry('')
+         setPrice('')
     }
 
     return (

@@ -1,6 +1,6 @@
 import {useState} from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, Redirect } from "react-router-dom";
+import { useHistory, Redirect, Link } from "react-router-dom";
 import { createUserSpot } from '../../store/spotReducer';
 
 
@@ -44,14 +44,14 @@ const CreateUserSpots = () => {
                 return setErrors(data.errors)
             }
         });
-        history.push('/');
-         setName('')
-         setAddress('')
-         setCity('')
-         setState('')
-         setZipCode('')
-         setCountry('')
-         setPrice('')
+        setName('')
+        setAddress('')
+        setCity('')
+        setState('')
+        setZipCode('')
+        setCountry('')
+        setPrice('')
+        history.push(`/api/users/${userId}/spots`)
     }
 
     return (

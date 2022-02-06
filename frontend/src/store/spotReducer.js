@@ -47,7 +47,7 @@ const spotReducer = (state = initialState, action) => {
             return newState;
         case CREATE_SPOT:
             newState = {...state}
-            newState.user[action.spotData.id] = action.spotData;
+            newState.user['spot'] = action.spotData;
             return newState;
         default:
             return state;

@@ -4,6 +4,7 @@ const {setTokenCookie, requireAuth, restoreUser} = require('../../utils/auth');
 const {User, Spot} = require('../../db/models');
 const {check} = require('express-validator');
 const {handleValidationErrors} = require('../../utils/validation');
+const { db } = require('../../config');
 
 const router = express.Router();
 
@@ -37,8 +38,65 @@ router.post('/', validateSignup, asyncHandler(async(req,res) => {
     return res.json({user});
 }))
 
+const validatePost = [
+  check('name')
+    .exists({checkFalsy: true})
+    .withMessage('Must provide a Spot name')
+    .isLength({max: 50})
+    .withMessage('Name must not be more than 50 characters')
+    .custom((value) => {
+      return Spot.findOne({where: {name: value}})
+        .then((spotName) => {
+          if(spotName){
+            return Promise.reject('A spot with this name already exists')
+          }
+        })
+    }),
+  check('address')
+    .exists({checkFalsy: true})
+    .withMessage('Must provide an address')
+    .isLength({max: 100})
+    .withMessage('Address must not be more than 100 characters')
+    .custom((value) => {
+      return Spot.findOne({where: {address: value}})
+        .then((spotAddress) => {
+          if(spotAddress){
+            return Promise.reject('A spot with this address already exists')
+          }
+        })
+    }),
+  check('city')
+    .exists({checkFalsy: true})
+    .withMessage('Must provide a city')
+    .isLength({max: 70})
+    .withMessage('City must not be more than 70 characters'),
+  check('state')
+    .exists({checkFalsy: true})
+    .withMessage('Must provide a state')
+    .isLength({max: 35})
+    .withMessage('State must not be more than 35 characters'),
+  check('zipCode')
+    .exists({checkFalsy: true})
+    .withMessage('Must provide an address')
+    .isLength({min: 5, max: 5})
+    .withMessage('Zipcode must be 5 characters in length')
+    .isNumeric()
+    .withMessage('Zipcode must be a number'),
+  check('country')
+    .exists({checkFalsy: true})
+    .withMessage('Must provide a country')
+    .isLength({max: 50})
+    .withMessage('Country must not be more than 50 characters'),
+  check('price')
+    .exists({checkFalsy: true})
+    .withMessage('Must provide a price')
+    .isNumeric()
+    .withMessage('Price be a valid number'),
+    handleValidationErrors
+]
 
-router.post('/spots/new', requireAuth, asyncHandler(async(req,res) => {
+
+router.post('/spots/new', validatePost, requireAuth, asyncHandler(async(req,res) => {
     const {name, address, city, state, zipCode, country, price, userId} = req.body;
     const newSpot = {name, address, city, state, zipCode, country, price, userId}
 

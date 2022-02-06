@@ -8,14 +8,12 @@ import { useEffect, useState } from "react";
 const UserSpots = () => {
     const dispatch = useDispatch();
     const {userId} = useParams();
-    const spots = useSelector((state) => state.spotReducer.user.spots)
-    console.log(spots)
+    const spots = useSelector((state) =>  state.spotReducer.user.spot)
+    
 
     useEffect(() => {
         dispatch(fetchUserSpots(userId))
-    }, [dispatch, spots])
-
-    if(spots) return null;
+    }, [dispatch])
 
     return (
         <div>

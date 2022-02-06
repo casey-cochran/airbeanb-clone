@@ -20,7 +20,6 @@ export const loadUserSpots = (data) => {
 export const fetchUserSpots = (userId) => async dispatch => {
     const response = await fetch(`/api/users/${userId}/spots`);
     const data = await response.json();
-    console.log(data, 'data inside fetch thunk?')
     dispatch(loadUserSpots(data));
     return response;
 }

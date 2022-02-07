@@ -98,7 +98,7 @@ export const createUserSpot = (spotData) => async dispatch => {
     });
     const data = await response.json();
     dispatch(createSpot(data.spot))
-    return response;
+    return data
 }
 
 

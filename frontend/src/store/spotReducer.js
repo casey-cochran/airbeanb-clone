@@ -8,6 +8,27 @@ import { useSelector } from "react-redux";
 const CREATE_SPOT = 'user/CREATE_SPOT';
 const SET_USER = 'session/SET_USER';
 const USER_SPOTS = 'user/USER_SPOTS';
+const DELETE_SPOT = 'user/DELETE_SPOT';
+
+export const deleteSpot = (userId, spotId) => {
+    return ({
+        type:DELETE_SPOT,
+        userId,
+        spotId
+    })
+}
+
+export const removeSpot = (userId, spotId) => async dispatch => {
+    const response = await csrfFetch(`/api/users/${userId}/spots/delete`, {
+        method: 'DELETE',
+        body: JSON.stringify({
+            userId,
+            spotId
+        })
+    })
+    const data = await response.json();
+    dispatch(deleteSpot(userId, spotId))
+}
 
 
 export const loadUserSpots = (data) => {
@@ -29,7 +50,6 @@ export const fetchUserSpots = (userId) => async dispatch => {
 
 
 export const createSpot = (spotData) => {
-    console.log(spotData, 'this is the spot data in the action creator')
     return ({
         type: CREATE_SPOT,
         spotData
@@ -38,7 +58,6 @@ export const createSpot = (spotData) => {
 
 export const createUserSpot = (spotData) => async dispatch => {
     const {address, city, state, zipCode, country, name, price, userId} = spotData;
-
     const response = await csrfFetch('/api/users/spots/new', {
         method: 'POST',
         body: JSON.stringify({
@@ -53,7 +72,7 @@ export const createUserSpot = (spotData) => async dispatch => {
 
 
 
-const initialState = {user: null};
+const initialState = {user: null, spot: {}};
 
 const spotReducer = (state = initialState, action) => {
     let newState;
@@ -64,12 +83,18 @@ const spotReducer = (state = initialState, action) => {
             return newState;
         case CREATE_SPOT:
             newState = {...state}
-            newState.user['spot'] = action.spotData;
+            newState.spot = {[action.spotData.id]: {id: action.spotData }}
             return newState;
         case USER_SPOTS:
             newState = {...state}
-            newState.user['spot'] = action.data.spots;
+            action.data.spots.forEach(space => newState.spot[space.id] = space)
             return newState;
+        case DELETE_SPOT:
+            newState = {...state}
+            if(newState.spot[action.spotId]){
+                delete newState.spot[action.spotId]
+            }
+            return newState
         default:
             return state;
     }

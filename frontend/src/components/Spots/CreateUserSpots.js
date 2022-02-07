@@ -12,6 +12,7 @@ const CreateUserSpots = () => {
     const user = useSelector((state) => state.session.user)
     const userId = user.id
 
+
     const [name, setName] = useState('')
     const [address, setAddress] = useState('')
     const [city, setCity] = useState('')

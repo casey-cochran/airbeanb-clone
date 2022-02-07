@@ -118,6 +118,21 @@ router.delete('/:userId/spots/delete', asyncHandler(async(req,res) => {
       res.json({msg: 'hello'})
 }))
 
+router.get('/:userId/spots/:spotId/edit', asyncHandler(async(req,res) => {
+  const {userId, spotId} = req.params
+  const spot = await Spot.findByPk(spotId, {where: {userId}})
+  res.json(spot)
+}))
+
+router.put('/:userId/spots/:spotId/edit', asyncHandler(async(req,res) => {
+  //const {userId, spotId} = req.params;
+  const {name, address, city, state, zipCode, country, price, userId, spotId} = req.body;
+  const update = {name, address, city, state, zipCode, country, price, userId, spotId}
+  const spot = await Spot.findByPk(spotId, {where: {userId}})
+  await spot.update(update)
+  res.json(spot)
+
+}))
 
 
 

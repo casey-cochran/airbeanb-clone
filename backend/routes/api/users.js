@@ -124,7 +124,48 @@ router.get('/:userId/spots/:spotId/edit', asyncHandler(async(req,res) => {
   res.json(spot)
 }))
 
-router.post('/:userId/spots/:spotId/edit', validatePost, asyncHandler(async(req,res) => {
+const updatePost = [
+  check('name')
+    .exists({checkFalsy: true})
+    .withMessage('Must provide a Spot name')
+    .isLength({max: 50})
+    .withMessage('Name must not be more than 50 characters'),
+  check('address')
+    .exists({checkFalsy: true})
+    .withMessage('Must provide an address')
+    .isLength({max: 100})
+    .withMessage('Address must not be more than 100 characters'),
+  check('city')
+    .exists({checkFalsy: true})
+    .withMessage('Must provide a city')
+    .isLength({max: 70})
+    .withMessage('City must not be more than 70 characters'),
+  check('state')
+    .exists({checkFalsy: true})
+    .withMessage('Must provide a state')
+    .isLength({max: 35})
+    .withMessage('State must not be more than 35 characters'),
+  check('zipCode')
+    .exists({checkFalsy: true})
+    .withMessage('Must provide an address')
+    .isLength({min: 5, max: 5})
+    .withMessage('Zipcode must be 5 characters in length')
+    .isNumeric()
+    .withMessage('Zipcode must be a number'),
+  check('country')
+    .exists({checkFalsy: true})
+    .withMessage('Must provide a country')
+    .isLength({max: 50})
+    .withMessage('Country must not be more than 50 characters'),
+  check('price')
+    .exists({checkFalsy: true})
+    .withMessage('Must provide a price')
+    .isNumeric()
+    .withMessage('Price be a valid number'),
+    handleValidationErrors
+]
+
+router.patch('/:userId/spots/:spotId/edit', updatePost, asyncHandler(async(req,res) => {
   //const {userId, spotId} = req.params;
   const {name, address, city, state, zipCode, country, price, userId, spotId} = req.body;
   const update = {name, address, city, state, zipCode, country, price, userId, spotId}

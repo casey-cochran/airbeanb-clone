@@ -22,7 +22,7 @@ export const updateSpot = (spotData) => {
 
 export const updateSingleSpot = (spotData) => async dispatch => {
     const response = await csrfFetch(`/api/users/${spotData.userId}/spots/${spotData.spotId}/edit`, {
-        method: 'POST',
+        method: 'PATCH',
         body: JSON.stringify(spotData)
     })
     const updatedSpot = await response.json();

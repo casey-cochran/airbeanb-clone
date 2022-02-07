@@ -1,7 +1,10 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchUserSpots, removeSpot } from "../../store/spotReducer";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import EditSpot from "../EditSpot/EditSpot";
+
+
 
 
 
@@ -23,7 +26,10 @@ const UserSpots = () => {
                 {spots?.map((spot, index) => {
                     return <li key={index}>{spot.name}
                     <button onClick={(() => dispatch(removeSpot(userId, spot.id)))}>Delete</button>
-                    <button>Edit</button>
+                    <Link to={`/api/users/${userId}/spots/${spot.id}/edit`}>
+                        <h4>Edit Spot here  </h4>
+
+                        </Link>
                     </li>
                 })}
             </ul>

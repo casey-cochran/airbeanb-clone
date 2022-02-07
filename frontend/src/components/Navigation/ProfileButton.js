@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import {logout} from '../../store/session';
-import {NavLink} from 'react-router-dom';
+import {NavLink, useParams} from 'react-router-dom';
 
 
 const ProfileButton = ({ user }) => {
   const dispatch = useDispatch();
+  const userId = user.id
   const [showMenu, setShowMenu] = useState(false);
 
   const openMenu = () => {
@@ -45,6 +46,11 @@ const ProfileButton = ({ user }) => {
             <button>
               <NavLink to='/api/users/spots/new'>
                 Host your spot
+              </NavLink>
+            </button>
+            <button>
+              <NavLink to={`/api/users/${userId}/spots`}>
+                Users Spots
               </NavLink>
             </button>
             <button onClick={logoutUser}>Log Out</button>

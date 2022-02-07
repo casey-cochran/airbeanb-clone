@@ -118,6 +118,12 @@ router.delete('/:userId/spots/delete', asyncHandler(async(req,res) => {
       res.json({msg: 'hello'})
 }))
 
+router.get('/:userId/spots/:spotId/edit', asyncHandler(async(req,res) => {
+  const {userId, spotId} = req.params
+  const spot = await Spot.findByPk(spotId, {where: {userId}})
+  res.json(spot)
+}))
+
 
 
 

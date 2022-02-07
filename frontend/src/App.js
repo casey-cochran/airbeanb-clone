@@ -6,14 +6,18 @@ import SignupFormPage from "./components/SignUpFormModal";
 import Navigation from "./components/Navigation";
 import CreateUserSpots from "./components/Spots/CreateUserSpots";
 import UserSpots from "./components/UserSpots/UserSpots";
+import EditSpot from "./components/EditSpot/EditSpot";
+
 
 function App() {
   const dispatch = useDispatch();
-  const {userId} = useParams()
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
     dispatch(restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
+
+
+
 
   return (
     <>
@@ -26,8 +30,11 @@ function App() {
           <Route path='/api/users/spots/new'>
             <CreateUserSpots />
           </Route>
-          <Route path={`/api/users/:userId/spots`}>
+          <Route exact path={`/api/users/:userId/spots`}>
             <UserSpots />
+          </Route>
+          <Route path={'/api/users/:userId/spots/:spotId/edit'}>
+            <EditSpot />
           </Route>
         </Switch>
       )}

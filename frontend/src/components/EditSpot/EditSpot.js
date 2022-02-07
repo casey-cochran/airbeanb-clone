@@ -48,6 +48,13 @@ const EditSpot = () => {
         const data = await res.json();
         console.log(data, ' this is the errors data being recieved frontend?')
         if(data && data.errors) {
+            setName(spot.name)
+            setAddress(spot.address);
+            setCity(spot.city);
+            setState(spot.state);
+            setZipCode(spot.zipCode);
+            setCountry(spot.country);
+            setPrice(spot.price);
             return setErrors(data.errors)
         }
     });
@@ -59,6 +66,7 @@ const EditSpot = () => {
     setCountry("");
     setPrice("");
     if(!errors) history.push(`/api/users/${userId}/spots`);
+    else history.push(`/api/users/${userId}/spots`);
     //return <Redirect to={`/api/users/${userId}/spots`} />
   };
 

@@ -149,7 +149,8 @@ const EditSpot = () => {
             />
           </div>
           <div>
-            <button type="submit">Host your Spot</button>
+            <button type="submit">Edit your Spot</button>
+            <Link to={`/api/users/${userId}/spots`}>Back to Spots</Link>
           </div>
         </form>
     </div>

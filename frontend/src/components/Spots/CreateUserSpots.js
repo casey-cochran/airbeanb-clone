@@ -22,11 +22,11 @@ const CreateUserSpots = () => {
     const [price, setPrice] = useState('')
     const [errors, setErrors] = useState([]);
 
-    if(!user) return <Redirect to='/' />;
+    //if(!user) return <Redirect to='/' />;
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
+        setErrors([])
         const spot = {
             userId,
             name,
@@ -38,20 +38,21 @@ const CreateUserSpots = () => {
             price
         }
 
-        dispatch(createUserSpot(spot)).catch(async(res) => {
+       return dispatch(createUserSpot(spot)).catch(async(res) => {
             const data = await res.json();
-            if(data && data.errors) {
-                return setErrors(data.errors)
+            if(data && data.errors ) {
+               return setErrors(data.errors)
+            }else {
+                setName('')
+                setAddress('')
+                setCity('')
+                setState('')
+                setZipCode('')
+                setCountry('')
+                setPrice('')
+                return <Redirect to={`/api/users/${userId}/spots`} />;
             }
         });
-        setName('')
-        setAddress('')
-        setCity('')
-        setState('')
-        setZipCode('')
-        setCountry('')
-        setPrice('')
-        history.push(`/api/users/${userId}/spots`)
     }
 
     return (

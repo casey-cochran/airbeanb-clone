@@ -28,7 +28,6 @@ const UserSpots = () => {
                     <button onClick={(() => dispatch(removeSpot(userId, spot.id)))}>Delete</button>
                     <Link to={`/api/users/${userId}/spots/${spot.id}/edit`}>
                         <h4>Edit Spot here  </h4>
-
                         </Link>
                     </li>
                 })}

@@ -1,20 +1,23 @@
-import { useParams, Link, useHistory, Redirect } from "react-router-dom";
+import { useParams, Link, useHistory, Redirect, } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { loadSingleSpot } from "../../store/spotReducer";
+import { updateSingleSpot } from "../../store/spotReducer";
+import { fetchUserSpots } from "../../store/spotReducer";
 
 const EditSpot = () => {
+
+
   const { userId, spotId } = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
   const spot = useSelector((state) => state.spotReducer.spot[spotId]);
-  console.log(spot, ' spot after refreash')
 
   useEffect(() => {
-    if(!spot) dispatch(loadSingleSpot(userId, spotId))
+     dispatch(loadSingleSpot(userId, spotId))
   },[dispatch])
 
-  console.log(spotId)
+
   const [name, setName] = useState(spot?.name);
   const [address, setAddress] = useState(spot?.address);
   const [city, setCity] = useState(spot?.city);
@@ -25,11 +28,13 @@ const EditSpot = () => {
   const [errors, setErrors] = useState([]);
 
 
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const spot = {
       userId,
+      spotId,
       name,
       address,
       city,
@@ -39,13 +44,13 @@ const EditSpot = () => {
       price,
     };
 
-    // dispatch(createUserSpot(spot)).catch(async(res) => {
-    //     const data = await res.json();
-    //     console.log(data, ' this is the errors data being recieved frontend?')
-    //     if(data && data.errors) {
-    //         return setErrors(data.errors)
-    //     }
-    // });
+    dispatch(updateSingleSpot(spot)).catch(async(res) => {
+        const data = await res.json();
+        console.log(data, ' this is the errors data being recieved frontend?')
+        if(data && data.errors) {
+            return setErrors(data.errors)
+        }
+    });
     setName("");
     setAddress("");
     setCity("");
@@ -54,11 +59,11 @@ const EditSpot = () => {
     setCountry("");
     setPrice("");
     history.push(`/api/users/${userId}/spots`);
+    //return <Redirect to={`/api/users/${userId}/spots`} />
   };
 
   return (
     <div>
-      {spot ? (
         <form onSubmit={handleSubmit}>
           <ul>
             {errors.map((error, index) => (
@@ -139,9 +144,6 @@ const EditSpot = () => {
             <button type="submit">Host your Spot</button>
           </div>
         </form>
-      ) : (
-        <h4>not working {spotId}</h4>
-      )}
     </div>
   );
 };

@@ -13,6 +13,23 @@ const DELETE_SPOT = 'user/DELETE_SPOT';
 const UPDATE_SPOT = 'user/UPDATE_SPOT';
 const FIND_SPOT = 'user/FIND_SPOT'
 
+export const updateSpot = (spotData) => {
+    return ({
+        type: UPDATE_SPOT,
+        spotData,
+    })
+}
+
+export const updateSingleSpot = (spotData) => async dispatch => {
+    const response = await csrfFetch(`/api/users/${spotData.userId}/spots/${spotData.spotId}/edit`, {
+        method: 'PUT',
+        body: JSON.stringify(spotData)
+    })
+    const updatedSpot = await response.json();
+    dispatch(updateSpot(updatedSpot));
+    return response;
+ }
+
 export const findSpot = (singleSpot) => {
     return ({
         type: FIND_SPOT,
@@ -28,16 +45,6 @@ export const loadSingleSpot = (userId, spotId) => async dispatch => {
     return response;
 }
 
-// export const updateSpot = (spotData) => {
-//     return ({
-//         type: UPDATE_SPOT,
-//         spotData,
-//     })
-// }
-
-// export const updateSingleSpot = (spotData) => async dispatch => {
-
-// }
 
 export const deleteSpot = (userId, spotId) => {
     return ({
@@ -125,6 +132,9 @@ const spotReducer = (state = initialState, action) => {
             console.log(action.singleSpot)
             newState.spot[action.singleSpot.id] = action.singleSpot;
             return newState;
+        case UPDATE_SPOT:
+            newState = {...state}
+            newState.spot[action.spotData.id] = action.spotData
         default:
             return state;
     }

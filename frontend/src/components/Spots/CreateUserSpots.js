@@ -40,7 +40,6 @@ const CreateUserSpots = () => {
 
         dispatch(createUserSpot(spot)).catch(async(res) => {
             const data = await res.json();
-            console.log(data, ' this is the errors data being recieved frontend?')
             if(data && data.errors) {
                 return setErrors(data.errors)
             }

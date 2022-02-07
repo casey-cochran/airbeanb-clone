@@ -124,12 +124,13 @@ router.get('/:userId/spots/:spotId/edit', asyncHandler(async(req,res) => {
   res.json(spot)
 }))
 
-router.put('/:userId/spots/:spotId/edit', asyncHandler(async(req,res) => {
+router.post('/:userId/spots/:spotId/edit', validatePost, asyncHandler(async(req,res) => {
   //const {userId, spotId} = req.params;
   const {name, address, city, state, zipCode, country, price, userId, spotId} = req.body;
   const update = {name, address, city, state, zipCode, country, price, userId, spotId}
-  const spot = await Spot.findByPk(spotId, {where: {userId}})
+  const spot = await Spot.findByPk(spotId)
   await spot.update(update)
+
   res.json(spot)
 
 }))

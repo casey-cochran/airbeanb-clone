@@ -58,7 +58,7 @@ const EditSpot = () => {
     setZipCode("");
     setCountry("");
     setPrice("");
-    history.push(`/api/users/${userId}/spots`);
+    if(!errors) history.push(`/api/users/${userId}/spots`);
     //return <Redirect to={`/api/users/${userId}/spots`} />
   };
 

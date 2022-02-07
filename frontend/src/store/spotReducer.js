@@ -22,7 +22,7 @@ export const updateSpot = (spotData) => {
 
 export const updateSingleSpot = (spotData) => async dispatch => {
     const response = await csrfFetch(`/api/users/${spotData.userId}/spots/${spotData.spotId}/edit`, {
-        method: 'PUT',
+        method: 'POST',
         body: JSON.stringify(spotData)
     })
     const updatedSpot = await response.json();
@@ -127,6 +127,7 @@ const spotReducer = (state = initialState, action) => {
                 delete newState.spot[action.spotId]
             }
             return newState
+
         case FIND_SPOT:
             newState = {...state}
             console.log(action.singleSpot)
@@ -135,6 +136,7 @@ const spotReducer = (state = initialState, action) => {
         case UPDATE_SPOT:
             newState = {...state}
             newState.spot[action.spotData.id] = action.spotData
+            return newState;
         default:
             return state;
     }

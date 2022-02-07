@@ -13,7 +13,7 @@ const UserSpots = () => {
     const {userId} = useParams();
     const spots = useSelector((state) =>  Object.values(state.spotReducer.spot))
 
-
+    console.log(spots, 'not updating? ')
     useEffect(() => {
         dispatch(fetchUserSpots(userId))
     }, [dispatch])

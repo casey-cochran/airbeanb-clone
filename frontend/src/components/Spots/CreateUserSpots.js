@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, Redirect, Link } from "react-router-dom";
+import { restoreUser } from '../../store/session';
 import { createUserSpot } from '../../store/spotReducer';
 
 
@@ -24,9 +25,9 @@ const CreateUserSpots = () => {
 
     //if(!user) return <Redirect to='/' />;
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault();
-        setErrors([])
+        //setErrors([])
         const spot = {
             userId,
             name,
@@ -38,21 +39,23 @@ const CreateUserSpots = () => {
             price
         }
 
-       return dispatch(createUserSpot(spot)).catch(async(res) => {
-            const data = await res.json();
-            if(data && data.errors ) {
-               return setErrors(data.errors)
-            }else {
-                setName('')
-                setAddress('')
-                setCity('')
-                setState('')
-                setZipCode('')
-                setCountry('')
-                setPrice('')
-                return <Redirect to={`/api/users/${userId}/spots`} />;
-            }
-        });
+      const value = await dispatch(createUserSpot(spot))
+
+      if(value){
+          console.log(value, 'errors?')
+
+      }
+
+
+        // setName('')
+        // setAddress('')
+        // setCity('')
+        // setState('')
+        // setZipCode('')
+        // setCountry('')
+        // setPrice('')
+      //if(!errors) return  history.push(`/api/users/${userId}/spots`);
+
     }
 
     return (

@@ -22,7 +22,6 @@
 
 body{
     margin-top: 0;
-    background-color: thistle;
 }
 .home-text{
     color: white;
@@ -66,7 +65,7 @@ body{
     align-items: center;
 }
 
-.container-children{
+/* .container-children{
 
     width: 100%;
     display: flex;
@@ -93,8 +92,8 @@ body{
 }
 .flexible{
     width: 140px;
-    padding: 10px;
-    border-radius: 10px;
+    padding: 20px 10px;
+    border-radius: 30px;
     border: none;
     align-self: center;
 }
@@ -104,4 +103,4 @@ body{
 
 
 
-}
+} */

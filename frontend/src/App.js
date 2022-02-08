@@ -9,6 +9,7 @@ import UserSpots from "./components/UserSpots/UserSpots";
 import EditSpot from "./components/EditSpot/EditSpot";
 import SpotsList from "./components/Spots/SpotsList";
 import AddSpotImages from "./components/AddSpotImages/AddSpotImage";
+import HomePage from "./components/HomePage/HomePage";
 
 
 function App() {
@@ -26,6 +27,9 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route exact path='/'>
+            <HomePage />
+          </Route>
           <Route path="/signup">
             {/* <SignupFormPage /> */}
           </Route>

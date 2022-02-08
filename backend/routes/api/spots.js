@@ -12,7 +12,12 @@ router.get('/spots', asyncHandler(async(req,res) => {
     res.json(spots)
 }))
 
-
+router.post('/spots', asyncHandler(async(req,res) => {
+    const {url, spotId} = req.body;
+    const newImage = {spotId, url}
+    await Image.create(newImage)
+    res.json(newImage);
+}))
 
 
 

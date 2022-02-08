@@ -29,6 +29,7 @@ const UserSpots = () => {
                     <Link to={`/api/users/${userId}/spots/${spot.id}/edit`}>
                         <h4>Edit Spot here  </h4>
                         </Link>
+                    <Link to={`/api/users/${userId}/spots/${spot.id}`}>Add Images</Link>
                     </li>
                 })}
             </ul>

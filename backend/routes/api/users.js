@@ -1,7 +1,7 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
 const {setTokenCookie, requireAuth, restoreUser} = require('../../utils/auth');
-const {User, Spot} = require('../../db/models');
+const {User, Spot, Image} = require('../../db/models');
 const {check} = require('express-validator');
 const {handleValidationErrors} = require('../../utils/validation');
 const { db } = require('../../config');
@@ -106,7 +106,7 @@ router.post('/spots/new', validatePost, requireAuth, asyncHandler(async(req,res)
 
 router.get('/:userId/spots', asyncHandler(async(req,res) => {
   const {userId }= req.params
-  const spots = await Spot.findAll({where: {userId}})
+  const spots = await Spot.findAll({where: {userId}, include: Image})
   res.json({spots});
 }));
 
@@ -120,7 +120,7 @@ router.delete('/:userId/spots/delete', asyncHandler(async(req,res) => {
 
 router.get('/:userId/spots/:spotId/edit', asyncHandler(async(req,res) => {
   const {userId, spotId} = req.params
-  const spot = await Spot.findByPk(spotId, {where: {userId}})
+  const spot = await Spot.findByPk(spotId, {where: {userId}, include: Image})
   res.json(spot)
 }))
 

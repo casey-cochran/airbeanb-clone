@@ -13,6 +13,25 @@ const DELETE_SPOT = 'user/DELETE_SPOT';
 const UPDATE_SPOT = 'user/UPDATE_SPOT';
 const FIND_SPOT = 'user/FIND_SPOT';
 const LOAD_ALL_SPOTS = '/api/LOAD_ALL_SPOTS';
+const ADD_IMAGE = '/spot/ADD_IMAGE';
+
+export const addImage = (image) => {
+    return ({
+        type: ADD_IMAGE,
+        image
+    })
+}
+
+export const loadImages = (imageData) => async dispatch => {
+    const response = await csrfFetch('/api/spots', {
+        method: 'POST',
+        body: JSON.stringify(imageData)
+    })
+    const image = await response.json();
+    console.log('this is the image being returend from backend', image)
+    dispatch(addImage(image))
+    return image;
+}
 
 export const updateSpot = (spotData) => {
     return ({
@@ -41,7 +60,6 @@ export const findSpot = (singleSpot) => {
 export const loadSingleSpot = (userId, spotId) => async dispatch => {
     const response = await fetch(`/api/users/${userId}/spots/${spotId}/edit`);
     const spot = await response.json()
-    console.log(spot)
     dispatch(findSpot(spot))
     return response;
 }
@@ -145,7 +163,7 @@ const spotReducer = (state = initialState, action) => {
             return newState
         case FIND_SPOT:
             newState = {...state}
-            console.log(action.singleSpot)
+            //console.log(action.singleSpot)
             newState.spot[action.singleSpot.id] = action.singleSpot;
             return newState;
         case UPDATE_SPOT:
@@ -156,6 +174,11 @@ const spotReducer = (state = initialState, action) => {
             newState = {...state};
             action.spots.forEach(spot => newState.spot[spot.id] = spot)
             return newState;
+        case ADD_IMAGE:
+            newState = {...state};
+           //console.log(action.image.spotId, 'imagespotid?', action.image ,'the image obj?')
+            newState.spot[action.image.spotId] = action.image;
+            return newState
         default:
             return state;
     }

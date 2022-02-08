@@ -1,0 +1,61 @@
+.create-spot {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    flex: 1;
+
+}
+
+.create-spot-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    min-height: 100vh;
+
+}
+
+.sep-text {
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+}
+
+
+.create-spot-input{
+    width: 350px;
+    height: 30px;
+}
+
+.create-spot-logo {
+    position: absolute;
+    margin-bottom: 600px;
+    margin-right: 365px;
+}
+
+.test{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    min-height: 100vh;
+    background: rgb(51,40,214);
+    background: linear-gradient(360deg, rgba(51,40,214,1) 0%, rgba(232,38,127,1) 86%);
+    color: white;
+    font-size: 48px;
+    font-weight: 300;
+    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+    padding-left: 30px;
+
+}
+.test2{
+    min-height: 100vh;
+    background-color: aquamarine;
+    width: 50%;
+}
+
+
+html, body {
+    height: 100%;
+}

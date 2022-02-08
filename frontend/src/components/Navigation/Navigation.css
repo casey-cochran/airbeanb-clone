@@ -2,10 +2,34 @@
     display: flex;
     justify-content: space-around;
     gap: 300px;
-    margin-top: 50px;
+    padding-top: 50px;
     margin-bottom: 0;
     padding-bottom: 50px;
     border-bottom: 2px solid black;
+    background-color: black;
+    color: red;
+    margin-top: 0;
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    transition: ease 0.5s
+}
+.testing.navbar{
+    /* transition: all 0.3s ease; */
+    background-color: white;
+}
+
+
+body{
+    margin-top: 0;
+}
+.home-text{
+    color: white;
+    text-decoration: none;
+    transition: color
+}
+.home-text.trans{
+    color: black;
 }
 
 .testing li {
@@ -15,4 +39,22 @@
 .signup-btn {
     display: flex;
     gap: 30px;
+}
+
+
+.profile-dropdown{
+    background-color: white;
+    position: absolute;
+    right: 230px;
+    margin-top: 30px;
+    width: 200px;
+    border-radius: 20px;
+    height: 385px;
+}
+
+.navbar-menu {
+    position: relative;
+    display:block;
+
+
 }

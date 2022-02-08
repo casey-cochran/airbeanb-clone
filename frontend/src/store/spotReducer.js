@@ -27,7 +27,7 @@ export const updateSingleSpot = (spotData) => async dispatch => {
     })
     const updatedSpot = await response.json();
     dispatch(updateSpot(updatedSpot));
-    return response;
+    return updatedSpot;
  }
 
 export const findSpot = (singleSpot) => {

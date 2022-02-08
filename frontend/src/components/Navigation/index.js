@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
@@ -10,11 +10,26 @@ const Navigation = ({ isLoaded }) => {
   const sessionUser = useSelector((state) => state.session.user);
   const [menu, setMenu] = useState(false);
 
+  const [show, setShow] = useState(false)
+  const navbar = () => {
+    if(window.scrollY>20){
+      setShow(true)
+    }else {
+      setShow(false)
+    }
+  }
 
+
+  useEffect(() => {
+    window.addEventListener('scroll', navbar)
+    return () => {
+      window.removeEventListener('scroll', navbar)
+    }
+  }, [])
+console.log(window.scroll)
   const toggleMenu = () => {
       setMenu(!menu)
   }
-
 
 
   let sessionLinks;
@@ -22,15 +37,11 @@ const Navigation = ({ isLoaded }) => {
     sessionLinks = <ProfileButton user={sessionUser} />;
   } else {
     sessionLinks = (
-      // <div className='signup-btn'>
-      //     <LoginFormModal />
-      //     <SignupFormModal />
-      // </div>
       <div>
         <button onClick={toggleMenu} >
           <i className="fas fa-user-circle" />
         </button>
-        <div>
+        <div className="navbar-menu">
           {menu && (
             <ul className="profile-dropdown">
               <li>
@@ -47,9 +58,9 @@ const Navigation = ({ isLoaded }) => {
   }
 
   return (
-    <ul className="testing">
+    <ul className={`testing ${show && 'navbar'}`}>
       <li>
-        <NavLink exact to="/">
+        <NavLink className={`home-text ${show ? 'trans' : false}`} exact to="/">
           Home
         </NavLink>
       </li>

@@ -1,9 +1,8 @@
-import { useParams, Link, useHistory, Redirect, } from "react-router-dom";
+import { useParams, Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { loadSingleSpot } from "../../store/spotReducer";
 import { updateSingleSpot } from "../../store/spotReducer";
-import { fetchUserSpots } from "../../store/spotReducer";
 
 const EditSpot = () => {
 
@@ -29,7 +28,7 @@ const EditSpot = () => {
 
 
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
 
     const spot = {
@@ -44,10 +43,13 @@ const EditSpot = () => {
       price,
     };
 
-    dispatch(updateSingleSpot(spot)).catch(async(res) => {
-        const data = await res.json();
-        console.log(data, ' this is the errors data being recieved frontend?')
-        if(data && data.errors) {
+   const value = await dispatch(updateSingleSpot(spot)).catch(async(err) => {
+        const errors = await err.json();
+        if(errors) {
+            return errors
+        }
+    });
+    if(value.errors) {
             setName(spot.name)
             setAddress(spot.address);
             setCity(spot.city);
@@ -55,9 +57,9 @@ const EditSpot = () => {
             setZipCode(spot.zipCode);
             setCountry(spot.country);
             setPrice(spot.price);
-            return setErrors(data.errors)
-        }
-    });
+        return setErrors(value.errors)
+    }
+
     setName("");
     setAddress("");
     setCity("");
@@ -65,16 +67,15 @@ const EditSpot = () => {
     setZipCode("");
     setCountry("");
     setPrice("");
-    if(!errors) history.push(`/api/users/${userId}/spots`);
-    else history.push(`/api/users/${userId}/spots`);
-    //return <Redirect to={`/api/users/${userId}/spots`} />
+    history.push(`/api/users/${userId}/spots`);
+
   };
 
   return (
     <div>
         <form onSubmit={handleSubmit}>
           <ul>
-            {errors.map((error, index) => (
+            {errors?.map((error, index) => (
               <li key={index}>{error}</li>
             ))}
           </ul>

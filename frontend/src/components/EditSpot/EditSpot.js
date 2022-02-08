@@ -1,9 +1,8 @@
-import { useParams, Link, useHistory, Redirect, } from "react-router-dom";
+import { useParams, Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { loadSingleSpot } from "../../store/spotReducer";
 import { updateSingleSpot } from "../../store/spotReducer";
-import { fetchUserSpots } from "../../store/spotReducer";
 
 const EditSpot = () => {
 

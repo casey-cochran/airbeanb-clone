@@ -69,7 +69,7 @@ const Navigation = ({ isLoaded }) => {
         </li>
         <li>{isLoaded && sessionLinks}</li>
       </ul>
-      <div className="home-page-container">
+      {/* <div className="home-page-container">
         <div className="container-children one">
           <div className="where-to-go">
             <h2>Not sure where to go? Perfect.</h2>
@@ -87,7 +87,7 @@ const Navigation = ({ isLoaded }) => {
             <h1></h1>
           </div>
         <div className="container-children"><h1>test</h1></div>
-      </div>
+      </div> */}
     </div>
 
   );

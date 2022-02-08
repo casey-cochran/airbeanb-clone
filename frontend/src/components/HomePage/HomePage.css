@@ -1,0 +1,39 @@
+.container-children{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container-children.one{
+    background-image: url("https://images.unsplash.com/photo-1568401973070-4d70a16d7e68?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80");
+    margin-top: 75px;
+    width: 100%;
+    flex: 620px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+    background-color: black;
+    background-repeat: no-repeat;
+    background-size: 85%;
+    background-position: center;
+
+}
+
+.where-to-go{
+    display:flex;
+    flex-direction: column;
+    margin-top: 280px;
+}
+.flexible{
+    width: 140px;
+    padding: 20px 10px;
+    border-radius: 30px;
+    border: none;
+    align-self: center;
+}
+
+.container-children.three{
+    background-color: yellow;
+}

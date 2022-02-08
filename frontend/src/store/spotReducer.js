@@ -154,6 +154,7 @@ const spotReducer = (state = initialState, action) => {
             return newState;
         case USER_SPOTS:
             newState = {...state}
+            newState.spot = {}
             if(action.data.spots){
             action.data.spots.forEach(space => newState.spot[space.id] = space)
             }

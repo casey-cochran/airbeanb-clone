@@ -106,14 +106,14 @@ router.post('/spots/new', validatePost, requireAuth, asyncHandler(async(req,res)
 
 router.get('/:userId/spots', asyncHandler(async(req,res) => {
   const {userId }= req.params
-  const spots = await Spot.findAll({where: {userId}, include: Image})
+  const spots = await Spot.findAll({where: {userId}, include:Image})
   res.json({spots});
 }));
 
 router.delete('/:userId/spots/delete', asyncHandler(async(req,res) => {
       const {userId} = req.params
       const {spotId} = req.body
-      const spot = await Spot.findByPk(spotId, {where: {userId}})
+      const spot = await Spot.findByPk(spotId, {where: {userId}, include: Image})
       await spot.destroy();
       res.json({msg: 'hello'})
 }))

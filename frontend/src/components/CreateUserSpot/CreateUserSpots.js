@@ -46,7 +46,6 @@ const CreateUserSpots = () => {
                 return errors
             }
         });
-
         if(value.errors) {
             return  setErrors(value.errors)
         }
@@ -58,7 +57,7 @@ const CreateUserSpots = () => {
         setZipCode('')
         setCountry('')
         setPrice('')
-        history.push(`/api/users/${userId}/spots`);
+        history.push(`/api/users/${userId}/spots/${value.spot.id}`);
     }
 
     return (

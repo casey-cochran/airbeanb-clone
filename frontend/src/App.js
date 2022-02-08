@@ -8,6 +8,7 @@ import CreateUserSpots from "./components/CreateUserSpot/CreateUserSpots";
 import UserSpots from "./components/UserSpots/UserSpots";
 import EditSpot from "./components/EditSpot/EditSpot";
 import SpotsList from "./components/Spots/SpotsList";
+import AddSpotImages from "./components/AddSpotImages/AddSpotImage";
 
 
 function App() {
@@ -39,6 +40,9 @@ function App() {
           </Route>
           <Route path='/api/spots'>
             <SpotsList />
+          </Route>
+          <Route path='/api/users/:userId/spots/:spotId'>
+            <AddSpotImages />
           </Route>
         </Switch>
       )}

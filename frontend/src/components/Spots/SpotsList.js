@@ -7,7 +7,7 @@ import { loadAllSpots } from "../../store/spotReducer";
 const SpotsList = () => {
     const dispatch = useDispatch();
     const allSpots = useSelector((state) => Object.values(state.spotReducer.spot));
-    console.log('al the spots on frontend', allSpots)
+ 
 
     useEffect(() => {
         dispatch(loadAllSpots());

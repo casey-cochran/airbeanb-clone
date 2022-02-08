@@ -41,7 +41,6 @@ export const findSpot = (singleSpot) => {
 export const loadSingleSpot = (userId, spotId) => async dispatch => {
     const response = await fetch(`/api/users/${userId}/spots/${spotId}/edit`);
     const spot = await response.json()
-    console.log(spot)
     dispatch(findSpot(spot))
     return response;
 }

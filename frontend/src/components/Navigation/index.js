@@ -39,7 +39,7 @@ console.log(window.scroll)
     sessionLinks = (
       <div>
         <button onClick={toggleMenu} >
-          <i className="fas fa-user-circle" />
+          <i class="fas fa-bars"></i>
         </button>
         <div className="navbar-menu">
           {menu && (

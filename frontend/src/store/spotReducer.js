@@ -29,7 +29,7 @@ export const loadImages = (imageData) => async dispatch => {
         body: JSON.stringify(imageData)
     })
     const image = await response.json();
-    console.log('this is the image being returend from backend', image)
+    console.log('this is the image being returend from backend', image.spotId)
     dispatch(addImage(image))
     return image;
 }
@@ -59,10 +59,10 @@ export const findSpot = (singleSpot) => {
 }
 
 export const loadSingleSpot = (userId, spotId) => async dispatch => {
-    const response = await fetch(`/api/users/${userId}/spots/${spotId}/edit`);
+    const response = await fetch(`/api/users/${userId}/spots/${spotId}`);
     const spot = await response.json()
     dispatch(findSpot(spot))
-    return response;
+    return spot;
 }
 
 
@@ -104,7 +104,7 @@ export const loadSpots = (spots) => {
 export const loadAllSpots = () => async dispatch => {
     const response = await csrfFetch('/api/spots')
     const spots = await response.json();
-    console.log('spots from the thunk', spots)
+    //console.log('spots from the thunk', spots)
     dispatch(loadSpots(spots))
     return spots;
 }
@@ -167,8 +167,7 @@ const spotReducer = (state = initialState, action) => {
             return newState
         case FIND_SPOT:
             newState = {...state}
-            //console.log(action.singleSpot)
-            newState.spot[action.singleSpot.id] = action.singleSpot;
+            newState.spot[action.singleSpot.id] = action.singleSpot
             return newState;
         case UPDATE_SPOT:
             newState = {...state}
@@ -180,8 +179,7 @@ const spotReducer = (state = initialState, action) => {
             return newState;
         case ADD_IMAGE:
             newState = {...state};
-           //console.log(action.image.spotId, 'imagespotid?', action.image ,'the image obj?')
-            newState.spot[action.image.spotId] = action.image;
+            newState.images[action.image.id] = action.image;
             return newState
         default:
             return state;

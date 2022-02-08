@@ -12,7 +12,26 @@ router.get('/spots', asyncHandler(async(req,res) => {
     res.json(spots)
 }))
 
-router.post('/spots', asyncHandler(async(req,res) => {
+const imageValidations = [
+    check('url')
+        .exists({checkFalsy: true})
+        .withMessage('Must provide an image URL')
+        .isLength({max: 255})
+        .withMessage('URL must not be more than 255 characters')
+        .isURL()
+        .withMessage('Must be a valid URL')
+        .custom((value) => {
+            return Image.findOne({where: {url: value}})
+                .then((imageUrl) => {
+                    if(imageUrl){
+                        return Promise.reject('Image with this URL already exists.')
+                    }
+                })
+        }),
+        handleValidationErrors
+]
+
+router.post('/spots', imageValidations, asyncHandler(async(req,res) => {
     const {url, spotId} = req.body;
     const newImage = {spotId, url}
     await Image.create(newImage)

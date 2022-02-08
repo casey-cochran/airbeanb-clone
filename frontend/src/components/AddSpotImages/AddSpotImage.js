@@ -9,7 +9,7 @@ const AddSpotImages = () => {
     const dispatch = useDispatch();
     const {userId, spotId} = useParams();
     const spot = useSelector((state) => state.spotReducer.spot[spotId]);
-    //console.log('spot here', spot.Images)
+
     const [show, setShow] = useState(false)
 
     useEffect(() => {

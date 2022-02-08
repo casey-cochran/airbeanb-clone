@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { loadSingleSpot } from "../../store/spotReducer";
 import { updateSingleSpot } from "../../store/spotReducer";
+import './EditForm.css';
 
 const EditSpot = () => {
 
@@ -73,7 +74,7 @@ const EditSpot = () => {
 
   return (
     <div>
-        <form onSubmit={handleSubmit}>
+        <form className="edit-form" onSubmit={handleSubmit}>
           <ul>
             {errors?.map((error, index) => (
               <li key={index}>{error}</li>

@@ -28,7 +28,7 @@ const CreateUserSpots = () => {
 
     const handleSubmit = async(e) => {
         e.preventDefault();
-        //setErrors([])
+
         const spot = {
             userId,
             name,
@@ -41,7 +41,6 @@ const CreateUserSpots = () => {
         }
 
         const value = await dispatch(createUserSpot(spot)).catch(async (err) => {
-            //console.log('err', await err.json());
             const errors = await err.json()
             if(errors){
                 return errors
@@ -51,19 +50,15 @@ const CreateUserSpots = () => {
         if(value.errors) {
             return  setErrors(value.errors)
         }
-        console.log(`/api/users/${userId}/spots`)
+
+        setName('')
+        setAddress('')
+        setCity('')
+        setState('')
+        setZipCode('')
+        setCountry('')
+        setPrice('')
         history.push(`/api/users/${userId}/spots`);
-
-        //if(errors.length < 0) history.push(`/api/users/${userId}/spots`);
-        // setName('')
-        // setAddress('')
-        // setCity('')
-        // setState('')
-        // setZipCode('')
-        // setCountry('')
-        // setPrice('')
-      //if(!errors) return  history.push(`/api/users/${userId}/spots`);
-
     }
 
     return (

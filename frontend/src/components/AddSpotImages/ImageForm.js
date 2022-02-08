@@ -2,13 +2,19 @@ import { useParams, Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { loadImages } from "../../store/spotReducer";
+import { loadSingleSpot } from "../../store/spotReducer";
+
 
 const ImageForm = () => {
     const dispatch = useDispatch();
-    const historu = useHistory();
-    const {spotId} = useParams();
+    const history = useHistory();
+    const {spotId, userId} = useParams();
     const [url, setUrl] = useState('');
     const [errors, setErrors] = useState([]);
+
+    // const spot = useSelector((state) => state.spotReducer.spot[spotId])
+    // console.log(spot)
+
 
     const handleSubmit = async(e) => {
         e.preventDefault();
@@ -21,7 +27,12 @@ const ImageForm = () => {
             const errors = await err.json();
             if(errors) return errors
         })
-        //console.log('value on frontend', value);
+        if(value.errors){
+            return setErrors(value.errors)
+        }
+
+        history.push(`/api/users/${userId}/spots/${spotId}`)
+
 
     }
 
@@ -43,7 +54,7 @@ const ImageForm = () => {
                         id='url'
                     />
                 </div>
-                <button type='submit'>Add Image!</button>
+                <button onClick={() => dispatch(loadSingleSpot(userId,spotId))} type='submit'>Add Image!</button>
             </form>
         </div>
     )

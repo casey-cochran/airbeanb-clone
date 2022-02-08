@@ -120,9 +120,18 @@ router.delete('/:userId/spots/delete', asyncHandler(async(req,res) => {
 
 router.get('/:userId/spots/:spotId/edit', asyncHandler(async(req,res) => {
   const {userId, spotId} = req.params
-  const spot = await Spot.findByPk(spotId, {where: {userId}, include: Image})
+  const spot = await Spot.findOne({where: {userId}, include: Image})
+  console.log(spot, 'where are the images ???')
   res.json(spot)
 }))
+
+router.get('/:userId/spots/:spotId', asyncHandler(async(req,res) => {
+  const {userId, spotId} = req.params
+  const spot = await Spot.findOne({where: {userId}, include: Image})
+  console.log(spot, 'where are the images ???')
+  res.json(spot)
+}))
+
 
 const updatePost = [
   check('name')

@@ -49,7 +49,7 @@ const CreateUserSpots = () => {
         if(value.errors) {
             return  setErrors(value.errors)
         }
-
+       
         setName('')
         setAddress('')
         setCity('')

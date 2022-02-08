@@ -22,6 +22,7 @@
 
 body{
     margin-top: 0;
+    background-color: thistle;
 }
 .home-text{
     color: white;
@@ -50,12 +51,57 @@ body{
     width: 200px;
     border-radius: 20px;
     height: 385px;
-    
+
 }
 
 .navbar-menu {
     position: relative;
     display:block;
+}
+
+.home-page-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-children{
+
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container-children.one{
+    background-image: url("https://images.unsplash.com/photo-1568401973070-4d70a16d7e68?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80");
+    margin-top: 85px;
+    width: 1250px;
+    flex: 620px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+
+}
+
+.where-to-go{
+    display:flex;
+    flex-direction: column;
+    margin-top: 280px;
+}
+.flexible{
+    width: 140px;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    align-self: center;
+}
+
+.container-children.three{
+    background-color: yellow;
+
 
 
 }

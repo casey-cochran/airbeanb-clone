@@ -4,9 +4,10 @@ import { Route, Switch, useParams } from "react-router-dom";
 import { restoreUser } from "./store/session";
 import SignupFormPage from "./components/SignUpFormModal";
 import Navigation from "./components/Navigation";
-import CreateUserSpots from "./components/Spots/CreateUserSpots";
+import CreateUserSpots from "./components/CreateUserSpot/CreateUserSpots";
 import UserSpots from "./components/UserSpots/UserSpots";
 import EditSpot from "./components/EditSpot/EditSpot";
+import SpotsList from "./components/Spots/SpotsList";
 
 
 function App() {
@@ -35,6 +36,9 @@ function App() {
           </Route>
           <Route path={'/api/users/:userId/spots/:spotId/edit'}>
             <EditSpot />
+          </Route>
+          <Route path='/api/spots'>
+            <SpotsList />
           </Route>
         </Switch>
       )}

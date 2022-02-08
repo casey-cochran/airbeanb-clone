@@ -26,7 +26,7 @@ const Navigation = ({ isLoaded }) => {
       window.removeEventListener('scroll', navbar)
     }
   }, [])
-console.log(window.scroll)
+
   const toggleMenu = () => {
       setMenu(!menu)
   }
@@ -38,8 +38,9 @@ console.log(window.scroll)
   } else {
     sessionLinks = (
       <div>
+        <NavLink className={`home-text ${show ? 'trans' : false}`} to='/api/spots'>Places to Stay</NavLink>
         <button onClick={toggleMenu} >
-          <i class="fas fa-bars"></i>
+          <i className="fas fa-bars"></i>
         </button>
         <div className="navbar-menu">
           {menu && (
@@ -60,6 +61,7 @@ console.log(window.scroll)
   return (
     <ul className={`testing ${show && 'navbar'}`}>
       <li>
+        <i className="fab fa-airbnb"></i>
         <NavLink className={`home-text ${show ? 'trans' : false}`} exact to="/">
           Home
         </NavLink>

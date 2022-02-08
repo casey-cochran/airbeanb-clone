@@ -15,6 +15,7 @@ const FIND_SPOT = 'user/FIND_SPOT';
 const LOAD_ALL_SPOTS = '/api/LOAD_ALL_SPOTS';
 const ADD_IMAGE = '/spot/ADD_IMAGE';
 
+
 export const addImage = (image) => {
     return ({
         type: ADD_IMAGE,
@@ -153,7 +154,9 @@ const spotReducer = (state = initialState, action) => {
             return newState;
         case USER_SPOTS:
             newState = {...state}
+            if(action.data.spots){
             action.data.spots.forEach(space => newState.spot[space.id] = space)
+            }
             return newState;
         case DELETE_SPOT:
             newState = {...state}

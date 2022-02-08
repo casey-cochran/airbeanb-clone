@@ -179,7 +179,7 @@ const spotReducer = (state = initialState, action) => {
             return newState;
         case ADD_IMAGE:
             newState = {...state};
-            newState.images[action.image.id] = action.image;
+            newState.spot[action.image.id] = action.image;
             return newState
         default:
             return state;

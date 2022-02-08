@@ -11,7 +11,8 @@ const SET_USER = 'session/SET_USER';
 const USER_SPOTS = 'user/USER_SPOTS';
 const DELETE_SPOT = 'user/DELETE_SPOT';
 const UPDATE_SPOT = 'user/UPDATE_SPOT';
-const FIND_SPOT = 'user/FIND_SPOT'
+const FIND_SPOT = 'user/FIND_SPOT';
+const LOAD_ALL_SPOTS = '/api/LOAD_ALL_SPOTS';
 
 export const updateSpot = (spotData) => {
     return ({
@@ -74,6 +75,21 @@ export const loadUserSpots = (data) => {
     })
 }
 
+export const loadSpots = (spots) => {
+    return ({
+        type: LOAD_ALL_SPOTS,
+        spots
+    })
+}
+
+export const loadAllSpots = () => async dispatch => {
+    const response = await csrfFetch('/api/spots')
+    const spots = await response.json();
+    console.log('spots from the thunk', spots)
+    dispatch(loadSpots(spots))
+    return spots;
+}
+
 export const fetchUserSpots = (userId) => async dispatch => {
     const response = await fetch(`/api/users/${userId}/spots`);
     const data = await response.json();
@@ -127,7 +143,6 @@ const spotReducer = (state = initialState, action) => {
                 delete newState.spot[action.spotId]
             }
             return newState
-
         case FIND_SPOT:
             newState = {...state}
             console.log(action.singleSpot)
@@ -136,6 +151,10 @@ const spotReducer = (state = initialState, action) => {
         case UPDATE_SPOT:
             newState = {...state}
             newState.spot[action.spotData.id] = action.spotData
+            return newState;
+        case LOAD_ALL_SPOTS:
+            newState = {...state};
+            action.spots.forEach(spot => newState.spot[spot.id] = spot)
             return newState;
         default:
             return state;

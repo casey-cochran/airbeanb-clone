@@ -11,14 +11,15 @@ const AddSpotImages = () => {
 
 
     const spot = useSelector((state) => state.spotReducer.spot[spotId]);
+    const images = useSelector((state) => state.spotReducer.images);
     console.log(spot, 'spot here ')
-
+    console.log(images, 'images here ')
 
     const [show, setShow] = useState(false)
 
     useEffect(() => {
         dispatch(loadSingleSpot(userId, spotId));
-       //dispatch(loadAllSpots())
+       dispatch(loadAllSpots())
     },[dispatch])
 
 

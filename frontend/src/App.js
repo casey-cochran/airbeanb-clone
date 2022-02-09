@@ -10,6 +10,7 @@ import EditSpot from "./components/EditSpot/EditSpot";
 import SpotsList from "./components/Spots/SpotsList";
 import AddSpotImages from "./components/AddSpotImages/AddSpotImage";
 import HomePage from "./components/HomePage/HomePage";
+import ViewOneSpot from "./components/ViewOneSpot/ViewOneSpot";
 
 
 function App() {
@@ -42,11 +43,14 @@ function App() {
           <Route path={'/api/users/:userId/spots/:spotId/edit'}>
             <EditSpot />
           </Route>
-          <Route path='/api/spots'>
+          <Route exact path='/api/spots'>
             <SpotsList />
           </Route>
           <Route path='/api/users/:userId/spots/:spotId'>
             <AddSpotImages />
+          </Route>
+          <Route path='api/spots/:spotId'>
+            <ViewOneSpot />
           </Route>
         </Switch>
       )}

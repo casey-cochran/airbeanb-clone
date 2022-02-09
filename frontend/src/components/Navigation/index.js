@@ -59,7 +59,7 @@ const Navigation = ({ isLoaded }) => {
   }
 
   return (
-    <div>
+    <>
       <ul className={`testing ${show && 'navbar'}`}>
         <li>
           <i className="fab fa-airbnb"></i>
@@ -88,7 +88,7 @@ const Navigation = ({ isLoaded }) => {
           </div>
         <div className="container-children"><h1>test</h1></div>
       </div> */}
-    </div>
+    </>
 
   );
 };

@@ -34,10 +34,11 @@ const ProfileButton = ({ user }) => {
   };
 
   return (
-    <>
-      <button onClick={openMenu}>
-       <i className="fas fa-bars"></i>
-      </button>
+    <div id='icons'>
+      <div className="menu-icon">
+        <i id='homeMenu' onClick={openMenu} className="fas fa-bars icon"></i>
+        <i id='userIcon' className="fa fa-user-circle icon"></i>
+      </div>
       {showMenu && (
         <div className="profile-dropdown">
           <div className="name-email">
@@ -69,7 +70,7 @@ const ProfileButton = ({ user }) => {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }
 

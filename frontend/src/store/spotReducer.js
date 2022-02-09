@@ -78,6 +78,14 @@ export const findSpot = (singleSpot) => {
     })
 }
 
+export const viewOneSpot = (spotId) => async dispatch => {
+    const response = await fetch(`/api/spots/${spotId}`)
+    const singleSpot = await response.json()
+    //console.log('single spot', spot)
+    dispatch(findSpot(singleSpot))
+    return singleSpot
+}
+
 export const loadSingleSpot = (userId, spotId) => async dispatch => {
     const response = await fetch(`/api/users/${userId}/spots/${spotId}`);
     const spot = await response.json()

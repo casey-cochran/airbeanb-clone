@@ -54,7 +54,7 @@ const ImageForm = () => {
                         id='url'
                     />
                 </div>
-                <button onClick={() => dispatch(loadSingleSpot(userId,spotId))} type='submit'>Add Image!</button>
+                <button type='submit'>Add Image!</button>
             </form>
         </div>
     )

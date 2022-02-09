@@ -8,16 +8,19 @@ import ImageForm from "./ImageForm";
 const AddSpotImages = () => {
     const dispatch = useDispatch();
     const {userId, spotId} = useParams();
-    console.log(spotId)
+
+
     const spot = useSelector((state) => state.spotReducer.spot[spotId]);
-    console.log(spot)
+    console.log(spot, 'spot here ')
+
 
     const [show, setShow] = useState(false)
 
     useEffect(() => {
         dispatch(loadSingleSpot(userId, spotId));
-        dispatch(loadAllSpots())
+       //dispatch(loadAllSpots())
     },[dispatch])
+
 
 
 
@@ -29,7 +32,9 @@ const AddSpotImages = () => {
                 <li>{spot?.address}</li>
                 <li>{spot?.city}</li>
                 <li>{spot?.state}</li>
-                {spot?.Images.map((image,index) => <li key={index}><img src={image.url} /></li>)}
+                {spot?.Images.map((image,index) => <li key={index}><img src={image.url} />
+                <button>delete Img</button>
+                </li>)}
                 <button onClick={(() => show ? setShow(false) : setShow(true))}>add image form</button>
                 {show ?
                     <div>

@@ -178,9 +178,13 @@ const spotReducer = (state = initialState, action) => {
             action.spots.forEach(spot => newState.spot[spot.id] = spot)
             return newState;
         case ADD_IMAGE:
-            newState = {...state};
-            newState.spot[action.image.id] = action.image;
-            return newState
+            // newState = {...state};
+            // newState.spot[action.image.id] = action.image;
+            // return newState
+            newState = {...state}
+            newState.spot[action.image.spotId].Images = [...newState.spot[action.image.spotId].Images];
+            newState.spot[action.image.spotId].Images.push(action.image);
+            return newState;
         default:
             return state;
     }

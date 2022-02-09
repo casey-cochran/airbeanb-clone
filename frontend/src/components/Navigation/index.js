@@ -42,7 +42,7 @@ const Navigation = ({ isLoaded }) => {
         <button onClick={toggleMenu} >
           <i className="fas fa-bars"></i>
         </button>
-        <div className="navbar-menu">
+        <div >
           {menu && (
             <ul className="profile-dropdown">
               <li>
@@ -60,15 +60,15 @@ const Navigation = ({ isLoaded }) => {
 
   return (
     <>
-      <ul className={`testing ${show && 'navbar'}`}>
-        <li>
+      <div className={`testing ${show && 'navbar'}`}>
+        <div>
           <i className="fab fa-airbnb"></i>
           <NavLink className={`home-text ${show ? 'trans' : false}`} exact to="/">
             Home
           </NavLink>
-        </li>
-        <li>{isLoaded && sessionLinks}</li>
-      </ul>
+        </div>
+        <div id='please-work'>{isLoaded && sessionLinks}</div>
+      </div>
       {/* <div className="home-page-container">
         <div className="container-children one">
           <div className="where-to-go">

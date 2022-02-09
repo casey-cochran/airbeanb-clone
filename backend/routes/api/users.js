@@ -1,7 +1,7 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
 const {setTokenCookie, requireAuth, restoreUser} = require('../../utils/auth');
-const {User, Spot, Image} = require('../../db/models');
+const {User, Spot, Image, Booking} = require('../../db/models');
 const {check} = require('express-validator');
 const {handleValidationErrors} = require('../../utils/validation');
 const { db } = require('../../config');
@@ -188,12 +188,15 @@ router.patch('/:userId/spots/:spotId/edit', updatePost, asyncHandler(async(req,r
   const update = {name, address, city, state, zipCode, country, price, userId, spotId}
   const spot = await Spot.findByPk(spotId)
   await spot.update(update)
-
   res.json(spot)
 
 }))
+router.get('/:userId/bookings', asyncHandler(async(req,res) => {
+  const {userId} = req.params;
+  const booking = await Booking.findAll({where: {userId}, include: Spot});
+  res.json(booking);
 
-
+}))
 
 
 

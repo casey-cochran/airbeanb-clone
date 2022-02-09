@@ -34,35 +34,43 @@ const ProfileButton = ({ user }) => {
   };
 
   return (
-    <>
-      <button onClick={openMenu}>
-       <i className="fas fa-bars"></i>
-      </button>
+    <div id='icons'>
+      <div className="menu-icon">
+        <i id='homeMenu' onClick={openMenu} className="fas fa-bars icon"></i>
+        <i id='userIcon' className="fa fa-user-circle icon"></i>
+      </div>
       {showMenu && (
-        <ul className="profile-dropdown">
-          <li>{user.username}</li>
-          <li>{user.email}</li>
-          <li>
-            <button>
-              <NavLink to='/api/users/spots/new'>
+        <div className="profile-dropdown">
+          <div className="name-email">
+            <div>Welcome {user.username}!</div>
+
+          </div>
+          <div  className="menu-btn-div">
+              <NavLink className='drp-menu-btn' to='/api/users/spots/new'>
                 Host your spot
               </NavLink>
-            </button>
-            <button>
-              <NavLink to={`/api/users/${userId}/spots`}>
+          </div>
+          <div className="menu-btn-div">
+              <NavLink className='drp-menu-btn' to={`/api/users/${userId}/spots`}>
                 Users Spots
               </NavLink>
-            </button>
-            <button>
-              <NavLink to='/api/spots'>
+          </div>
+          <div className="menu-btn-div">
+              <NavLink className='drp-menu-btn' to='/api/spots'>
                 View all spot Listings
               </NavLink>
-            </button>
-            <button onClick={logoutUser}>Log Out</button>
-          </li>
-        </ul>
+          </div>
+          <div className="menu-btn-div">
+              <NavLink className='drp-menu-btn' to='/api/users/bookings'>
+                My Bookings
+              </NavLink>
+          </div>
+          <div className="menu-btn-div">
+            <button className="btn primary" onClick={logoutUser}>Log Out</button>
+          </div>
+        </div>
       )}
-    </>
+    </div>
   );
 }
 

@@ -42,7 +42,7 @@ const Navigation = ({ isLoaded }) => {
         <button onClick={toggleMenu} >
           <i className="fas fa-bars"></i>
         </button>
-        <div className="navbar-menu">
+        <div >
           {menu && (
             <ul className="profile-dropdown">
               <li>

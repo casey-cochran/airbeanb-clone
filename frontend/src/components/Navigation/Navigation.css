@@ -46,14 +46,17 @@ body{
 
 
 .profile-dropdown{
-    background-color: yellow;
+    background-color: white;
     position: absolute;
     right: 0px;
-    margin-top: 30px;
-    width: 200px;
+    margin-right: 180px;
+    margin-top: 20px;
+    width: 230px;
     border-radius: 20px;
     height: 385px;
-
+    display:flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .navbar-menu {
@@ -68,42 +71,59 @@ body{
     align-items: center;
 }
 
-/* .container-children{
 
+
+.drp-menu-btn{
+    text-decoration: none;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 10px;
+    color: black;
     width: 100%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+    display: inline-block;
+    transition: background-color 500ms;
+    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
 }
 
-.container-children.one{
-    background-image: url("https://images.unsplash.com/photo-1568401973070-4d70a16d7e68?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80");
-    margin-top: 85px;
-    width: 1250px;
-    flex: 620px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    color: white;
-
+.drp-menu.btn:hover{
+    background-color: #eceff1;
 }
 
-.where-to-go{
-    display:flex;
-    flex-direction: column;
-    margin-top: 280px;
+.menu-btn-div{
+    width: 100%;
+    transition: background-color 500ms;
 }
-.flexible{
-    width: 140px;
-    padding: 20px 10px;
-    border-radius: 30px;
+.menu-btn-div:hover{
+    background-color: #eceff1;
+}
+
+.btn.primary{
     border: none;
-    align-self: center;
+    text-align: left;
+    background-color: transparent;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 10px;
+    width: 100%;
+    display: inline-block;
+    cursor: pointer;
+    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
 }
 
-.container-children.three{
-    background-color: yellow;
+link:visited{
+    text-decoration: none;
+}
 
-
-
-} */
+.name-email{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 14px;
+    color: black;
+    width: 100%;
+    padding-left: 18px;
+    font-size: 15px;
+    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+}

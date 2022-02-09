@@ -39,33 +39,35 @@ const ProfileButton = ({ user }) => {
        <i className="fas fa-bars"></i>
       </button>
       {showMenu && (
-        <ul className="profile-dropdown">
-          <li>{user.username}</li>
-          <li>{user.email}</li>
-          <li>
-            <button>
-              <NavLink to='/api/users/spots/new'>
+        <div className="profile-dropdown">
+          <div className="name-email">
+            <div>Welcome {user.username}!</div>
+
+          </div>
+          <div  className="menu-btn-div">
+              <NavLink className='drp-menu-btn' to='/api/users/spots/new'>
                 Host your spot
               </NavLink>
-            </button>
-            <button>
-              <NavLink to={`/api/users/${userId}/spots`}>
+          </div>
+          <div className="menu-btn-div">
+              <NavLink className='drp-menu-btn' to={`/api/users/${userId}/spots`}>
                 Users Spots
               </NavLink>
-            </button>
-            <button>
-              <NavLink to='/api/spots'>
+          </div>
+          <div className="menu-btn-div">
+              <NavLink className='drp-menu-btn' to='/api/spots'>
                 View all spot Listings
               </NavLink>
-            </button>
-            <button>
-              <NavLink to='/api/users/bookings'>
+          </div>
+          <div className="menu-btn-div">
+              <NavLink className='drp-menu-btn' to='/api/users/bookings'>
                 My Bookings
               </NavLink>
-            </button>
-            <button onClick={logoutUser}>Log Out</button>
-          </li>
-        </ul>
+          </div>
+          <div className="menu-btn-div">
+            <button className="btn primary" onClick={logoutUser}>Log Out</button>
+          </div>
+        </div>
       )}
     </>
   );

@@ -30,10 +30,10 @@ body{
 .home-text{
     color: white;
     text-decoration: none;
-    transition: color
+    transition: ease 0.5s
 }
 .home-text.trans{
-    color: black;
+    color: #FF385C !important;
 }
 
 .testing li {
@@ -50,7 +50,7 @@ body{
     background-color: white;
     position: absolute;
     right: 0px;
-    margin-right: 180px;
+    margin-right: 210px;
     margin-top: 20px;
     width: 230px;
     border-radius: 20px;
@@ -59,6 +59,7 @@ body{
     flex-direction: column;
     align-items: center;
 }
+
 
 .navbar-menu {
     position: relative;
@@ -136,6 +137,8 @@ link:visited{
     border-radius: 40px;
     background-color: white;
     padding: 17px 25px;
+    border: 1px solid black;
+    cursor: pointer;
 
 }
 #homeMenu{
@@ -145,4 +148,34 @@ link:visited{
     color: gray;
 }
 
+#logo-home{
+    display: flex;
+    align-items: center;
+    gap: 15px;
 
+}
+.fab.fa-airbnb{
+    color: white;
+    font-size: 36px;
+    transition: ease 0.5s;
+}
+
+.fab.fa-airbnb.trans{
+    color: #FF385C !important;
+}
+
+#airbeanb{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-weight: 600;
+    font-size: 24px;
+    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+}
+
+
+#loggedout-icons{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}

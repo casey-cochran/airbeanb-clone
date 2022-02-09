@@ -52,7 +52,7 @@ const LoginForm = () => {
           />
         </div>
         <div>
-          <button type="submit">Log In</button>
+          <button id='login-btn' type="submit">Log In</button>
         </div>
       </form>
     </div>

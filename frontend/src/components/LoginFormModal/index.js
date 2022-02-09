@@ -14,7 +14,9 @@ const LoginFormModal = () => {
 
   return (
     <>
-      <button onClick={click}>Log In</button>
+      <div className='menu-btn-div form'>
+       <button className='btn primary form' id='login-btn' onClick={click}>Log In</button>
+      </div>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <LoginForm />

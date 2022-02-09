@@ -29,3 +29,63 @@ form{
   padding-left: 10px;
 
 }
+#anotherone{
+    margin-top: 25px;
+    display: flex;
+}
+
+
+.profile-dropdown2{
+    background-color: white;
+    position: absolute;
+    right: 0px;
+    margin-right: 200px;
+    margin-top: 20px;
+    width: 230px;
+    border-radius: 20px;
+    height: 100px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+}
+
+.profile-dropdown2 div{
+    width: 100%;
+}
+
+.menu-btn-div.form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#login-btn{
+    transition: background-color 500ms;
+    border: none;
+}
+
+.login-btn:hover{
+    background-color: black;
+}
+
+.btn.primary.form{
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+#homeMenu{
+    font-size: 16px;
+}
+#userIcon{
+    font-size: 16px;
+}
+
+#place-to-stay{
+    font-weight: 600;
+    font-size: 24px;
+    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+}

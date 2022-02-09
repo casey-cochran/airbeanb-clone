@@ -38,20 +38,25 @@ const Navigation = ({ isLoaded }) => {
   } else {
     sessionLinks = (
       <div>
-        <NavLink className={`home-text ${show ? 'trans' : false}`} to='/api/spots'>Places to Stay</NavLink>
-        <button onClick={toggleMenu} >
-          <i className="fas fa-bars"></i>
-        </button>
+        <div id='loggedout-icons'>
+          <NavLink id='place-to-stay' className={`home-text ${show ? 'trans' : false}`} to='/api/spots'>Places to Stay</NavLink>
+          <button className="menu-icon" onClick={toggleMenu} >
+            <i id='homeMenu' className="fas fa-bars icon"></i>
+            <i id='userIcon' className="fa fa-user-circle icon"></i>
+          </button>
+        </div>
         <div >
           {menu && (
-            <ul className="profile-dropdown">
-              <li>
-                <LoginFormModal />
-              </li>
-              <li>
-                <SignupFormModal />
-              </li>
-            </ul>
+            <div className="profile-dropdown2">
+              <div id='anotherone'>
+                <div id='textform'>
+                  <LoginFormModal />
+                </div>
+                <div>
+                  <SignupFormModal />
+                </div>
+              </div>
+            </div>
           )}
         </div>
       </div>
@@ -61,10 +66,10 @@ const Navigation = ({ isLoaded }) => {
   return (
     <>
       <div className={`testing ${show && 'navbar'}`}>
-        <div>
-          <i className="fab fa-airbnb"></i>
-          <NavLink className={`home-text ${show ? 'trans' : false}`} exact to="/">
-            Home
+        <div id='logo-home'>
+          <NavLink id='airbeanb' className={`home-text ${show ? 'trans' : false}`} exact to="/">
+          <i className={`fab fa-airbnb ${show && 'trans'}`}></i>
+          <p>airbeanb</p>
           </NavLink>
         </div>
         <div id='please-work'>{isLoaded && sessionLinks}</div>

@@ -29,7 +29,7 @@ export const loadImages = (imageData) => async dispatch => {
         body: JSON.stringify(imageData)
     })
     const image = await response.json();
-    console.log('this is the image being returend from backend', image.spotId)
+    console.log('this is the image being returend from backend', image)
     dispatch(addImage(image))
     return image;
 }
@@ -61,6 +61,7 @@ export const findSpot = (singleSpot) => {
 export const loadSingleSpot = (userId, spotId) => async dispatch => {
     const response = await fetch(`/api/users/${userId}/spots/${spotId}`);
     const spot = await response.json()
+    console.log(spot, 'what is this spot dammit')
     dispatch(findSpot(spot))
     return spot;
 }
@@ -139,7 +140,7 @@ export const createUserSpot = (spotData) => async dispatch => {
 
 
 
-const initialState = {user: null, spot: {}};
+const initialState = {user: null, spot: {}, images: {}};
 
 const spotReducer = (state = initialState, action) => {
     let newState;
@@ -168,6 +169,9 @@ const spotReducer = (state = initialState, action) => {
         case FIND_SPOT:
             newState = {...state}
             newState.spot[action.singleSpot.id] = action.singleSpot
+            console.log(action.singleSpot, 'this is action.single spot')
+            console.log('single spot', newState.spot[action.singleSpot.id])
+            console.log(newState, 'newstate here ')
             return newState;
         case UPDATE_SPOT:
             newState = {...state}
@@ -181,6 +185,10 @@ const spotReducer = (state = initialState, action) => {
             // newState = {...state};
             // newState.spot[action.image.id] = action.image;
             // return newState
+
+            // newState.images[action.image.spotId] = action.image
+            // console.log(newState.images, ' images here ')
+            // console.log(newState, ' new state done')
             newState = {...state}
             newState.spot[action.image.spotId].Images = [...newState.spot[action.image.spotId].Images];
             newState.spot[action.image.spotId].Images.push(action.image);

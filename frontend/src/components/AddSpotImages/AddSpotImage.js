@@ -1,19 +1,22 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { loadSingleSpot } from "../../store/spotReducer";
+import { loadAllSpots, loadSingleSpot } from "../../store/spotReducer";
 import './AddSpotImage.css'
 import ImageForm from "./ImageForm";
 
 const AddSpotImages = () => {
     const dispatch = useDispatch();
     const {userId, spotId} = useParams();
+    console.log(spotId)
     const spot = useSelector((state) => state.spotReducer.spot[spotId]);
+    console.log(spot)
 
     const [show, setShow] = useState(false)
 
     useEffect(() => {
         dispatch(loadSingleSpot(userId, spotId));
+        dispatch(loadAllSpots())
     },[dispatch])
 
 

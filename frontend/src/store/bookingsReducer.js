@@ -6,10 +6,10 @@ const SET_USER = 'session/SET_USER';
 const BOOK_SPOT = '/spots/BOOK_SPOT';
 const LOAD_BOOKINGS = '/spots/LOAD_BOOKINGS';
 
-export const viewBookings = () => {
+export const viewBookings = (bookings) => {
     return ({
         type: LOAD_BOOKINGS,
-
+        bookings
     })
 }
 
@@ -17,6 +17,8 @@ export const loadBooking = (userId) => async dispatch => {
     const response = await csrfFetch(`/api/users/${userId}/bookings`)
     const bookings = await response.json();
     console.log('what is bookings', bookings)
+    dispatch(viewBookings(bookings))
+    return bookings;
 }
 
 export const bookSpot = (newBooking) => {
@@ -58,7 +60,10 @@ const bookingsReducer = (state = initialState, action) => {
             newState = {...state};
             newState.booking[action.newBooking.id] = action.newBooking;
             return newState;
-
+        case LOAD_BOOKINGS:
+            newState = {...state};
+            action.bookings.forEach(booking => newState.booking[booking.id] = booking)
+            return newState;
         default:
             return state;
     }

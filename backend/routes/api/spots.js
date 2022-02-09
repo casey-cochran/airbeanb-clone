@@ -45,8 +45,30 @@ router.get('/spots/:spotId', asyncHandler(async(req,res) => {
     res.json(spot);
 }))
 
+const bookingsValidator = [
+    check('startDate')
+        .exists({checkFalsy: true})
+        .withMessage('Must provide a start date')
+        .isDate()
+        .withMessage('Must be a valid date')
+        .custom((value) => {
+            return Booking.findOne({where: {startDate: value}})
+            .then((bookingStart) => {
+                if(bookingStart){
+                    return Promise.reject('You already have a spot booked on this date, Please choost another date')
+                }
+            })
+        }),
+    check('endDate')
+        .exists({checkFalsy: true})
+        .withMessage('Must provide an end date')
+        .isDate()
+        .withMessage('Must be a valid date'),
+        handleValidationErrors
+];
+
 //TODO validators for this route
-router.post('/spots/:spotId', asyncHandler(async(req,res) => {
+router.post('/spots/:spotId', bookingsValidator, asyncHandler(async(req,res) => {
     const {startDate, endDate, userId, spotId} = req.body;
     newBooking = {startDate,endDate,userId,spotId}
     const booking = await Booking.create(newBooking);

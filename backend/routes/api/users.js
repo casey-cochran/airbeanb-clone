@@ -192,11 +192,8 @@ router.patch('/:userId/spots/:spotId/edit', updatePost, asyncHandler(async(req,r
 
 }))
 router.get('/:userId/bookings', asyncHandler(async(req,res) => {
-  console.log('am i hitting above this route ?------------------------')
   const {userId} = req.params;
-  const booking = await Booking.findAll({where: {userId}});
-
-  console.log(booking)
+  const booking = await Booking.findAll({where: {userId}, include: Spot});
   res.json(booking);
 
 }))

@@ -39,7 +39,11 @@ router.post('/spots', imageValidations, asyncHandler(async(req,res) => {
 }))
 
 
-
+router.get('/spots/:spotId', asyncHandler(async(req,res) => {
+    const {spotId} = req.params;
+    const spot = await Spot.findByPk(spotId, {include: Image})
+    res.json(spot);
+}))
 
 
 

@@ -49,7 +49,7 @@ function App() {
           <Route path='/api/users/:userId/spots/:spotId'>
             <AddSpotImages />
           </Route>
-          <Route path='api/spots/:spotId'>
+          <Route path='/api/spots/:spotId'>
             <ViewOneSpot />
           </Route>
         </Switch>

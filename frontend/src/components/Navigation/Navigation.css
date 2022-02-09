@@ -2,9 +2,9 @@
     display: flex;
     justify-content: space-around;
     gap: 300px;
-    padding-top: 50px;
+    padding-top: 40px;
     margin-bottom: 0;
-    padding-bottom: 50px;
+    padding-bottom: 40px;
     border-bottom: 2px solid black;
     background-color: black;
     color: red;
@@ -12,11 +12,14 @@
     position: sticky;
     top: 0;
     z-index: 9999;
-    transition: ease 0.5s
+    transition: ease 0.5s;
+    height: 10px;
+
 }
 .testing.navbar{
     /* transition: all 0.3s ease; */
     background-color: white;
+    position: sticky;
 }
 
 

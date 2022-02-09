@@ -2,6 +2,7 @@ import { useDispatch, useSelector  } from "react-redux";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { loadAllSpots } from "../../store/spotReducer";
+import './SpotsList.css';
 
 
 
@@ -27,20 +28,20 @@ const SpotsList = () => {
             <button type='submit'>
             <Link to={`/api/users/${userId.id}/spots`}>back to spots</Link>
             </button>
-            <ul>
-                {newspots?.map((spot,index) => {
-                    return (
-                    <div key={index}>
-                        <img src={spot.Images[0].url} />
-                        <div>
-                            <p>{spot.name}</p>
-                            <p>${spot.price} / night</p>
-                        </div>
-                        <p>{spot.city},{spot.state}</p>
-                    </div>
+            <div className="all-spots-container">
+                    {newspots?.map((spot,index) => {
+                        return (
+                            <div className=".img-description" key={index}>
+                                <Link to={''}><img className="all-spots-imgs" src={spot.Images[0].url} /></Link>
+                                    <div>
+                                        <p>{spot.city}, {spot.state}</p>
+                                        <p>${spot.price} / night</p>
+                                    </div>
 
-                )})}
-            </ul>
+                            </div>
+                    )})}
+            </div>
+
         </div>
     )
 }

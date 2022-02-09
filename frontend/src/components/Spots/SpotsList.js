@@ -26,7 +26,9 @@ const SpotsList = () => {
     return (
         <div>
             <button type='submit'>
+            {userId ?
             <Link to={`/api/users/${userId.id}/spots`}>back to spots</Link>
+            : <h1>log in or sign up here !</h1> }
             </button>
             <div className="all-spots-container">
                     {newspots?.map((spot,index) => {

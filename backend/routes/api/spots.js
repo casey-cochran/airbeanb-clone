@@ -2,7 +2,7 @@ const express = require('express');
 const asyncHandler = require('express-async-handler');
 const {check} = require('express-validator');
 const {handleValidationErrors} = require('../../utils/validation');
-const {Spot, Image} = require('../../db/models');
+const {Spot, Image, Booking} = require('../../db/models');
 
 const router = express.Router();
 
@@ -43,6 +43,16 @@ router.get('/spots/:spotId', asyncHandler(async(req,res) => {
     const {spotId} = req.params;
     const spot = await Spot.findByPk(spotId, {include: Image})
     res.json(spot);
+}))
+
+
+router.post('/spots/:spotId', asyncHandler(async(req,res) => {
+    const {starDate, endDate, userId, spotId} = req.body;
+    newBooking = {starDate,endDate,userId,spotId}
+    const booking = await Booking.create(newBooking);
+    res.json({msg: 'booking was a sucesss'})
+
+
 }))
 
 

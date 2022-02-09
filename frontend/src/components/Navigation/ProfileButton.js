@@ -58,6 +58,11 @@ const ProfileButton = ({ user }) => {
                 View all spot Listings
               </NavLink>
             </button>
+            <button>
+              <NavLink to='/api/users/bookings'>
+                My Bookings
+              </NavLink>
+            </button>
             <button onClick={logoutUser}>Log Out</button>
           </li>
         </ul>

@@ -8,10 +8,11 @@ import './ViewOneSpot.css';
 
 const ViewOneSpot = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
     const {spotId} = useParams();
     const user = useSelector((state) => state.session.user)
     const spot = useSelector((state) => state.spotReducer.spot[spotId])
-    const userId = user.id
+    const userId = user?.id
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
     const [errors, setErrors] = useState([]);
@@ -37,8 +38,11 @@ const ViewOneSpot = () => {
             return errors
         }
     })
-    console.log(value, 'what is this value?')
+    if(value.errors){
+        return setErrors(value.errors)
+    }
 
+    history.push(`/api/spots`)
 
     }
 

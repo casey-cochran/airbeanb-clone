@@ -33,7 +33,7 @@ const AddSpotImages = () => {
                 <li>{spot?.address}</li>
                 <li>{spot?.city}</li>
                 <li>{spot?.state}</li>
-                {spot?.Images.map((image,index) => <li key={index}><img src={image.url} />
+                {spot?.Images?.map((image,index) => <li key={index}><img src={image.url} />
                 <button>delete Img</button>
                 </li>)}
                 <button onClick={(() => show ? setShow(false) : setShow(true))}>add image form</button>

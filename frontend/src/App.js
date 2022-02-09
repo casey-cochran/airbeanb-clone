@@ -11,6 +11,7 @@ import SpotsList from "./components/Spots/SpotsList";
 import AddSpotImages from "./components/AddSpotImages/AddSpotImage";
 import HomePage from "./components/HomePage/HomePage";
 import ViewOneSpot from "./components/ViewOneSpot/ViewOneSpot";
+import UserBookings from "./components/UserBookings/UserBookings";
 
 
 function App() {
@@ -51,6 +52,9 @@ function App() {
           </Route>
           <Route path='/api/spots/:spotId'>
             <ViewOneSpot />
+          </Route>
+          <Route path='/api/users/bookings'>
+            <UserBookings />
           </Route>
         </Switch>
       )}

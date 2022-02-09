@@ -45,15 +45,16 @@ router.get('/spots/:spotId', asyncHandler(async(req,res) => {
     res.json(spot);
 }))
 
-
+//TODO validators for this route
 router.post('/spots/:spotId', asyncHandler(async(req,res) => {
-    const {starDate, endDate, userId, spotId} = req.body;
-    newBooking = {starDate,endDate,userId,spotId}
+    const {startDate, endDate, userId, spotId} = req.body;
+    newBooking = {startDate,endDate,userId,spotId}
     const booking = await Booking.create(newBooking);
-    res.json({msg: 'booking was a sucesss'})
-
+    res.json(booking);
 
 }))
+
+
 
 
 

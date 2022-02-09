@@ -14,9 +14,9 @@ const SpotsList = () => {
     const userId = useSelector((state) => state.session.user)
     //console.log(allSpots, 'id here ')
 
-    console.log(allSpots.filter(spot => spot.Images.length > 0))
+    // console.log(allSpots.filter(spot => spot.Images.length > 0))
     const newspots = allSpots.filter(spot => spot.Images.length > 0)
-
+    console.log(newspots, ' new spots here ')
 
 
     useEffect(() => {
@@ -32,7 +32,7 @@ const SpotsList = () => {
                     {newspots?.map((spot,index) => {
                         return (
                             <div className=".img-description" key={index}>
-                                <Link to={''}><img className="all-spots-imgs" src={spot.Images[0].url} /></Link>
+                                <Link to={`/api/spots/${spot.id}`}><img className="all-spots-imgs" src={spot.Images[0].url} /></Link>
                                     <div>
                                         <p>{spot.city}, {spot.state}</p>
                                         <p>${spot.price} / night</p>

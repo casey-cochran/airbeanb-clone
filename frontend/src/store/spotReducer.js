@@ -14,6 +14,26 @@ const UPDATE_SPOT = 'user/UPDATE_SPOT';
 const FIND_SPOT = 'user/FIND_SPOT';
 const LOAD_ALL_SPOTS = '/api/LOAD_ALL_SPOTS';
 const ADD_IMAGE = '/spot/ADD_IMAGE';
+// const DELETE_IMAGE = '/spot/DELETE_IMAGE';
+
+
+// export const deleteImage = (imageId, spotId) => {
+//     return ({
+//         type: DELETE_IMAGE,
+//         imageId,
+//         spotId
+//     })
+// }
+
+// export const deleteOneImage = (imageId, spotId, userId) => async dispatch => {
+//     const response = await csrfFetch(`/api/users/${userId}/spots/${spotId}`,{
+//         method: 'DELETE',
+//         body: JSON.stringify({imageId})
+//     })
+//     const deletedImage = await response.json();
+//     console.log(deletedImage, 'was it deleted')
+//     dispatch(deleteImage(imageId, spotId))
+// }
 
 
 export const addImage = (image) => {
@@ -29,7 +49,7 @@ export const loadImages = (imageData) => async dispatch => {
         body: JSON.stringify(imageData)
     })
     const image = await response.json();
-    console.log('this is the image being returend from backend', image)
+    //console.log('this is the image being returend from backend', image.id)
     dispatch(addImage(image))
     return image;
 }
@@ -61,7 +81,7 @@ export const findSpot = (singleSpot) => {
 export const loadSingleSpot = (userId, spotId) => async dispatch => {
     const response = await fetch(`/api/users/${userId}/spots/${spotId}`);
     const spot = await response.json()
-    console.log(spot, 'what is this spot dammit')
+  //  console.log(spot, 'what is this spot dammit')
     dispatch(findSpot(spot))
     return spot;
 }
@@ -169,9 +189,9 @@ const spotReducer = (state = initialState, action) => {
         case FIND_SPOT:
             newState = {...state}
             newState.spot[action.singleSpot.id] = action.singleSpot
-            console.log(action.singleSpot, 'this is action.single spot')
-            console.log('single spot', newState.spot[action.singleSpot.id])
-            console.log(newState, 'newstate here ')
+           // console.log(action.singleSpot, 'this is action.single spot')
+            //console.log('single spot', newState.spot[action.singleSpot.id])
+            //console.log(newState, 'newstate here ')
             return newState;
         case UPDATE_SPOT:
             newState = {...state}
@@ -182,17 +202,33 @@ const spotReducer = (state = initialState, action) => {
             action.spots.forEach(spot => newState.spot[spot.id] = spot)
             return newState;
         case ADD_IMAGE:
-            // newState = {...state};
-            // newState.spot[action.image.id] = action.image;
-            // return newState
-
+            // newState = {...state}
+            // console.log(newState.images[action.image.id] = action.image)
+            // newState.images[action.image.id] = action.image;
+            // console.log(newState, ' new state with image added ?')
+            // return newState;
+            //----------
             // newState.images[action.image.spotId] = action.image
             // console.log(newState.images, ' images here ')
             // console.log(newState, ' new state done')
             newState = {...state}
             newState.spot[action.image.spotId].Images = [...newState.spot[action.image.spotId].Images];
             newState.spot[action.image.spotId].Images.push(action.image);
-            return newState;
+           return newState;
+        // case DELETE_IMAGE:
+        //     newState = {...state}
+        //     //console.log(action.imageId)
+        //     let imgArr = newState.spot[action.spotId].Images
+        //     //console.log(imgArr, 'before loop splice')
+        //     for(let i = 0; i < imgArr.length; i++){
+        //         let imgobj = imgArr[i]
+        //         if(imgobj.id === action.imageId){
+        //             imgArr.splice(i, 1)
+        //         }
+        //     }
+        //     //console.log(imgArr, 'state ?')
+        //     //newState.spot[action.spotId].Images
+        //     //return newState
         default:
             return state;
     }

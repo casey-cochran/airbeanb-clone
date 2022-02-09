@@ -132,6 +132,14 @@ router.get('/:userId/spots/:spotId', asyncHandler(async(req,res) => {
   res.json(spot)
 }))
 
+// router.delete('/:userId/spots/:spotId', asyncHandler(async(req,res) => {
+//   const {imageId} = req.body;
+//   const image = await Image.findByPk(imageId)
+//   await image.destroy();
+//   res.json({msg: 'sucess delete'})
+// }))
+
+
 
 const updatePost = [
   check('name')

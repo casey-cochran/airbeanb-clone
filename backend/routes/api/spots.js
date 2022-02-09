@@ -33,10 +33,12 @@ const imageValidations = [
 
 router.post('/spots', imageValidations, asyncHandler(async(req,res) => {
     const {url, spotId} = req.body;
-    const newImage = {spotId, url}
-    await Image.create(newImage)
+    const img = {spotId, url}
+    const newImage = await Image.create(img)
     res.json(newImage);
 }))
+
+
 
 
 

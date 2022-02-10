@@ -28,21 +28,26 @@ const AddSpotImages = () => {
   return (
       <div>
           <div className="center-spot">
-            <ul>
-                <li>{spot?.name}</li>
-                <li>{spot?.address}</li>
-                <li>{spot?.city}</li>
-                <li>{spot?.state}</li>
-                {spot?.Images?.map((image,index) => <li key={index}><img src={image.url} />
-                <button>delete Img</button>
-                </li>)}
-                <button onClick={(() => show ? setShow(false) : setShow(true))}>add image form</button>
+            <div id='spot-image-cont'>
+                <div id='created-spot-info'>
+                        <div id='spot-info-text'>
+                        <div className="idk">{spot?.name}</div>
+                        <div>{spot?.address}</div>
+                        <div>{spot?.city}</div>
+                        <div>{spot?.state}</div>
+                        <div>${spot?.price}</div>
+                    </div>
+                </div>
+                <div id='spot-img-cont'>
+                    {spot?.Images?.map((image,index) => <div className="user-host-spots" key={index}><img src={image.url} /></div>)}
+                </div>
+                {/* <button onClick={(() => show ? setShow(false) : setShow(true))}>add image form</button>
                 {show ?
                     <div>
                         <ImageForm />
                     </div>
-                : <> </>  }
-            </ul>
+                : <> </>  } */}
+            </div>
           </div>
       </div>
   )

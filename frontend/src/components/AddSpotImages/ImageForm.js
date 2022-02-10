@@ -30,7 +30,7 @@ const ImageForm = () => {
         if(value.errors){
             return setErrors(value.errors)
         }
-
+        setUrl('')
         history.push(`/api/users/${userId}/spots/${spotId}`)
 
 

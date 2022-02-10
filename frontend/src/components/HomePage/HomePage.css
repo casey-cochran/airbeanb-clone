@@ -43,7 +43,11 @@
 }
 
 .container-children.four{
-    background-color: yellow;
+    background-color: #F1EFEF;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding-bottom: 80px;
 }
 
 .insp-header{
@@ -130,4 +134,10 @@
     border-radius: 10px;
     width: 650px;
     height: 560px;
+}
+
+.insp-box-text{
+    color: #FFFFFF;
+    font-weight: 600;
+    font-size: 27px;
 }

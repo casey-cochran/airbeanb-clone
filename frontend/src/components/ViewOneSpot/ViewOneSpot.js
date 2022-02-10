@@ -16,7 +16,7 @@ const ViewOneSpot = () => {
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
     const [errors, setErrors] = useState([]);
-    console.log(startDate, endDate)
+
 
     useEffect(() => {
         dispatch(viewOneSpot(spotId))

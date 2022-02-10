@@ -198,12 +198,11 @@ router.get('/:userId/bookings', requireAuth, asyncHandler(async(req,res) => {
 
 }))
 
-router.delete('/bookings/:bookingId', requireAuth, asyncHandler(async(req,res) => {
+router.delete('/:userId/bookings/:bookingId', requireAuth, asyncHandler(async(req,res) => {
   const {bookingId} = req.params;
-  console.log('------------', bookingId)
   const booking = await Booking.findByPk(bookingId)
   await booking.destroy();
-  res.json({msg: 'delte successful ? '})
+  res.json({msg: 'delete success'})
 
 }))
 

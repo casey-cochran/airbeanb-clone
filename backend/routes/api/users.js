@@ -104,7 +104,8 @@ router.post('/spots/new', validatePost, requireAuth, asyncHandler(async(req,res)
 
 }));
 
-router.get('/:userId/spots', asyncHandler(async(req,res) => {
+
+router.get('/:userId/spots', requireAuth, asyncHandler(async(req,res) => {
   const {userId }= req.params
   const spots = await Spot.findAll({where: {userId}, include:Image})
   res.json({spots});
@@ -195,6 +196,15 @@ router.get('/:userId/bookings', asyncHandler(async(req,res) => {
   const {userId} = req.params;
   const booking = await Booking.findAll({where: {userId}, include: Spot});
   res.json(booking);
+
+}))
+
+router.delete('/bookings/:bookingId', asyncHandler(async(req,res) => {
+  const {bookingId} = req.params;
+  console.log('------------', bookingId)
+  const booking = await Booking.findByPk(bookingId)
+  await booking.destroy();
+  res.json({msg: 'delte successful ? '})
 
 }))
 

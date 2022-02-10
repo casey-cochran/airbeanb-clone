@@ -1,0 +1,27 @@
+.user-spots-container1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.user-spots-returned{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.spots-test3-text{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.user-spot-blocks{
+    margin-top: 60px;
+}
+
+
+#h4test{
+    margin: 0;
+}

@@ -1,10 +1,3 @@
-form{
-    height: 90px;
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
 
 .form-container{
     width: 500px;
@@ -12,20 +5,132 @@ form{
     height: 500px;
 }
 
+.login-form-data.sign-up {
+    padding-top: 70px;
+}
+
+.login-form-data{
+    height: 90px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 110px;
+}
+
+.login-btn-modal{
+    margin-top: 20px;
+    width: 185px;
+    height: 32px;
+    font-size: 16px;
+    border:none;
+    cursor: pointer;
+    background-color: white;
+    transition: background-color ease .5s;
+}
+
+.login-btn-modal:hover{
+    background-color: #eceff1;
+}
+
+#welcome{
+    font-size: 30px;
+    font-weight: 600;
+    opacity: .6;
+}
+
 .credentials{
     display: flex;
     justify-content: space-between;
     flex-direction: column;
+    align-items: flex-start;
+    gap: 1px;
+    font-size: 30px;
+    opacity: .6;
 }
 
-.username-input{
-    margin: 26px 12px 10px;
-    height: 50px;
-    width: 300px;
+.credentials-input{
+    width: 250px;
+    height: 24px;
+    border-radius: 10px;
+    border: 1px solid black;
+
+}
+.credentials.password{
+    padding-top: 20px;
+}
+.credentials-input.password[type='text']::placeholder{
+    padding-left: 50px;
 }
 
 .username-input[type='text']::placeholder {
   font-size: 14px;
   padding-left: 10px;
 
+}
+#anotherone{
+    margin-top: 25px;
+    display: flex;
+}
+
+
+.profile-dropdown2{
+    background-color: white;
+    position: absolute;
+    right: 0px;
+    margin-right: 180px;
+    margin-top: 20px;
+    width: 230px;
+    border-radius: 20px;
+    height: 100px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+}
+
+.profile-dropdown2 div{
+    width: 100%;
+}
+
+.menu-btn-div.form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#login-btn{
+    transition: background-color 500ms;
+    border: none;
+}
+
+.login-btn:hover{
+    background-color: black;
+}
+
+.btn.primary.form{
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+#homeMenu{
+    font-size: 16px;
+}
+#userIcon{
+    font-size: 16px;
+}
+
+#place-to-stay{
+    font-weight: 600;
+    font-size: 24px;
+    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+}
+
+
+.credentials.confirm{
+    display: flex;
+    align-items: flex-start;
 }

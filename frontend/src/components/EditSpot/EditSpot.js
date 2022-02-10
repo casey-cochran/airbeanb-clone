@@ -80,7 +80,7 @@ const EditSpot = () => {
               <li key={index}>{error}</li>
             ))}
           </ul>
-          <div>
+          <div className='sep-text'>
             <label htmlFor="name">Spot Name</label>
             <input
               onChange={(e) => setName(e.target.value)}
@@ -88,6 +88,7 @@ const EditSpot = () => {
               required
               type="text"
               id="name"
+              className='create-spot-input'
             />
           </div>
           <div className='sep-text'>
@@ -98,6 +99,7 @@ const EditSpot = () => {
               required
               type="text"
               id="address"
+              className='create-spot-input'
             />
           </div>
           <div className='sep-text'>
@@ -108,6 +110,7 @@ const EditSpot = () => {
               required
               type="text"
               id="city"
+              className='create-spot-input'
             />
           </div>
           <div className='sep-text'>
@@ -118,6 +121,7 @@ const EditSpot = () => {
               required
               type="text"
               id="state"
+              className='create-spot-input'
             />
           </div>
           <div className='sep-text'>
@@ -128,6 +132,7 @@ const EditSpot = () => {
               required
               type="text"
               id="zipcode"
+              className='create-spot-input'
             />
           </div>
           <div className='sep-text'>
@@ -138,6 +143,7 @@ const EditSpot = () => {
               required
               type="text"
               id="country"
+              className='create-spot-input'
             />
           </div>
           <div className='sep-text'>
@@ -148,11 +154,12 @@ const EditSpot = () => {
               required
               type="text"
               id="price"
+              className='create-spot-input'
             />
           </div>
-          <div>
-            <button type="submit">Edit your Spot</button>
-            <Link to={`/api/users/${userId}/spots`}>Back to Spots</Link>
+          <div className="edit-cancel">
+            <button className='create-spot-btn' type="submit">Edit your Spot</button>
+            <Link id='cancel-edit' className='create-spot-btn' to={`/api/users/${userId}/spots`}>Cancel</Link>
           </div>
         </form>
     </div>

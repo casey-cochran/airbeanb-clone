@@ -1,3 +1,16 @@
 .edit-form {
     margin-top: 200px;
 }
+
+.edit-cancel{
+    display: flex;
+    gap:30px;
+}
+
+#cancel-edit {
+    text-decoration: none;
+}
+
+#cancel-edit:active{
+    color: white;
+}

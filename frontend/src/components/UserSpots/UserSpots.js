@@ -1,4 +1,4 @@
-import { useParams, Link, Redirect } from "react-router-dom";
+import { useParams, Link, Redirect} from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchUserSpots, removeSpot } from "../../store/spotReducer";
 import { useEffect } from "react";
@@ -16,9 +16,14 @@ const UserSpots = () => {
     dispatch(fetchUserSpots(userId));
   }, [dispatch]);
   let data;
-  if(!sessionUser) {
-  return <Redirect to='/' />}
-  if (sessionUser && sessionUser.id === spots[0]?.userId) {
+
+  if(sessionUser && sessionUser?.id !== +userId){
+    return <Redirect to='/' />
+  }
+
+//   if(!sessionUser) {
+//   return <Redirect to='/' />}
+//   if (sessionUser && sessionUser.id === spots[0]?.userId) {
     data = (
       <div className="user-spots-container1">
         <div>
@@ -52,7 +57,7 @@ const UserSpots = () => {
         </div>
       </div>
     );
-  }
+//   }
 
   return <>{data ? data : <h3>working?</h3>}</>;
 };

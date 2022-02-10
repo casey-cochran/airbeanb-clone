@@ -1,4 +1,4 @@
-import { useParams, Link, useHistory } from "react-router-dom";
+import { useParams, Link, useHistory, Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { loadSingleSpot } from "../../store/spotReducer";
@@ -7,7 +7,7 @@ import './EditForm.css';
 
 const EditSpot = () => {
 
-
+  const sessionUser = useSelector((state) => state.session.user);
   const { userId, spotId } = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
@@ -28,6 +28,13 @@ const EditSpot = () => {
   const [errors, setErrors] = useState([]);
 
 
+  // if(!sessionUser){
+  //   return <Redirect to='/' />
+  // }
+
+  if(sessionUser && sessionUser?.id !== +userId){
+    return <Redirect to='/' />
+  }
 
   const handleSubmit = async(e) => {
     e.preventDefault();

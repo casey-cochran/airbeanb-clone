@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory, Link, Redirect } from "react-router-dom";
 import { loadBooking, cancelBooking } from "../../store/bookingsReducer";
 import { fetchUserSpots } from "../../store/spotReducer";
 
@@ -11,12 +11,14 @@ const UserBookings = () => {
     const userId = user?.id
     const bookings = useSelector((state) => Object.values(state.bookingsReducer.booking))
     console.log(bookings, 'bookings stateselector')
+    
 
     useEffect(() => {
         dispatch(loadBooking(userId));
         dispatch(fetchUserSpots(userId))
 
     },[])
+
 
     return (
         <div>

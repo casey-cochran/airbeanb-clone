@@ -111,7 +111,7 @@ router.get('/:userId/spots', requireAuth, asyncHandler(async(req,res) => {
   res.json({spots});
 }));
 
-router.delete('/:userId/spots/delete', asyncHandler(async(req,res) => {
+router.delete('/:userId/spots/delete', requireAuth, asyncHandler(async(req,res) => {
       const {userId} = req.params
       const {spotId} = req.body
       const spot = await Spot.findByPk(spotId, {where: {userId}, include: Image})
@@ -119,7 +119,7 @@ router.delete('/:userId/spots/delete', asyncHandler(async(req,res) => {
       res.json({msg: 'hello'})
 }))
 
-router.get('/:userId/spots/:spotId/edit', asyncHandler(async(req,res) => {
+router.get('/:userId/spots/:spotId/edit', requireAuth, asyncHandler(async(req,res) => {
   const {userId, spotId} = req.params
   const spot = await Spot.findOne({where: {userId}, include: Image})
   console.log(spot, 'where are the images ???')
@@ -129,7 +129,6 @@ router.get('/:userId/spots/:spotId/edit', asyncHandler(async(req,res) => {
 router.get('/:userId/spots/:spotId', asyncHandler(async(req,res) => {
   const {userId, spotId} = req.params
   const spot = await Spot.findByPk(spotId, {include: Image})
-  // console.log(spot, 'where are the images ???')
   res.json(spot)
 }))
 
@@ -183,7 +182,7 @@ const updatePost = [
     handleValidationErrors
 ]
 
-router.patch('/:userId/spots/:spotId/edit', updatePost, asyncHandler(async(req,res) => {
+router.patch('/:userId/spots/:spotId/edit', requireAuth, updatePost, asyncHandler(async(req,res) => {
   //const {userId, spotId} = req.params;
   const {name, address, city, state, zipCode, country, price, userId, spotId} = req.body;
   const update = {name, address, city, state, zipCode, country, price, userId, spotId}
@@ -192,14 +191,14 @@ router.patch('/:userId/spots/:spotId/edit', updatePost, asyncHandler(async(req,r
   res.json(spot)
 
 }))
-router.get('/:userId/bookings', asyncHandler(async(req,res) => {
+router.get('/:userId/bookings', requireAuth, asyncHandler(async(req,res) => {
   const {userId} = req.params;
   const booking = await Booking.findAll({where: {userId}, include: Spot});
   res.json(booking);
 
 }))
 
-router.delete('/bookings/:bookingId', asyncHandler(async(req,res) => {
+router.delete('/bookings/:bookingId', requireAuth, asyncHandler(async(req,res) => {
   const {bookingId} = req.params;
   console.log('------------', bookingId)
   const booking = await Booking.findByPk(bookingId)

@@ -14,11 +14,13 @@ export const cancel = (bookingId) => {
     })
 }
 
-export const cancelBooking = (bookingId) => async dispatch => {
-    const response = await csrfFetch(`/api/users/bookings/${bookingId}`);
+export const cancelBooking = (bookingId, userId) => async dispatch => {
+
+    const response = await csrfFetch(`/api/users/${userId}/bookings/${bookingId}`,{
+        method: 'DELETE'
+    });
     const deleted = await response.json();
-    console.log(deleted, ' was delete sucess?')
-    
+    if(deleted) dispatch(cancel(bookingId))
     return response;
 }
 
@@ -79,6 +81,10 @@ const bookingsReducer = (state = initialState, action) => {
         case LOAD_BOOKINGS:
             newState = {...state};
             action.bookings.forEach(booking => newState.booking[booking.id] = booking)
+            return newState;
+        case CANCEL_BOOKING:
+            newState = {...state};
+            delete newState.booking[action.bookingId]
             return newState;
         default:
             return state;

@@ -1,13 +1,25 @@
 .resize-img img {
-    width: 400px;
-    height: 400px;
+    width: 200px;
+    height: 200px;
     border-radius: 10px;
 }
 
-#one-spot-name{
+.resize-img{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.one-spot-name{
     font-size: 42px;
     font-weight: 600;
     text-transform: capitalize;
+}
+.hosted-by{
+    font-size: 26px;
+    margin: 0;
 }
 
 #book-spot-title{
@@ -22,10 +34,14 @@
     margin-top: 50px;
     font-size: 20px;
     font-weight: 500;
+    width: 700px;
+    margin: auto;
 }
 
 .view-one-text{
     display: flex;
+    justify-content: center;
+    align-items: center;
     gap: 10px;
     text-transform: capitalize;
 }

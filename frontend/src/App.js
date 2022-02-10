@@ -53,7 +53,7 @@ console.log(sessionUser, '-------session user routes')
           <Route path='/spots/:spotId'>
             <ViewOneSpot />
           </Route>
-          <Route path='/users/bookings'>
+          <Route path='/users/:userId/bookings'>
             <UserBookings />
           </Route>
           <Route>

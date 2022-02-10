@@ -16,7 +16,7 @@ const ViewOneSpot = () => {
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
     const [errors, setErrors] = useState([]);
-    console.log(startDate, endDate)
+
 
     useEffect(() => {
         dispatch(viewOneSpot(spotId))
@@ -51,7 +51,7 @@ const ViewOneSpot = () => {
             <div className="view-one-spot">
                 <p className='one-spot-name'>{spot?.name}</p>
                 <div className='resize-img'>
-                    {spot?.Images.map((img, i) => <img key={i} src={img.url} />)}
+                    {spot?.Images.map((img, i) => <div><img key={i} src={img.url} /> </div>)}
                 </div>
                 <div className="view-one-text">
                     <p>{spot?.city}</p>
@@ -59,7 +59,7 @@ const ViewOneSpot = () => {
                     <p>{spot?.country}</p>
                 </div>
                 <div>
-                    <p className='one-spot-name'>Hosted by {user?.username}</p>
+                    <p className='hosted-by'>Hosted by {user?.username}</p>
                 </div>
                 {user ?
                 <div className="book-spot-container">

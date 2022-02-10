@@ -33,12 +33,13 @@ const AddSpotImages = () => {
       <div id="spot-image-container">
         <div id="created-spot-info">
           <div id="spot-info-text">
-            <div className="idk">{spot?.name}</div>
-            <div>{spot?.address}</div>
-            <div>{spot?.city}</div>
-            <div>{spot?.state}</div>
-            <div>${spot?.price}</div>
-            <button className='create-spot-btn' onClick={() => (show ? setShow(false) : setShow(true))}>
+            <div className="color">{spot?.name}</div>
+            <div className="color">{spot?.address}</div>
+            <div className="color">{spot?.city}</div>
+            <div className="color">{spot?.state}</div>
+            </div>
+            <p className='color p'>Please add images for your spot to be listed for all to see</p>
+            <button className='create-spot-btn pad' onClick={() => (show ? setShow(false) : setShow(true))}>
               Add Images Here
             </button>
             {show ? (
@@ -49,17 +50,17 @@ const AddSpotImages = () => {
               <> </>
             )}
           </div>
-          <div>
+          {/* <div>
                 <i id='add-images-logo-b' className="fab fa-airbnb" />
-            </div>
-        </div>
+            </div> */}
+        {spot?.Images?.length > 0 ?
         <div id="spot-img-cont">
           {spot?.Images?.map((image, index) => (
             <div className="user-host-spots" key={index}>
               <img src={image.url} />
             </div>
           ))}
-        </div>
+          </div> : <div id='no-images'></div> }
       </div>
     </div>
   );

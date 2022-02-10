@@ -63,7 +63,7 @@ const ProfileButton = ({ user }) => {
               </NavLink>
           </div>
           <div className="menu-btn-div">
-              <NavLink className='drp-menu-btn' to='/users/bookings'>
+              <NavLink className='drp-menu-btn' to={`/users/${userId}/bookings`}>
                 My Bookings
               </NavLink>
           </div>

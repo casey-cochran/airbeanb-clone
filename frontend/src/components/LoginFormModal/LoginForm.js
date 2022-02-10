@@ -2,24 +2,36 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { login } from "../../store/session";
 import "./LoginForm.css";
+import { useHistory } from "react-router-dom";
 
 const LoginForm = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    setErrors([]);
-
     const user = { credential, password };
 
-    return dispatch(login(user)).catch(async (res) => {
-      const data = await res.json();
-      if (data && data.errors) setErrors(data.errors);
+    const value = await dispatch(login(user)).catch(async (err) => {
+      const errors = await err.json();
+      if (errors){
+        return errors
+      }
     });
+    if(value.errors){
+      return setErrors(value.errors)
+    }
+
+    setCredential('');
+    setPassword('')
+    setErrors([])
+    history.push('/');
+
   };
+
 
   return (
     <div className="form-container">

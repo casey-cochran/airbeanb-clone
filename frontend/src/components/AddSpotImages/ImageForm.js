@@ -11,8 +11,7 @@ const ImageForm = () => {
   const [url, setUrl] = useState("");
   const [errors, setErrors] = useState([]);
 
-  // const spot = useSelector((state) => state.spotReducer.spot[spotId])
-  // console.log(spot)
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,7 +29,7 @@ const ImageForm = () => {
     }
     setUrl("");
     setErrors([]);
-    history.push(`/api/users/${userId}/spots/${spotId}`);
+    history.push(`/users/${userId}/spots/${spotId}`);
   };
 
   return (

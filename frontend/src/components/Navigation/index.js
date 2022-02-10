@@ -39,7 +39,7 @@ const Navigation = ({ isLoaded }) => {
     sessionLinks = (
       <div>
         <div id='loggedout-icons'>
-          <NavLink id='place-to-stay' className={`home-text ${show ? 'trans' : false}`} to='/api/spots'>Places to Stay</NavLink>
+          <NavLink id='place-to-stay' className={`home-text ${show ? 'trans' : false}`} to='/spots'>Places to Stay</NavLink>
           <button className="menu-icon" onClick={toggleMenu} >
             <i id='homeMenu' className="fas fa-bars icon"></i>
             <i id='userIcon' className="fa fa-user-circle icon"></i>

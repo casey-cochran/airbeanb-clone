@@ -42,7 +42,7 @@ const ViewOneSpot = () => {
         return setErrors(value.errors)
     }
 
-    history.push(`/api/users/bookings`)
+    history.push(`/users/bookings`)
 
     }
 

@@ -8,7 +8,6 @@ const LoginFormModal = () => {
 
   const click = (e) => {
     e.stopPropagation();
-   // document.removeEventListener('mousedown', clickOutside)
     setShowModal(true)
   }
 

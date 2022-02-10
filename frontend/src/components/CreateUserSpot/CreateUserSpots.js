@@ -12,7 +12,7 @@ const CreateUserSpots = () => {
     const dispatch = useDispatch()
     const history = useHistory()
     const user = useSelector((state) => state.session.user)
-    const userId = user.id
+    const userId = user?.id
 
 
     const [name, setName] = useState('')
@@ -24,7 +24,7 @@ const CreateUserSpots = () => {
     const [price, setPrice] = useState('')
     const [errors, setErrors] = useState([]);
 
-    //if(!user) return <Redirect to='/' />;
+    if(!user) return <Redirect to='/' />;
 
     const handleSubmit = async(e) => {
         e.preventDefault();
@@ -58,7 +58,7 @@ const CreateUserSpots = () => {
         setCountry('')
         setPrice('')
         setErrors([]);
-        history.push(`/api/users/${userId}/spots/${value.spot.id}`);
+        history.push(`/users/${userId}/spots/${value.spot.id}`);
     }
 
     return (

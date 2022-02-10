@@ -8,7 +8,7 @@ const HomePage = () => {
           <div className="container-children one">
               <div className="where-to-go">
               <h2>Not sure where to go? Perfect.</h2>
-              <Link to='/api/spots' className="flexible all-links">I'm flexible</Link>
+              <Link to='/spots' className="flexible all-links">I'm flexible</Link>
           </div>
 
         </div>

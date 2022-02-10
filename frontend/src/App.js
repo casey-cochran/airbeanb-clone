@@ -35,29 +35,29 @@ console.log(sessionUser, '-------session user routes')
           <Route exact path='/'>
             <HomePage />
           </Route>
-          <Route path="/signup">
-            {/* <SignupFormPage /> */}
-          </Route>
-          <Route path='/api/users/spots/new'>
+          <Route path='/users/spots/new'>
             <CreateUserSpots />
           </Route>
-          <Route exact path={`/api/users/:userId/spots`}>
+          <Route exact path={`/users/:userId/spots`}>
             <UserSpots />
           </Route>
-          <Route path={'/api/users/:userId/spots/:spotId/edit'}>
+          <Route path={'/users/:userId/spots/:spotId/edit'}>
             <EditSpot />
           </Route>
-          <Route exact path='/api/spots'>
+          <Route exact path='/spots'>
             <SpotsList />
           </Route>
-          <Route path='/api/users/:userId/spots/:spotId'>
+          <Route path='/users/:userId/spots/:spotId'>
             <AddSpotImages />
           </Route>
-          <Route path='/api/spots/:spotId'>
+          <Route path='/spots/:spotId'>
             <ViewOneSpot />
           </Route>
-          <Route path='/api/users/bookings'>
+          <Route path='/users/bookings'>
             <UserBookings />
+          </Route>
+          <Route>
+            <h1>Page Does Not Exist</h1>
           </Route>
         </Switch>
       )}

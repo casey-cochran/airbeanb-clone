@@ -1,4 +1,5 @@
 import "./HomePage.css";
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
   return (
@@ -7,10 +8,11 @@ const HomePage = () => {
           <div className="container-children one">
               <div className="where-to-go">
               <h2>Not sure where to go? Perfect.</h2>
-              <button className="flexible">I'm flexible</button>
+              <Link to='/api/spots' className="flexible all-links">I'm flexible</Link>
           </div>
 
         </div>
+      <div id='gap-space-under'> test </div>
       <div className="container-children two">
         <h2 className="insp-header">Inspiration for your next trip</h2>
         <div className="inspiration">

@@ -80,7 +80,7 @@ body, html {
     font-size: 27px;
 }
 
-#create-spot-btn {
+.create-spot-btn {
     padding: 14px 24px;
     border-radius: 8px;
     color:white;
@@ -90,6 +90,6 @@ body, html {
     cursor: pointer;
 }
 
-#create-spot-btn:hover{
+.create-spot-btn:hover{
     background-color: rgba(0, 0, 0, 0.808);
 }

@@ -57,6 +57,7 @@ const CreateUserSpots = () => {
         setZipCode('')
         setCountry('')
         setPrice('')
+        setErrors([]);
         history.push(`/api/users/${userId}/spots/${value.spot.id}`);
     }
 
@@ -163,7 +164,7 @@ const CreateUserSpots = () => {
                             />
                         </div>
                         <div>
-                            <button id='create-spot-btn' type='submit'>Host your Spot</button>
+                            <button className='create-spot-btn' type='submit'>Host your Spot</button>
                         </div>
                     </form>
                 </div>

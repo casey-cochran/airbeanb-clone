@@ -42,31 +42,33 @@ const ViewOneSpot = () => {
         return setErrors(value.errors)
     }
 
-    history.push(`/api/users/bookings`)
+    history.push(`/users/bookings`)
 
     }
 
 
     return (
-            <div>
-                <div>
-                    <p>{spot?.name}</p>
-                    <p>{spot?.city},{spot?.state},{spot?.country}</p>
-                </div>
+            <div className="view-one-spot">
+                <p className='one-spot-name'>{spot?.name}</p>
                 <div className='resize-img'>
                     {spot?.Images.map((img, i) => <img key={i} src={img.url} />)}
                 </div>
+                <div className="view-one-text">
+                    <p>{spot?.city}</p>
+                    <p>{spot?.state}</p>
+                    <p>{spot?.country}</p>
+                </div>
                 <div>
-                    <h2>{spot?.name} Hosted by {user?.username}</h2>
+                    <p className='one-spot-name'>Hosted by {user?.username}</p>
                 </div>
                 {user ?
-                <div>
-                    <h3>Book this spot !</h3>
-                    <form onSubmit={handleSubmit}>
+                <div className="book-spot-container">
+                    <h3 id='book-spot-title'>Book this spot !</h3>
+                    <form id='book-spot-form' onSubmit={handleSubmit}>
                         <ul>
                             {errors.map((error,index) => <li key={index}>{error}</li>)}
                         </ul>
-                        <div>
+                        <div className='sep-text'>
                             <label htmlFor='startDate'>Start Date</label>
                             <input
                                 onChange={((e) => setStartDate(e.target.value))}
@@ -76,7 +78,7 @@ const ViewOneSpot = () => {
                                 id='startDate'
                             />
                         </div>
-                        <div>
+                        <div className='sep-text'>
                             <label htmlFor='endDate'>End Date</label>
                             <input
                                 onChange={((e) => setEndDate(e.target.value))}
@@ -86,7 +88,7 @@ const ViewOneSpot = () => {
                                 id='endDate'
                             />
                         </div>
-                        <button type='submit'>Reserve</button>
+                        <button className='create-spot-btn' type='submit'>Reserve</button>
                     </form>
                 </div>
                 : <h3>Log in or Sign up here !</h3> }

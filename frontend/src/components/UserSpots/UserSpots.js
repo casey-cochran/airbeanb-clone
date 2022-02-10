@@ -10,7 +10,7 @@ const UserSpots = () => {
   const { userId } = useParams();
   const spots = useSelector((state) => Object.values(state.spotReducer.spot));
   const sessionUser = useSelector((state) => state.session.user);
-  console.log(sessionUser.id, spots[0]?.userId);
+
 
   useEffect(() => {
     dispatch(fetchUserSpots(userId));
@@ -21,9 +21,9 @@ const UserSpots = () => {
     return <Redirect to='/' />
   }
 
-//   if(!sessionUser) {
-//   return <Redirect to='/' />}
-//   if (sessionUser && sessionUser.id === spots[0]?.userId) {
+  if(!sessionUser) {
+  return <Redirect to='/' />}
+
     data = (
       <div className="user-spots-container1">
         <div>
@@ -36,12 +36,12 @@ const UserSpots = () => {
                   <div className="user-spot-blocks">
                 <h3 id='spotname'>{spot.name}</h3>
                 <div className="menu-btn-div">
-                <Link className='drp-menu-btn pad' to={`/api/users/${userId}/spots/${spot.id}/edit`}>
+                <Link className='drp-menu-btn pad' to={`/users/${userId}/spots/${spot.id}/edit`}>
                   <p id='h4test'>Edit Spot here </p>
                 </Link>
                 </div>
                 <div className="menu-btn-div">
-                <Link className='drp-menu-btn pad' to={`/api/users/${userId}/spots/${spot.id}`}>
+                <Link className='drp-menu-btn pad' to={`/users/${userId}/spots/${spot.id}`}>
                   Add Images
                 </Link>
                 </div>

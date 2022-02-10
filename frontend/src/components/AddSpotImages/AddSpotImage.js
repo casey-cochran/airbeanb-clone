@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, Redirect } from "react-router-dom";
 import { loadAllSpots, loadSingleSpot } from "../../store/spotReducer";
 import "./AddSpotImage.css";
 import ImageForm from "./ImageForm";
@@ -8,11 +8,11 @@ import ImageForm from "./ImageForm";
 const AddSpotImages = () => {
   const dispatch = useDispatch();
   const { userId, spotId } = useParams();
+  const sessionUser = useSelector((state) => state.session.user);
 
   const spot = useSelector((state) => state.spotReducer.spot[spotId]);
   const images = useSelector((state) => state.spotReducer.images);
-  console.log(spot, "spot here ");
-  console.log(images, "images here ");
+
 
   const [show, setShow] = useState(false);
 
@@ -20,6 +20,13 @@ const AddSpotImages = () => {
     dispatch(loadSingleSpot(userId, spotId));
     dispatch(loadAllSpots());
   }, [dispatch]);
+
+  if(sessionUser && sessionUser?.id !== +userId){
+    return <Redirect to='/' />
+  }
+  if(!sessionUser){
+    return <Redirect to='/' />
+  }
 
   return (
     <div>

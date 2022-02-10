@@ -1,4 +1,43 @@
 .resize-img img {
-    width: 290px;
-    height: 290px;
+    width: 400px;
+    height: 400px;
+    border-radius: 10px;
+}
+
+#one-spot-name{
+    font-size: 42px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+#book-spot-title{
+    margin-bottom: 0;
+}
+
+.view-one-spot{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.view-one-text{
+    display: flex;
+    gap: 10px;
+    text-transform: capitalize;
+}
+
+
+.book-spot-container{
+    margin-bottom: 300px;
+
+}
+
+#book-spot-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center
 }

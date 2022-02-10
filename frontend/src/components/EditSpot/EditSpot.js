@@ -28,11 +28,12 @@ const EditSpot = () => {
   const [errors, setErrors] = useState([]);
 
 
-  // if(!sessionUser){
-  //   return <Redirect to='/' />
-  // }
 
   if(sessionUser && sessionUser?.id !== +userId){
+    return <Redirect to='/' />
+  }
+
+  if(!sessionUser){
     return <Redirect to='/' />
   }
 
@@ -76,7 +77,7 @@ const EditSpot = () => {
     setCountry("");
     setPrice("");
     setErrors([]);
-    history.push(`/api/users/${userId}/spots`);
+    history.push(`/users/${userId}/spots`);
   };
 
   return (
@@ -166,7 +167,7 @@ const EditSpot = () => {
           </div>
           <div className="edit-cancel">
             <button className='create-spot-btn' type="submit">Edit your Spot</button>
-            <Link id='cancel-edit' className='create-spot-btn' to={`/api/users/${userId}/spots`}>Cancel</Link>
+            <Link id='cancel-edit' className='create-spot-btn' to={`/users/${userId}/spots`}>Cancel</Link>
           </div>
         </form>
     </div>

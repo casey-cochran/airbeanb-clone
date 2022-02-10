@@ -27,14 +27,14 @@ const SpotsList = () => {
         <div>
             <button type='submit'>
             {userId ?
-            <Link to={`/api/users/${userId.id}/spots`}>back to spots</Link>
+            <Link to={`/users/${userId.id}/spots`}>back to spots</Link>
             : <h1>log in or sign up here !</h1> }
             </button>
             <div className="all-spots-container">
                     {newspots?.map((spot,index) => {
                         return (
                             <div className=".img-description" key={index}>
-                                <Link to={`/api/spots/${spot.id}`}><img className="all-spots-imgs" src={spot.Images[0].url} /></Link>
+                                <Link to={`/spots/${spot.id}`}><img className="all-spots-imgs" src={spot.Images[0].url} /></Link>
                                     <div>
                                         <p>{spot.city}, {spot.state}</p>
                                         <p>${spot.price} / night</p>

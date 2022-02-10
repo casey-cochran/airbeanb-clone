@@ -48,22 +48,22 @@ const ProfileButton = ({ user }) => {
 
           </div>
           <div  className="menu-btn-div">
-              <NavLink className='drp-menu-btn' to='/api/users/spots/new'>
+              <NavLink className='drp-menu-btn' to='/users/spots/new'>
                 Host your spot
               </NavLink>
           </div>
           <div className="menu-btn-div">
-              <NavLink className='drp-menu-btn' to={`/api/users/${userId}/spots`}>
+              <NavLink className='drp-menu-btn' to={`/users/${userId}/spots`}>
                 Users Spots
               </NavLink>
           </div>
           <div className="menu-btn-div">
-              <NavLink className='drp-menu-btn' to='/api/spots'>
+              <NavLink className='drp-menu-btn' to='/spots'>
                 View all spot Listings
               </NavLink>
           </div>
           <div className="menu-btn-div">
-              <NavLink className='drp-menu-btn' to='/api/users/bookings'>
+              <NavLink className='drp-menu-btn' to='/users/bookings'>
                 My Bookings
               </NavLink>
           </div>

@@ -32,10 +32,12 @@ const HomePage = () => {
           </div>
         </div>
       </div>
-      <div className="container-children">
-        <h1>test</h1>
-      </div>
+      <h2 className="insp-header"> Discover Airbeanb Experiences </h2>
       <div className="container-children three">
+        <img src='https://visitutahkenticoprod.blob.core.windows.net/cmsroot/visitutah/media/site-assets/three-season-photography/mighty-5/zion/zion-national-park_the-narrows_istock.jpg' alt='narrows picture' />
+        <img src='https://i.pinimg.com/originals/09/2b/c4/092bc4a3192ecd5ae9589be9a0d8ab90.jpg' alt='rustic cabin' />
+      </div>
+      <div className="container-children four">
         <h1>test</h1>
         <h1>test</h1>
         <h1>test</h1>

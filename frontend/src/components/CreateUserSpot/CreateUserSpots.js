@@ -57,36 +57,41 @@ const CreateUserSpots = () => {
         setZipCode('')
         setCountry('')
         setPrice('')
+        setErrors([]);
         history.push(`/api/users/${userId}/spots/${value.spot.id}`);
     }
 
     return (
         <div className='create-spot-container'>
-                <div className='test'>
-                    <p className='create-spot-logo'>logo up top here </p>
+                <div className='logo-plus-text'>
+                    <p className='create-spot-logo'><i className="fab fa-airbnb" /></p>
                     <p>What kind of space will guests have?</p>
                 </div>
-                <div className='test2'>
+                <div className='form test2'>
                     <form onSubmit={handleSubmit} className='create-spot'>
                         <ul>
                             {errors?.map((error, index) => <li key={index}>{error}</li>)}
                         </ul>
                         <div className='sep-text'>
-                            <label htmlFor='name'>Spot Name</label>
+                            <label htmlFor='name'></label>
                             <input
                                 onChange={(e) => setName(e.target.value)}
                                 value={name}
+                                className='create-spot-input'
                                 required
                                 type='text'
                                 id='name'
+                                placeholder='Spot Name'
                                 className='create-spot-input'
                             />
                         </div>
                         <div className='sep-text'>
-                            <label htmlFor='address'>Address</label>
+                            <label htmlFor='address'></label>
                             <input
                                 onChange={(e) => setAddress(e.target.value)}
                                 value={address}
+                                className='create-spot-input'
+                                placeholder='Address'
                                 required
                                 type='text'
                                 id='address'
@@ -94,10 +99,12 @@ const CreateUserSpots = () => {
                             />
                         </div>
                         <div className='sep-text'>
-                            <label htmlFor='city'>City</label>
+                            <label htmlFor='city'></label>
                             <input
                                 onChange={(e) => setCity(e.target.value)}
                                 value={city}
+                                className='create-spot-input'
+                                placeholder='City'
                                 required
                                 type='text'
                                 id='city'
@@ -105,32 +112,38 @@ const CreateUserSpots = () => {
                             />
                         </div>
                         <div className='sep-text'>
-                            <label htmlFor='state'>State</label>
+                            <label htmlFor='state'></label>
                             <input
                                 onChange={(e) => setState(e.target.value)}
                                 value={state}
+                                className='create-spot-input'
                                 required
+                                placeholder='State'
                                 type='text'
                                 id='state'
                                 className='create-spot-input'
                             />
                         </div>
                         <div className='sep-text'>
-                            <label htmlFor='zipcode'>Zip Code</label>
+                            <label htmlFor='zipcode'></label>
                             <input
                                 onChange={(e) => setZipCode(e.target.value)}
                                 value={zipCode}
+                                className='create-spot-input'
                                 required
+                                placeholder='Zip Code'
                                 type='text'
                                 id='zipcode'
                                 className='create-spot-input'
                             />
                         </div>
                         <div className='sep-text'>
-                            <label htmlFor='country'>Country</label>
+                            <label htmlFor='country'></label>
                             <input
                                 onChange={(e) => setCountry(e.target.value)}
                                 value={country}
+                                className='create-spot-input'
+                                placeholder='Country'
                                 required
                                 type='text'
                                 id='country'
@@ -138,10 +151,12 @@ const CreateUserSpots = () => {
                             />
                         </div>
                         <div className='sep-text'>
-                            <label htmlFor='price'>Price</label>
+                            <label htmlFor='price'></label>
                             <input
                                 onChange={(e) => setPrice(e.target.value)}
                                 value={price}
+                                className='create-spot-input'
+                                placeholder='Price'
                                 required
                                 type='text'
                                 id='price'
@@ -149,7 +164,7 @@ const CreateUserSpots = () => {
                             />
                         </div>
                         <div>
-                            <button type='submit'>Host your Spot</button>
+                            <button className='create-spot-btn' type='submit'>Host your Spot</button>
                         </div>
                     </form>
                 </div>

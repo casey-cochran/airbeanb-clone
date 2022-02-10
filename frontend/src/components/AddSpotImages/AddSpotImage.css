@@ -1,10 +1,64 @@
 .center-spot {
     display: flex;
-    justify-content: center;
-    margin-top: 200px;
+    margin-top: 100px;
 }
 
-img{
-    width: 500px;
-    height: 500px;
+#spot-image-container{
+    display: flex;
+    margin-top: 100px;
+}
+
+
+#spot-img-cont{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 15px;
+    flex: 50%;
+}
+
+
+
+#created-spot-info{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 50px;
+    font-weight: 500;
+    font-size: 27px;
+    gap: 25px;
+    flex: 50%;
+    text-align: left;
+
+}
+
+#spot-info-text{
+    line-height: 60px;
+    margin-bottom: 150px;
+}
+
+#add-images-logo-b{
+    margin-top: 10px;
+    color: #FF385C;
+    font-size: 180px;
+}
+
+.user-host-spots img {
+    width: 300px;
+    height: 300px;
+    border-radius: 12px;
+}
+
+.img-form.add-img{
+    display: flex;
+    flex-direction: column;
+}
+
+.create-spot-input.add-img{
+    height: 10px;
+}
+.create-spot-btn.add-img{
+    margin-top: 10px;
 }

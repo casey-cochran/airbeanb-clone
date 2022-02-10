@@ -23,7 +23,10 @@ const LoginForm = () => {
 
   return (
     <div className="form-container">
-      <form onSubmit={handleSubmit}>
+      <form className='login-form-data' onSubmit={handleSubmit}>
+        <div id='welcome'>
+          <label>Welcome to airbeanb !</label>
+        </div>
         <ul>
           {errors.map((error, index) => (
             <li key={index}>{error}</li>
@@ -36,23 +39,25 @@ const LoginForm = () => {
             value={credential}
             id="credential"
             type="text"
-            className="username-input"
+            className="credentials-input"
             required
             placeholder="Username or Email"
           />
         </div>
-        <div>
+        <div className="credentials password">
           <label htmlFor="password">Password</label>
           <input
             onChange={(e) => setPassword(e.target.value)}
             value={password}
             id="password"
             type="password"
+            placeholder='Password'
+            className="credentials-input password"
             required
           />
         </div>
         <div>
-          <button id='login-btn' type="submit">Log In</button>
+          <button className='login-btn-modal' type="submit">Log In</button>
         </div>
       </form>
     </div>

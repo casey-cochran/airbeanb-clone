@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory, Link, Redirect } from "react-router-dom";
+import { useHistory, Link, Redirect, useParams } from "react-router-dom";
 import { loadBooking, cancelBooking } from "../../store/bookingsReducer";
 import { fetchUserSpots } from "../../store/spotReducer";
 
 
 const UserBookings = () => {
+    //const {userId} = useParams();
     const dispatch = useDispatch();
     const user = useSelector((state) => state.session.user)
     const userId = user?.id

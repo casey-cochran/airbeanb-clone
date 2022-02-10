@@ -40,8 +40,8 @@ const ImageForm = () => {
             <li key={index}>{error}</li>
           ))}
         </ul>
-        <div>
-          <label className='sep-text' htmlFor="url">Enter Image Url below</label>
+        <div id='align-img-txt'>
+          <label className='sep-text url' htmlFor="url">Enter Image Url below</label>
           <input
             onChange={(e) => setUrl(e.target.value)}
             value={url}
@@ -50,7 +50,7 @@ const ImageForm = () => {
             className="create-spot-input add-img"
           />
         </div>
-        <button className='create-spot-btn add-img' type="submit" >Add Image!</button>
+        <button className='create-spot-btn add-img pad' type="submit" >Add Image!</button>
       </form>
     </>
   );

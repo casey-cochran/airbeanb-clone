@@ -14,6 +14,7 @@ import ViewOneSpot from "./components/ViewOneSpot/ViewOneSpot";
 import UserBookings from "./components/UserBookings/UserBookings";
 
 
+
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -22,6 +23,8 @@ function App() {
   }, [dispatch]);
 
 
+const sessionUser = useSelector((state) => state.session.user);
+console.log(sessionUser, '-------session user routes')
 
 
   return (

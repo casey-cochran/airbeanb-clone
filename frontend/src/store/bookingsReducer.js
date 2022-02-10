@@ -5,6 +5,22 @@ import { csrfFetch } from "./csrf";
 const SET_USER = 'session/SET_USER';
 const BOOK_SPOT = '/spots/BOOK_SPOT';
 const LOAD_BOOKINGS = '/spots/LOAD_BOOKINGS';
+const CANCEL_BOOKING = '/spots/CANCEL_BOOKING';
+
+export const cancel = (bookingId) => {
+    return ({
+        type: CANCEL_BOOKING,
+        bookingId
+    })
+}
+
+export const cancelBooking = (bookingId) => async dispatch => {
+    const response = await csrfFetch(`/api/users/bookings/${bookingId}`);
+    const deleted = await response.json();
+    console.log(deleted, ' was delete sucess?')
+    
+    return response;
+}
 
 export const viewBookings = (bookings) => {
     return ({

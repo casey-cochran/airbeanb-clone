@@ -68,13 +68,13 @@ const EditSpot = () => {
     setZipCode("");
     setCountry("");
     setPrice("");
+    setErrors([]);
     history.push(`/api/users/${userId}/spots`);
-
   };
 
   return (
     <div>
-        <form className="edit-form" onSubmit={handleSubmit}>
+        <form className="create-spot" onSubmit={handleSubmit}>
           <ul>
             {errors?.map((error, index) => (
               <li key={index}>{error}</li>
@@ -90,7 +90,7 @@ const EditSpot = () => {
               id="name"
             />
           </div>
-          <div>
+          <div className='sep-text'>
             <label htmlFor="address">Address</label>
             <input
               onChange={(e) => setAddress(e.target.value)}
@@ -100,7 +100,7 @@ const EditSpot = () => {
               id="address"
             />
           </div>
-          <div>
+          <div className='sep-text'>
             <label htmlFor="city">City</label>
             <input
               onChange={(e) => setCity(e.target.value)}
@@ -110,7 +110,7 @@ const EditSpot = () => {
               id="city"
             />
           </div>
-          <div>
+          <div className='sep-text'>
             <label htmlFor="state">State</label>
             <input
               onChange={(e) => setState(e.target.value)}
@@ -120,7 +120,7 @@ const EditSpot = () => {
               id="state"
             />
           </div>
-          <div>
+          <div className='sep-text'>
             <label htmlFor="zipcode">Zip Code</label>
             <input
               onChange={(e) => setZipCode(e.target.value)}
@@ -130,7 +130,7 @@ const EditSpot = () => {
               id="zipcode"
             />
           </div>
-          <div>
+          <div className='sep-text'>
             <label htmlFor="country">Country</label>
             <input
               onChange={(e) => setCountry(e.target.value)}
@@ -140,7 +140,7 @@ const EditSpot = () => {
               id="country"
             />
           </div>
-          <div>
+          <div className='sep-text'>
             <label htmlFor="price">Price</label>
             <input
               onChange={(e) => setPrice(e.target.value)}

@@ -29,15 +29,19 @@ const UserSpots = () => {
             return (
               <div className="user-spots-returned" key={index}>
                   <div className="user-spot-blocks">
-                <h3>{spot.name}</h3>
-                <Link to={`/api/users/${userId}/spots/${spot.id}/edit`}>
-                  <h4 id='h4test'>Edit Spot here </h4>
+                <h3 id='spotname'>{spot.name}</h3>
+                <div className="menu-btn-div">
+                <Link className='drp-menu-btn pad' to={`/api/users/${userId}/spots/${spot.id}/edit`}>
+                  <p id='h4test'>Edit Spot here </p>
                 </Link>
-                <Link to={`/api/users/${userId}/spots/${spot.id}`}>
+                </div>
+                <div className="menu-btn-div">
+                <Link className='drp-menu-btn pad' to={`/api/users/${userId}/spots/${spot.id}`}>
                   Add Images
                 </Link>
+                </div>
                 <div>
-                <button onClick={() => dispatch(removeSpot(userId, spot.id))}>
+                <button className="menu-btn-div delete" onClick={() => dispatch(removeSpot(userId, spot.id))}>
                   Delete
                 </button>
                 </div>

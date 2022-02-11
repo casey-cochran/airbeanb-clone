@@ -187,8 +187,9 @@ const CreateUserSpots = () => {
                                 className='create-spot-input bedroom'
                                 />
                         </div>
-                        <div>
+                        <div  className="edit-cancel">
                             <button className='create-spot-btn' type='submit'>Host your Spot</button>
+                            <Link id="cancel-edit" className='create-spot-btn bm' to='/'>Cancel</Link>
                         </div>
                     </form>
                 </div>

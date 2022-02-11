@@ -103,6 +103,10 @@
     opacity: 1;
 }
 
+.create-spot-btn.bm{
+    font-size: 14px;
+}
+
 .create-spot-input.bedroom[type='number']{
     font-size: 27px;
     width: 130px;

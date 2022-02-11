@@ -8,6 +8,9 @@
 }
 
 #spots-list-cont{
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 1;
     min-height: 100vh;
     position: relative;
     background-repeat: no-repeat;

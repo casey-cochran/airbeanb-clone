@@ -4,6 +4,13 @@
     flex-wrap: wrap;
     gap: 20px;
 
+
+}
+
+#spots-list-cont{
+    background-color: #F2F2F2;
+    min-height: 100vh;
+    position: relative;
 }
 
 .all-spots-container div div {
@@ -29,4 +36,47 @@
     height: 290px;
     border-radius: 20px;
     align-content: center;
+}
+
+
+.spots-list-header{
+    text-align: center;
+    margin-bottom: 50px;
+    padding-top: 50px;
+}
+
+#spots-list-title{
+    color: #008489;
+    font-size: 42px;
+}
+
+.spots-list-text{
+    font-weight: 400;
+    font-size: 16px;
+    text-transform: capitalize;
+}
+
+.spots-list-text.price{
+    font-weight: 600;
+}
+
+
+#spots-list-footer{
+    width: 100%;
+    display:flex;
+    gap: 500px;
+    /* position: absolute; */
+    bottom: 0;
+    background-color: #e0dede;
+    justify-content: center;
+    flex-direction: row;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.footer-text{
+    font-size: 32px;
+    font-weight: 600;
+    color: #008489;
+    text-decoration: none;
 }

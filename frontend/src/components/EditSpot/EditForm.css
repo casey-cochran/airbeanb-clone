@@ -11,8 +11,8 @@
         align-items: center;
         flex: 1;
         min-height: 100vh;
-        background: rgb(235, 237, 238);
-        background: linear-gradient(360deg, rgb(136, 148, 202) 0%, rgb(43, 168, 218) 86%);
+        background: rgb(0, 94, 141);
+        background: linear-gradient(360deg, rgb(0, 41, 223) 0%, rgb(34, 236, 236) 70%);
         color: white;
         font-size: 40px;
         font-weight: 300;

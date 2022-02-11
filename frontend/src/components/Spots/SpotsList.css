@@ -8,7 +8,6 @@
 }
 
 #spots-list-cont{
-    background-color: #F2F2F2;
     min-height: 100vh;
     position: relative;
     background-repeat: no-repeat;
@@ -73,6 +72,10 @@
     font-weight: 600;
 }
 
+.spots-list-text.name{
+    margin-bottom: 0;
+}
+
 
 #spots-list-footer{
     width: 100%;
@@ -82,7 +85,7 @@
     margin-top: 100px;
     /* position: absolute; */
     /* bottom: 0; */
-    background-color: #ececec;
+    background-color: #ffffff;
     justify-content: center;
     flex-direction: row;
     padding-top: 30px;

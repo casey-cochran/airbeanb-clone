@@ -65,8 +65,8 @@ const ViewOneSpot = () => {
                     </div>
                 </div>
                 <div id='center-beds'>
-                  <p className="spots-list-text push">
-                    Rooms {spot.room} Beds {spot.bed}
+                  <p className="spots-list-text push space">
+                    Rooms {spot?.room} Beds {spot?.bed}
                   </p>
                 </div>
                 {user ?

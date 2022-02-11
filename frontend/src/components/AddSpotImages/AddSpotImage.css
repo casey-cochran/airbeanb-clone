@@ -101,3 +101,9 @@
 .create-spot-btn.add-img{
     margin-top: 10px;
 }
+
+.create-spot-btn.add-img.lnk{
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+}

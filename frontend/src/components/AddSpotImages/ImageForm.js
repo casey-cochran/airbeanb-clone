@@ -52,7 +52,7 @@ const ImageForm = () => {
         </div>
         <div className="img-form-btn">
         <button className='create-spot-btn add-img pad' type="submit" >Add Image!</button>
-        <button className='create-spot-btn add-img pad'>Back to your Spots</button>
+        <Link to={`/users/${userId}/spots`} className='create-spot-btn add-img lnk'>Back to your Spots</Link>
         </div>
       </form>
     </>

@@ -23,8 +23,8 @@ const EditSpot = () => {
   const [zipCode, setZipCode] = useState(spot?.zipCode);
   const [country, setCountry] = useState(spot?.country);
   const [price, setPrice] = useState(spot?.price);
-  const [bed, setBed] = useState(spot?.bed);
-  const [room, setRoom] = useState(spot?.room)
+  const [bed, setBed] = useState('');
+  const [room, setRoom] = useState('')
   const [errors, setErrors] = useState([]);
 
   if (sessionUser && sessionUser?.id !== +userId) {

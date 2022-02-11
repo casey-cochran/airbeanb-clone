@@ -1,3 +1,58 @@
+#top-container {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+#second-child{
+    flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex: 1;
+        min-height: 100vh;
+        background: rgb(60, 49, 214);
+        background: linear-gradient(360deg, rgb(55, 44, 206) 0%, rgb(218, 43, 124) 86%);
+        color: white;
+        font-size: 40px;
+        font-weight: 300;
+        font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+        padding-left: 30px;
+
+}
+
+#edit-spot-cont{
+    background-size: cover;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    image-rendering: crisp-edges;
+    background-image: url('https://images.adsttc.com/media/images/54bd/c38f/e58e/ce1a/bf00/0042/large_jpg/h_11.jpg?1421722492');
+}
+
+#edit-spot-title{
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 60px;
+    text-align: center;
+    font-size: 32px;
+    font-weight: 600;
+    color: #008489;
+}
+
+#form-fieldset{
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    border: none;
+    width: 500px;
+
+}
+
+.create-spot.edit{
+    gap: 20px;
+}
+
 .edit-form {
     margin-top: 200px;
 }
@@ -5,6 +60,7 @@
 .edit-cancel{
     display: flex;
     gap:30px;
+    padding-bottom: 60px;
 }
 
 #cancel-edit {
@@ -13,4 +69,33 @@
 
 #cancel-edit:active{
     color: white;
+}
+
+.create-spot-input.edit{
+    opacity: .6;
+    height: 6px;
+    /* background-color: transparent; */
+}
+
+.create-spot-input.edit:hover{
+    opacity: 1;
+}
+
+.create-spot-btn.sub{
+    border: none
+}
+
+.edit-text-color{
+    color:white;
+    opacity: .7;
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.edit-text-color:hover{
+    opacity: 1;
+}
+
+.sep-text.edit:hover{
+    opacity: 1;
 }

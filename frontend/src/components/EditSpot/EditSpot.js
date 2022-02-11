@@ -81,95 +81,105 @@ const EditSpot = () => {
   };
 
   return (
-    <div>
-        <form className="create-spot" onSubmit={handleSubmit}>
+    <div id='top-container'>
+    <div id='edit-spot-cont'>
+        {/* <div>
+        <h2 id='edit-spot-title'>Edit your spot listing</h2>
+        </div> */}
+        <fieldset id='form-fieldset'>
+        <form className="create-spot edit" onSubmit={handleSubmit}>
           <ul>
             {errors?.map((error, index) => (
               <li key={index}>{error}</li>
             ))}
           </ul>
-          <div className='sep-text'>
-            <label htmlFor="name">Spot Name</label>
+          <div className='sep-text edit'>
+            <label className="edit-text-color" htmlFor="name">Spot Name</label>
             <input
               onChange={(e) => setName(e.target.value)}
               value={name}
               required
               type="text"
               id="name"
-              className='create-spot-input'
+              className='create-spot-input edit'
             />
           </div>
-          <div className='sep-text'>
-            <label htmlFor="address">Address</label>
+          <div className='sep-text edit'>
+            <label className="edit-text-color" htmlFor="address">Address</label>
             <input
               onChange={(e) => setAddress(e.target.value)}
               value={address}
               required
               type="text"
               id="address"
-              className='create-spot-input'
+              className='create-spot-input edit'
             />
           </div>
-          <div className='sep-text'>
-            <label htmlFor="city">City</label>
+          <div className='sep-text edit'>
+            <label className="edit-text-color" htmlFor="city">City</label>
             <input
               onChange={(e) => setCity(e.target.value)}
               value={city}
               required
               type="text"
               id="city"
-              className='create-spot-input'
+              className='create-spot-input edit'
             />
           </div>
-          <div className='sep-text'>
-            <label htmlFor="state">State</label>
+          <div className='sep-text edit'>
+            <label className="edit-text-color" htmlFor="state">State</label>
             <input
               onChange={(e) => setState(e.target.value)}
               value={state}
               required
               type="text"
               id="state"
-              className='create-spot-input'
+              className='create-spot-input edit'
             />
           </div>
-          <div className='sep-text'>
-            <label htmlFor="zipcode">Zip Code</label>
+          <div className='sep-text edit'>
+            <label className="edit-text-color" htmlFor="zipcode">Zip Code</label>
             <input
               onChange={(e) => setZipCode(e.target.value)}
               value={zipCode}
               required
               type="text"
               id="zipcode"
-              className='create-spot-input'
+              className='create-spot-input edit'
             />
           </div>
-          <div className='sep-text'>
-            <label htmlFor="country">Country</label>
+          <div className='sep-text edit'>
+            <label className="edit-text-color" htmlFor="country">Country</label>
             <input
               onChange={(e) => setCountry(e.target.value)}
               value={country}
               required
               type="text"
               id="country"
-              className='create-spot-input'
+              className='create-spot-input edit'
             />
           </div>
-          <div className='sep-text'>
-            <label htmlFor="price">Price</label>
+          <div className='sep-text edit'>
+            <label className="edit-text-color" htmlFor="price">Price</label>
             <input
               onChange={(e) => setPrice(e.target.value)}
               value={price}
               required
               type="text"
               id="price"
-              className='create-spot-input'
+              className='create-spot-input edit'
             />
           </div>
           <div className="edit-cancel">
-            <button className='create-spot-btn' type="submit">Edit your Spot</button>
+            <button className='create-spot-btn sub' type="submit">Submit</button>
             <Link id='cancel-edit' className='create-spot-btn' to={`/users/${userId}/spots`}>Cancel</Link>
           </div>
         </form>
+        </fieldset>
+    </div>
+    <div id='second-child'>
+      <h2>Edit your Spot!</h2>
+    </div>
     </div>
   );
 };

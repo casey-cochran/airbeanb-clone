@@ -46,6 +46,14 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.DECIMAL,
     },
+    room:{
+      allowNull: false,
+      type: DataTypes.INTEGER
+    },
+    bed:{
+      allowNull: false,
+      type: DataTypes.INTEGER
+    }
   }, {});
   Spot.associate = function(models) {
     // associations can be defined here

@@ -93,3 +93,16 @@ body, html {
 .create-spot-btn:hover{
     background-color: rgba(0, 0, 0, 0.808);
 }
+
+.create-spot-input.bedroom[type='number']{
+    font-size: 27px;
+    width: 130px;
+}
+
+.sep-text.bedroom{
+    width: 30px;
+    display: flex;
+    flex-direction: row;
+    gap: 57px;
+    margin-right: 348px;
+}

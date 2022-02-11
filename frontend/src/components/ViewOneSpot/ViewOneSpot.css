@@ -59,8 +59,13 @@
 .view-one-text{
     display: flex;
     flex-direction:  row;
-    gap: 130px;
+    gap: 180px;
 
+}
+
+#center-beds{
+   margin-right: 275px;
+   margin-top: 10px;
 }
 
 .view-one-text p {

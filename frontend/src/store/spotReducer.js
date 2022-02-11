@@ -153,11 +153,11 @@ export const createSpot = (spotData) => {
 }
 
 export const createUserSpot = (spotData) => async dispatch => {
-    const {address, city, state, zipCode, country, name, price, userId} = spotData;
+    const {address, city, state, zipCode, country, bed, room, name, price, userId} = spotData;
     const response = await csrfFetch('/api/users/spots/new', {
         method: 'POST',
         body: JSON.stringify({
-            address, city, name, state, zipCode, country, price, userId
+            address, city, name, state, zipCode, bed, room, country, price, userId
         })
     });
     const data = await response.json();

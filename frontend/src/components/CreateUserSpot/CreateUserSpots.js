@@ -22,6 +22,8 @@ const CreateUserSpots = () => {
     const [zipCode, setZipCode] = useState('')
     const [country, setCountry] = useState('')
     const [price, setPrice] = useState('')
+    const [room, setRoom] = useState('')
+    const [bed, setBed] = useState('')
     const [errors, setErrors] = useState([]);
 
     if(!user) return <Redirect to='/' />;
@@ -37,7 +39,9 @@ const CreateUserSpots = () => {
             state,
             zipCode,
             country,
-            price
+            price,
+            room,
+            bed
         }
 
         const value = await dispatch(createUserSpot(spot)).catch(async (err) => {
@@ -57,6 +61,8 @@ const CreateUserSpots = () => {
         setZipCode('')
         setCountry('')
         setPrice('')
+        setRoom('')
+        setBed('')
         setErrors([]);
         history.push(`/users/${userId}/spots/${value.spot.id}`);
     }
@@ -162,6 +168,24 @@ const CreateUserSpots = () => {
                                 id='price'
                                 className='create-spot-input'
                             />
+                        </div>
+                        <div className='sep-text bedroom'>
+                            <input
+                                onChange={((e) => setRoom(e.target.value))}
+                                value={room}
+                                placeholder='Rooms'
+                                type='number'
+                                required
+                                className='create-spot-input bedroom'
+                                />
+                            <input
+                                onChange={((e)=> setBed(e.target.value))}
+                                value={bed}
+                                placeholder='Beds'
+                                type='number'
+                                required
+                                className='create-spot-input bedroom'
+                                />
                         </div>
                         <div>
                             <button className='create-spot-btn' type='submit'>Host your Spot</button>

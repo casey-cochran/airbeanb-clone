@@ -64,6 +64,11 @@ const ViewOneSpot = () => {
                     <p className="spots-list-text price tst">${spot?.price} / Night</p>
                     </div>
                 </div>
+                <div id='center-beds'>
+                  <p className="spots-list-text push">
+                    Rooms {spot.room} Beds {spot.bed}
+                  </p>
+                </div>
                 {user ?
                 <div className="book-spot-container">
                     <h3 id='book-spot-title'>Book this spot !</h3>

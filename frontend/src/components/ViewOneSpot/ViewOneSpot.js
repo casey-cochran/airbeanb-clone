@@ -83,7 +83,7 @@ const ViewOneSpot = () => {
                                 type={startDate}
                                 type='date'
                                 required
-                                id='startDate'
+                                id={userId}
                                 className='create-spot-input reserve'
                             />
                         </div>

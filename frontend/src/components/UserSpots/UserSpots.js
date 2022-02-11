@@ -42,6 +42,8 @@ const UserSpots = () => {
                 <p>{spot.country}</p>
                 <p>{spot.zipcode}</p>
                 <p>{spot.price}</p>
+                <p>Rooms: {spot.room}</p>
+                <p>Beds: {spot.bed}</p>
                 <div className="menu-btn-div">
                   <Link
                     className="drp-menu-btn pad"

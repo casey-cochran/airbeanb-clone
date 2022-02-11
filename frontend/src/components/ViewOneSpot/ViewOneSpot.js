@@ -1,4 +1,4 @@
-import { useParams, useHistory } from "react-router-dom";
+import { useParams, useHistory, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { viewOneSpot } from "../../store/spotReducer";
@@ -42,7 +42,7 @@ const ViewOneSpot = () => {
         return setErrors(value.errors)
     }
 
-    history.push(`/users/bookings`)
+    history.push(`/users/${userId}/bookings`)
 
     }
 
@@ -50,16 +50,24 @@ const ViewOneSpot = () => {
     return (
             <div className="view-one-spot">
                 <p className='one-spot-name'>{spot?.name}</p>
+                <div >
+                    <p className='hosted-by'>Hosted by {user?.username}</p>
+                </div>
                 <div className='resize-img'>
                     {spot?.Images.map((img, i) => <div><img key={i} src={img.url} /> </div>)}
                 </div>
                 <div className="view-one-text">
-                    <p>{spot?.city}</p>
-                    <p>{spot?.state}</p>
-                    <p>{spot?.country}</p>
+                    <div>
+                    <p className="spots-list-text">{spot?.city}, {spot?.state}</p>
+                    </div>
+                    <div>
+                    <p className="spots-list-text price tst">${spot?.price} / Night</p>
+                    </div>
                 </div>
-                <div>
-                    <p className='hosted-by'>Hosted by {user?.username}</p>
+                <div id='center-beds'>
+                  <p className="spots-list-text push">
+                    Rooms {spot.room} Beds {spot.bed}
+                  </p>
                 </div>
                 {user ?
                 <div className="book-spot-container">
@@ -76,6 +84,7 @@ const ViewOneSpot = () => {
                                 type='date'
                                 required
                                 id='startDate'
+                                className='create-spot-input reserve'
                             />
                         </div>
                         <div className='sep-text'>
@@ -86,9 +95,11 @@ const ViewOneSpot = () => {
                                 type='date'
                                 required
                                 id='endDate'
+                                className='create-spot-input reserve'
                             />
                         </div>
-                        <button className='create-spot-btn' type='submit'>Reserve</button>
+                        <button className='create-spot-btn listing' type='submit'>Reserve</button>
+                        <Link className='back-home' to='/spots'>Back to Spot Listings</Link>
                     </form>
                 </div>
                 : <h3>Log in or Sign up here !</h3> }

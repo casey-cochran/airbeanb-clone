@@ -10,6 +10,15 @@
 
 }
 
+.create-spot-btn.add-img.url[type='text']{
+    font-size: 20px;
+}
+
+.img-form-btn{
+    display: flex;
+    gap: 15px;
+}
+
 
 #spot-img-cont{
     display: flex;

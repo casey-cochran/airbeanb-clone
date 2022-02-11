@@ -47,10 +47,13 @@ const ImageForm = () => {
             value={url}
             type="text"
             id="url"
-            className="create-spot-input add-img"
+            className="create-spot-input add-img url"
           />
         </div>
+        <div className="img-form-btn">
         <button className='create-spot-btn add-img pad' type="submit" >Add Image!</button>
+        <button className='create-spot-btn add-img pad'>Back to your Spots</button>
+        </div>
       </form>
     </>
   );

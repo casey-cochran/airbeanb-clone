@@ -57,15 +57,22 @@
 }
 
 .view-one-text{
-    display: flex;
-    flex-direction:  row;
-    gap: 180px;
+        display: flex;
+        width: 400px;
+        justify-content: space-between;
+        align-items: flex-start;
 
 }
 
 #center-beds{
-   margin-right: 275px;
-   margin-top: 10px;
+  display: flex;
+  width: 400px;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.spots-list-text.push.space{
+    margin-top: 7px;
 }
 
 .view-one-text p {

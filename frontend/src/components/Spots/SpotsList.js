@@ -36,14 +36,14 @@ const SpotsList = () => {
                   <img className="all-spots-imgs" src={spot.Images[0].url} />
                 </Link>
                 <div className="spots-list-text" >
-                  <p className="spots-list-text">
+                  <p className="spots-list-text name">
                     {spot.city}, {spot.state}
                   </p>
                   <p className="spots-list-text price">${spot.price} / night</p>
                 </div>
                 <div>
-                  <p className="spots-list-text push">
-                    Rooms {spot.room} Beds {spot.bed}
+                  <p className="spots-list-text push list">
+                    Rooms {spot?.room} Beds {spot?.bed}
                   </p>
                 </div>
               </div>

@@ -10,7 +10,7 @@
 #spots-list-cont{
     display: flex;
     flex-direction: column;
-    flex: 1 1 1;
+    justify-content: space-around;
     min-height: 100vh;
     position: relative;
     background-repeat: no-repeat;
@@ -84,10 +84,7 @@
     width: 100%;
     display:flex;
     gap: 500px;
-    position: relative;
-    margin-top: 100px;
-    /* position: absolute; */
-    /* bottom: 0; */
+    margin-top: auto;
     background-color: #ffffff;
     justify-content: center;
     flex-direction: row;

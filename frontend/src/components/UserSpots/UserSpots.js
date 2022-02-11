@@ -74,7 +74,7 @@ const UserSpots = () => {
         })}
       </div>
     </div> : <div id='spots-empty-cont'><div id='spots-empty'>
-      <h2 id='empty-spot-text'>Add a New Spot Listing Here ! </h2>
+      <h2 id='empty-spot-text'>Add a New Spot Listing Here  </h2>
       <Link to='/users/spots/new' className='create-spot-btn empty'>add new spot</Link> </div> </div>}
     </>
   );

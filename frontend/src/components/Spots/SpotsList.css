@@ -13,9 +13,9 @@
     justify-content: space-around;
     min-height: 100vh;
     position: relative;
-    background-repeat: no-repeat;
+    /* background-repeat: no-repeat;
     background-size: cover;
-    background-image: url(https://i.pinimg.com/originals/90/de/6a/90de6a722188fc9a9c0835db1f0e5500.jpg);
+    background-image: url(https://i.pinimg.com/originals/90/de/6a/90de6a722188fc9a9c0835db1f0e5500.jpg); */
 }
 
 .all-spots-container div div {

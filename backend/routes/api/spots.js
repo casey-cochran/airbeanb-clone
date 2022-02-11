@@ -78,7 +78,7 @@ const bookingsValidator = [
               startDate <= book.dataValues.endDate &&
               startDate >= book.dataValues.startDate
             ) {
-              return Promise.reject("cannot book inside another booking");
+              return Promise.reject("Cannot reserve a spot during another reservation");
             }
           }
         }
@@ -100,10 +100,26 @@ const bookingsValidator = [
               req.body.startDate,
               req.body.userId
             );
-          return Promise.reject("Already booked on this date");
+          return Promise.reject("Spot already booked on this date, Please choose another date");
         }
       }
     );
+  })
+  .custom((value, { req }) => {
+    const { userId, endDate, startDate } = req.body;
+    return Booking.findAll({ where: { userId: userId } }).then((booking) => {
+      if (booking) {
+        for (let i = 0; i < booking.length; i++) {
+          let book = booking[i];
+          if (
+            endDate <= book.dataValues.endDate &&
+            endDate >= book.dataValues.startDate
+          ) {
+            return Promise.reject("Reservation end date conflicts with a previously booked spot");
+          }
+        }
+      }
+    });
   }),
   handleValidationErrors,
 ];

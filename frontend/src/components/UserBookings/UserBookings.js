@@ -41,8 +41,8 @@ const UserBookings = () => {
             {userBookings.length > 0 ? <div>
             <h2>Book your next vacation here</h2>
             <div>
-                {userBookings?.map((booking,i) => <li key={i}>{booking.startDate}{booking?.Spot?.name}
-                <button onClick={(() => dispatch(cancelBooking(booking.id, userId)))}>Cancel Booking</button></li>)}
+                {userBookings?.map((booking,i) => <li key={i}>{booking?.startDate}, {booking?.endDate}{booking?.Spot?.name}
+                <button onClick={(() => dispatch(cancelBooking(booking?.id, userId)))}>Cancel Booking</button></li>)}
 
             </div>
             <Link to='/'>Return Home</Link>

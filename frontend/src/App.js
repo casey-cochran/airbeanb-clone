@@ -15,15 +15,17 @@ import UserBookings from "./components/UserBookings/UserBookings";
 
 
 
+
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+  const sessionUser = useSelector((state) => state.session.user);
   useEffect(() => {
     dispatch(restoreUser()).then(() => setIsLoaded(true));
+
   }, [dispatch]);
 
 
-const sessionUser = useSelector((state) => state.session.user);
 
 
 

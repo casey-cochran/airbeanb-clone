@@ -11,8 +11,8 @@ const ProfileButton = ({ user }) => {
   const [showMenu, setShowMenu] = useState(false);
 
   const openMenu = () => {
-    if (showMenu) return;
-    setShowMenu(true);
+   if (showMenu) return;
+    setShowMenu(!showMenu);
   };
 
   useEffect(() => {
@@ -44,7 +44,7 @@ const ProfileButton = ({ user }) => {
       {showMenu && (
         <div className="profile-dropdown">
           <div className="name-email">
-            <div>Welcome {user.username}!</div>
+            <div id='welcome-st'>Welcome {user.username}!</div>
 
           </div>
           <div  className="menu-btn-div">
@@ -68,7 +68,7 @@ const ProfileButton = ({ user }) => {
               </NavLink>
           </div>
           <div className="menu-btn-div">
-            <button className="btn primary" onClick={logoutUser}>Log Out</button>
+            <button className="btn primary logout" onClick={logoutUser}>Log Out</button>
           </div>
         </div>
       )}

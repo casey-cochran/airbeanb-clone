@@ -84,17 +84,18 @@ const bookingsValidator = [
         }
       });
     })
-    .custom((value) => {
-        console.log(value)
-        let date = new Date();
-        const currentDate = Number(date.toISOString().slice(0,10).split('-').join(''));
-        const start = Number(value.split('-').join(''));
-        console.log(start, currentDate)
-        if(start < currentDate){
-            throw new Error('is this working ? ')
-        }
+    // .custom((value) => {
+    //     console.log(value)
+    //     let date = new Date();
+    //     const currentDate = Number(date.toISOString().slice(0,10).split('-').join(''));
+    //     const start = Number(value.split('-').join(''));
+    //     console.log(start, currentDate)
+    //     if(start < currentDate){
+    //         throw new Error('is this working ? ')
+    //     }
 
-    }),
+    // })
+    ,
   check("endDate")
     .exists({ checkFalsy: true })
     .withMessage("Must provide an end date")

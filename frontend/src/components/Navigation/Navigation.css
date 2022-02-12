@@ -78,6 +78,7 @@ body{
 
 .drp-menu-btn{
     text-decoration: none;
+    font-weight: 500;
     padding-top: 20px;
     padding-bottom: 20px;
     padding-left: 10px;
@@ -111,6 +112,18 @@ body{
     display: inline-block;
     cursor: pointer;
     font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+}
+
+.btn.primary.logout{
+    font-size: 16px;
+    font-weight: 500;
+}
+
+#welcome-st{
+    font-size: 16px;
+    font-weight: 500;
+    padding-top: 10px;
+    padding-bottom: 20px;
 }
 
 link:visited{
@@ -179,4 +192,9 @@ link:visited{
     display: flex;
     align-items: center;
     gap: 10px;
+}
+
+.profile-dropdown2{
+    display: flex;
+    flex-direction: column;
 }

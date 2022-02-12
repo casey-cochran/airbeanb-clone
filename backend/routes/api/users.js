@@ -279,7 +279,7 @@ router.get(
   requireAuth,
   asyncHandler(async (req, res) => {
     const { userId } = req.params;
-    const booking = await Booking.findAll({ where: { userId }, include: Spot });
+    const booking = await Booking.findAll({ where: { userId }, include: {model: Spot, include: Image} });
     res.json(booking);
   })
 );

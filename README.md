@@ -2,7 +2,7 @@
 
 
 1. Clone this repo at: 
-   - git@github.com:casey-cochran/airbeanb-clone.git
+   - git clone git@github.com:casey-cochran/airbeanb-clone.git
 
 
 2. CD into the root directory and install dependecies with 

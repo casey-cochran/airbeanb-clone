@@ -12,6 +12,7 @@ import AddSpotImages from "./components/AddSpotImages/AddSpotImage";
 import HomePage from "./components/HomePage/HomePage";
 import ViewOneSpot from "./components/ViewOneSpot/ViewOneSpot";
 import UserBookings from "./components/UserBookings/UserBookings";
+import PageNotFound from "./components/PageNotFound/PageNotFound";
 
 
 
@@ -59,7 +60,7 @@ function App() {
             <UserBookings />
           </Route>
           <Route>
-            <h1>Page Does Not Exist</h1>
+            <PageNotFound />
           </Route>
         </Switch>
       )}

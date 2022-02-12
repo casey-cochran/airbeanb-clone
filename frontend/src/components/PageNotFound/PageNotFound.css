@@ -1,0 +1,49 @@
+
+.error-main-cont{
+    display: flex;
+    margin: auto;
+    background-color: rgba(231, 91, 91, .7);
+    min-height: 100vh;
+}
+
+
+.not-found-cont{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    flex-basis: auto;
+    border-radius: 15px;
+    width: 700px;
+    height: 450px;
+    margin: auto;
+    margin-top: 150px;
+    background-color: white;
+    padding: 50px;
+
+}
+
+#error-header{
+    font-size: 200px;
+    font-weight: 500;
+    margin: 0;
+}
+
+.error-text.head{
+    font-size: 36px;
+}
+
+.error-text{
+    font-size: 30px;
+    margin: 0;
+}
+
+#error-lnk{
+    text-decoration: none;
+    color: black;
+}
+
+#error-lnk:hover{
+    color: rgb(209, 79, 79);
+    cursor: pointer;
+}

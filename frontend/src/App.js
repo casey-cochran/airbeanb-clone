@@ -12,18 +12,21 @@ import AddSpotImages from "./components/AddSpotImages/AddSpotImage";
 import HomePage from "./components/HomePage/HomePage";
 import ViewOneSpot from "./components/ViewOneSpot/ViewOneSpot";
 import UserBookings from "./components/UserBookings/UserBookings";
+import PageNotFound from "./components/PageNotFound/PageNotFound";
+
 
 
 
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+  const sessionUser = useSelector((state) => state.session.user);
   useEffect(() => {
     dispatch(restoreUser()).then(() => setIsLoaded(true));
+
   }, [dispatch]);
 
 
-const sessionUser = useSelector((state) => state.session.user);
 
 
 
@@ -57,7 +60,7 @@ const sessionUser = useSelector((state) => state.session.user);
             <UserBookings />
           </Route>
           <Route>
-            <h1>Page Does Not Exist</h1>
+            <PageNotFound />
           </Route>
         </Switch>
       )}

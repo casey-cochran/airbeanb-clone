@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Modal } from '../../context/Modal';
 import LoginForm from './LoginForm';
 
+
 const LoginFormModal = () => {
   const [showModal, setShowModal] = useState(false);
 

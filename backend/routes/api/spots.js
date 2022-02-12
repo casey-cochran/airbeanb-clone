@@ -75,14 +75,25 @@ const bookingsValidator = [
           for (let i = 0; i < booking.length; i++) {
             let book = booking[i];
             if (
-              startDate <= book.dataValues.endDate &&
-              startDate >= book.dataValues.startDate
+              Number(startDate.split('-').join('')) <= Number(book.dataValues.endDate.split('-').join('')) &&
+              Number(startDate.split('-').join('')) >= Number(book.dataValues.startDate.split('-').join(''))
             ) {
               return Promise.reject("Cannot reserve a spot during another reservation");
             }
           }
         }
       });
+    })
+    .custom((value) => {
+        console.log(value)
+        let date = new Date();
+        const currentDate = Number(date.toISOString().slice(0,10).split('-').join(''));
+        const start = Number(value.split('-').join(''));
+        console.log(start, currentDate)
+        if(start < currentDate){
+            throw new Error('is this working ? ')
+        }
+
     }),
   check("endDate")
     .exists({ checkFalsy: true })
@@ -94,13 +105,9 @@ const bookingsValidator = [
     return Booking.findOne({ where: { spotId: spotId, userId: value } }).then(
       (booking) => {
         if (booking) {
-          if (booking.dataValues.startDate === req.body.startDate)
-            console.log(
-              booking.dataValues.startDate,
-              req.body.startDate,
-              req.body.userId
-            );
+          if (Number(booking.dataValues.startDate.split('-').join('')) === Number(req.body.startDate.split('-').join(''))){
           return Promise.reject("Spot already booked on this date, Please choose another date");
+            }
         }
       }
     );

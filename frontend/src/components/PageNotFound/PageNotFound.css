@@ -20,6 +20,7 @@
     margin-top: 150px;
     background-color: white;
     padding: 50px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
 }
 
@@ -41,6 +42,7 @@
 #error-lnk{
     text-decoration: none;
     color: black;
+    font-weight: 500;
 }
 
 #error-lnk:hover{

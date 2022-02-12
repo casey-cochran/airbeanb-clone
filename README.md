@@ -24,9 +24,9 @@
     - npx dotenv sequelize db:seed:all
 
 7. To start the backend directory
-    -npm start
+    - npm start
     
 8. To start the frontend which will default to opening in your browser, if not navigate to http:/localhost:3000
-    -npm start
+    - npm start
     
 10. Sign up or login in as a Demo User to explore the site freely. 

@@ -149,7 +149,8 @@ router.post(
 
 // router.get('/spots/:spotId/review', asyncHandler(async(req,res) => {
 //   const {spotId} = req.params;
-//   const reviews = await Review.findAll({where: {spotId}})
+//   const reviews = await Spot.findByPk(spotId, {include: Review})
+//   console.log(reviews, 'any?')
 //   res.json({reviews: reviews})
 // }))
 

@@ -10,7 +10,7 @@ const UserSpots = () => {
   const { userId } = useParams();
   const spots = useSelector((state) => Object.values(state.spotReducer.spot));
   const sessionUser = useSelector((state) => state.session.user);
- 
+
 
   useEffect(() => {
     dispatch(fetchUserSpots(userId));

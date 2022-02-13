@@ -24,7 +24,7 @@ const SpotsList = () => {
             {userId ? (
               <h2 id="spots-list-title">Your Dream Vacation Awaits</h2>
             ) : (
-              <h1>log in or sign up here !</h1>
+              <h1>Please Login or Signup to experience these Spots</h1>
             )}
           </div>
         </div>

@@ -48,12 +48,14 @@ const ViewOneSpot = () => {
   };
 
   return (
-    <div>
+    <div id='view-one-spot-cont-top'>
+          <div className="border-testing">
         <div className="view-one-spot">
-          <p className="one-spot-name">{spot?.name}</p>
+          <p className="one-spot-name title">{spot?.name}</p>
           <div>
             <p className="hosted-by">Hosted by {user?.username}</p>
           </div>
+
           <div className="resize-img">
             {spot?.Images.map((img, i) => (
               <div key={i}>
@@ -87,7 +89,7 @@ const ViewOneSpot = () => {
                     <li key={index}>{error}</li>
                   ))}
                 </ul>
-                <div className="sep-text">
+                <div className="sep-text date">
                   <label htmlFor="startDate">Start Date</label>
                   <input
                     onChange={(e) => setStartDate(e.target.value)}
@@ -98,7 +100,7 @@ const ViewOneSpot = () => {
                     className="create-spot-input reserve"
                   />
                 </div>
-                <div className="sep-text">
+                <div className="sep-text date">
                   <label htmlFor="endDate">End Date</label>
                   <input
                     onChange={(e) => setEndDate(e.target.value)}
@@ -118,9 +120,10 @@ const ViewOneSpot = () => {
               </form>
             </div>
           ) : (
-            <h3>Log in or Sign up here !</h3>
+            <h3>Please Login or Signup to view further Details</h3>
           )}
         </div >
+        </div>
       </div>
 
   );

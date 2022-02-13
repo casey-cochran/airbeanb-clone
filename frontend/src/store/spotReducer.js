@@ -14,8 +14,41 @@ const UPDATE_SPOT = 'user/UPDATE_SPOT';
 const FIND_SPOT = 'user/FIND_SPOT';
 const LOAD_ALL_SPOTS = '/api/LOAD_ALL_SPOTS';
 const ADD_IMAGE = '/spot/ADD_IMAGE';
+// const ADD_REVIEW = '/spot/ADD_REVIEW';
+// const LOAD_REVIEWS = '/spot/LOAD_REVIEWS'
+
+// export const loadReviews = (reviews) => {
+//     return ({
+//         type: LOAD_REVIEWS,
+//         reviews
+//     })
+// }
+
+// export const loadSpotReviews = (spotId) => async dispatch => {
+//     const response = await csrfFetch(`/api/spots/${spotId}/review`)
+//     const allReviews = await response.json();
+//     console.log(allReviews, ' what are these')
+//      dispatch(loadReviews(allReviews))
+//     // return allReviews
+// }
 
 
+// export const writeReview = (review) => {
+//     return ({
+//         type: ADD_REVIEW,
+//         review
+//     })
+// }
+
+// export const addReview = (reviewData) => async dispatch => {
+//     const response = await csrfFetch(`/api/spots/${reviewData.spotId}/review`, {
+//         method: 'POST',
+//         body: JSON.stringify(reviewData)
+//     })
+//     const review = await response.json();
+//     dispatch(writeReview(review))
+//     return review;
+// }
 // const DELETE_IMAGE = '/spot/DELETE_IMAGE';
 
 
@@ -166,7 +199,7 @@ export const createUserSpot = (spotData) => async dispatch => {
 
 
 
-const initialState = {user: null, spot: {}, images: {}};
+const initialState = {user: null, spot: {}, images: {}, reviews: {}};
 
 const spotReducer = (state = initialState, action) => {
     let newState;
@@ -209,6 +242,13 @@ const spotReducer = (state = initialState, action) => {
             newState.spot[action.image.spotId].Images = [...newState.spot[action.image.spotId].Images];
             newState.spot[action.image.spotId].Images.push(action.image);
            return newState;
+        // case LOAD_REVIEWS:
+        //     newState ={...state}
+        //     const data = action.reviews.reviews.Reviews
+        //     console.log(data, ' data here ')
+        //     data.forEach((review) => newState.reviews[review.id] = review)
+        //     return newState;
+           // newState
         // case DELETE_IMAGE:
         //     newState = {...state}
         //     //console.log(action.imageId)

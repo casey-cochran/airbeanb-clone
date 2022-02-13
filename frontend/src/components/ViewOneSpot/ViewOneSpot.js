@@ -12,7 +12,6 @@ const ViewOneSpot = () => {
   const { spotId } = useParams();
   const user = useSelector((state) => state.session.user);
   const spot = useSelector((state) => state.spotReducer.spot[spotId]);
-
   const userId = user?.id;
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
@@ -22,6 +21,7 @@ const ViewOneSpot = () => {
 
   useEffect(() => {
     dispatch(viewOneSpot(spotId));
+    // dispatch(loadSpotReviews(spotId))
   }, [dispatch]);
 
   const handleSubmit = async (e) => {

@@ -61,7 +61,7 @@ const UserBookings = () => {
           <div className="spots-empty booking">
             <h2 className="empty-spot-text">Your next adventure awaits </h2>
             <Link to="/spots" className="create-spot-btn empty booking">
-              Book your next Vacation here !
+              Book your next Vacation here 
             </Link>{" "}
           </div>{" "}
         </div>

@@ -73,9 +73,9 @@ const CreateUserSpots = () => {
       </div>
       <div className="form test2">
         <form onSubmit={handleSubmit} className="create-spot">
-          <ul>
+          <ul className="error-handler">
             {errors?.map((error, index) => (
-              <li key={index}>{error}</li>
+              <li className="error-text-handle" key={index}>{error}</li>
             ))}
           </ul>
           <div className="sep-text">

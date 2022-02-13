@@ -5,7 +5,13 @@
     align-items: center;
     gap: 20px;
     flex: 1;
+}
 
+.error-handler{
+
+}
+.error-text-handle{
+    font-size: 24px;
 }
 
 .create-spot-container {

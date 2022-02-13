@@ -94,7 +94,7 @@ const EditSpot = () => {
           <form className="create-spot edit" onSubmit={handleSubmit}>
             <ul>
               {errors?.map((error, index) => (
-                <li key={index}>{error}</li>
+                <li className="error-text-handle" key={index}>{error}</li>
               ))}
             </ul>
             <div className="sep-text edit">

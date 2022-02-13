@@ -57,7 +57,7 @@ const AddSpotImages = () => {
         <div id="spot-img-cont">
           {spot?.Images?.map((image, index) => (
             <div className="user-host-spots" key={index}>
-              <img src={image.url} />
+              <img id='add-imgs' src={image.url} />
             </div>
           ))}
           </div> : <div id='no-images'></div> }

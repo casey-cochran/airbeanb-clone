@@ -212,7 +212,7 @@ const EditSpot = () => {
               </button>
               <Link
                 id="cancel-edit"
-                className="create-spot-btn sub"
+                className='cancel-bm-l'
                 to={`/users/${userId}/spots`}
               >
                 Cancel

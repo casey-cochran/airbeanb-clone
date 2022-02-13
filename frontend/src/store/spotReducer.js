@@ -14,6 +14,8 @@ const UPDATE_SPOT = 'user/UPDATE_SPOT';
 const FIND_SPOT = 'user/FIND_SPOT';
 const LOAD_ALL_SPOTS = '/api/LOAD_ALL_SPOTS';
 const ADD_IMAGE = '/spot/ADD_IMAGE';
+
+
 // const DELETE_IMAGE = '/spot/DELETE_IMAGE';
 
 
@@ -49,7 +51,6 @@ export const loadImages = (imageData) => async dispatch => {
         body: JSON.stringify(imageData)
     })
     const image = await response.json();
-    //console.log('this is the image being returend from backend', image.id)
     dispatch(addImage(image))
     return image;
 }
@@ -81,7 +82,6 @@ export const findSpot = (singleSpot) => {
 export const viewOneSpot = (spotId) => async dispatch => {
     const response = await fetch(`/api/spots/${spotId}`)
     const singleSpot = await response.json()
-    //console.log('single spot', spot)
     dispatch(findSpot(singleSpot))
     return singleSpot
 }
@@ -89,7 +89,6 @@ export const viewOneSpot = (spotId) => async dispatch => {
 export const loadSingleSpot = (userId, spotId) => async dispatch => {
     const response = await fetch(`/api/users/${userId}/spots/${spotId}`);
     const spot = await response.json()
-  //  console.log(spot, 'what is this spot dammit')
     dispatch(findSpot(spot))
     return spot;
 }
@@ -133,7 +132,6 @@ export const loadSpots = (spots) => {
 export const loadAllSpots = () => async dispatch => {
     const response = await csrfFetch('/api/spots')
     const spots = await response.json();
-    //console.log('spots from the thunk', spots)
     dispatch(loadSpots(spots))
     return spots;
 }
@@ -197,9 +195,6 @@ const spotReducer = (state = initialState, action) => {
         case FIND_SPOT:
             newState = {...state}
             newState.spot[action.singleSpot.id] = action.singleSpot
-           // console.log(action.singleSpot, 'this is action.single spot')
-            //console.log('single spot', newState.spot[action.singleSpot.id])
-            //console.log(newState, 'newstate here ')
             return newState;
         case UPDATE_SPOT:
             newState = {...state}
@@ -210,15 +205,6 @@ const spotReducer = (state = initialState, action) => {
             action.spots.forEach(spot => newState.spot[spot.id] = spot)
             return newState;
         case ADD_IMAGE:
-            // newState = {...state}
-            // console.log(newState.images[action.image.id] = action.image)
-            // newState.images[action.image.id] = action.image;
-            // console.log(newState, ' new state with image added ?')
-            // return newState;
-            //----------
-            // newState.images[action.image.spotId] = action.image
-            // console.log(newState.images, ' images here ')
-            // console.log(newState, ' new state done')
             newState = {...state}
             newState.spot[action.image.spotId].Images = [...newState.spot[action.image.spotId].Images];
             newState.spot[action.image.spotId].Images.push(action.image);

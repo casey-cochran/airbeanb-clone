@@ -34,7 +34,6 @@ export const viewBookings = (bookings) => {
 export const loadBooking = (userId) => async dispatch => {
     const response = await csrfFetch(`/api/users/${userId}/bookings`)
     const bookings = await response.json();
-    console.log('what is bookings', bookings)
     dispatch(viewBookings(bookings))
     return bookings;
 }
@@ -48,7 +47,6 @@ export const bookSpot = (newBooking) => {
 
 export const bookOneSpot = (booking) => async dispatch => {
     const {startDate, endDate, userId, spotId} = booking
-    console.log(startDate, 'startdate in reducer thunk')
     const response = await csrfFetch(`/api/spots/${booking.spotId}`, {
         method: 'POST',
         body: JSON.stringify({
@@ -59,7 +57,6 @@ export const bookOneSpot = (booking) => async dispatch => {
         })
     })
     const newBooking = await response.json();
-    console.log('waht is the', newBooking)
     dispatch(bookSpot(newBooking))
     return newBooking;
 }

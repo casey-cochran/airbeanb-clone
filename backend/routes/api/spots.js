@@ -2,7 +2,8 @@ const express = require("express");
 const asyncHandler = require("express-async-handler");
 const { check } = require("express-validator");
 const { handleValidationErrors } = require("../../utils/validation");
-const { Spot, Image, Booking } = require("../../db/models");
+const { Spot, Image, Booking, Review } = require("../../db/models");
+const {requireAuth} = require('../../utils/auth')
 
 const router = express.Router();
 
@@ -35,6 +36,7 @@ const imageValidations = [
 router.post(
   "/spots",
   imageValidations,
+  requireAuth,
   asyncHandler(async (req, res) => {
     const { url, spotId } = req.body;
     const img = { spotId, url };
@@ -136,6 +138,7 @@ const bookingsValidator = [
 router.post(
   "/spots/:spotId",
   bookingsValidator,
+  requireAuth,
   asyncHandler(async (req, res) => {
     const { startDate, endDate, userId, spotId } = req.body;
     newBooking = { startDate, endDate, userId, spotId };
@@ -143,5 +146,22 @@ router.post(
     res.json(booking);
   })
 );
+
+// router.get('/spots/:spotId/review', asyncHandler(async(req,res) => {
+//   const {spotId} = req.params;
+//   const reviews = await Review.findAll({where: {spotId}})
+//   res.json({reviews: reviews})
+// }))
+
+
+// router.post('/spots/:spotId/review', requireAuth, asyncHandler(async(req,res) => {
+//   const {userId, spotId, review, rating} = req.body;
+//   const newReview = {userId,spotId, review, rating};
+
+//   const sendReview = await Review.create(newReview);
+//   res.json(sendReview)
+
+// }) )
+
 
 module.exports = router;

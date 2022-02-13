@@ -52,7 +52,7 @@ const HomePage = () => {
           <Link
             to={{ pathname: "https://github.com/casey-cochran" }}
             target="_blank"
-            className="footer-text"
+            className="footer-text home"
           >
             Github
           </Link>
@@ -63,7 +63,7 @@ const HomePage = () => {
               pathname: "https://linkedin.com/in/casey-cochran-488420219/",
             }}
             target="_blank"
-            className="footer-text"
+            className="footer-text home"
           >
             Linkedin
           </Link>

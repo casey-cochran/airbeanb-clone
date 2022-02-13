@@ -57,7 +57,7 @@ const UserBookings = () => {
           </div>
         </div>
       ) : (
-        <div className="spots-empty-cont booking">
+        <div >
           <div className="spots-empty booking">
             <h2 className="empty-spot-text">Your next adventure awaits </h2>
             <Link to="/spots" className="create-spot-btn empty booking">

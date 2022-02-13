@@ -1,5 +1,6 @@
 .spots-empty-cont.booking{
-    background-image: url('https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F28%2F2019%2F11%2Fst-regis-bora-bora-room-view-SKYLARSRBORA1119.jpg');
+   background-image: url('https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F28%2F2019%2F11%2Fst-regis-bora-bora-room-view-SKYLARSRBORA1119.jpg');
+    background-repeat: no-repeat;
 }
 
 
@@ -65,8 +66,8 @@
     background-size: 300% 100%;
     border-radius: 50px;
     transition: all .4s ease-in-out;
-    background-image: linear-gradient(to right, #25aae1, #40e495, #30dd8a, #2bb673);
-    box-shadow: 0 4px 15px 0 rgba(49, 196, 190, 0.75);
+    background-image: linear-gradient(to right, #29323c, #485563, #2b5876, #4e4376);
+    box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
 }
 
 .bookings-btn.link{

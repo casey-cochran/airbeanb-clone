@@ -1,9 +1,8 @@
 /* TODO Add site wide styles */
-body{
+body, html{
     font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
 }
 
 input:focus{
     outline: none;
 }
-

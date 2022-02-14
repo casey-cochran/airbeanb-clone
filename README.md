@@ -10,10 +10,10 @@
 
 
 3. Create a POSTGRESQL user with the ability to create DB
-   -CREATE USER 'username' WITH PASSWORD 'password' CREATEDB;
+   - CREATE USER 'username' WITH PASSWORD 'password' CREATEDB;
    
 4. CD into the backend directory and create a .env file in the root, refer to .env.example
-    -Fill out file with your desired PORT (5000 preferred), database name/username/password, and a secured JWT_SECRET.
+    - Fill out file with your desired PORT (5000 preferred), database name/username/password, and a secured JWT_SECRET.
     
 5. Add this proxy ti your package.json within the frontend directory, replacing or keeping the port defined in your .env file.
     - "proxy": "http://localhost:5000"

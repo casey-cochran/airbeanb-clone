@@ -16,6 +16,47 @@
    
    * To experience this application immeditaly please navigate to https://airbeanb.herokuapp.com/ and sign up or login as a demo user!
 
+## Wiki Links
+
+* [Feature Lists](https://github.com/casey-cochran/airbeanb-clone/wiki/Feature-List)
+* [Database Schema](https://github.com/casey-cochran/airbeanb-clone/wiki/Database-Schema)
+
+## Features
+
+* Create an account, sign in, or login as a demo user.
+* Create, view, edit, delete user spots.
+* Create or delete user bookings.
+
+## Future Features:
+
+* Search
+* Google maps API
+* Reviews
+
+## Technologies Used
+
+  * React
+  * Redux
+  * Javascript
+  * Express
+  * PostgreSQL
+  * Sequelize
+  * HTML
+  * CSS
+
+## Splash page 
+
+![Screen Shot 2022-03-31 at 4 00 49 PM](https://user-images.githubusercontent.com/90711743/161163310-58165d3e-f9fd-4e73-851e-063589e5f05e.png)
+
+## Create spot
+
+![Screen Shot 2022-03-31 at 4 01 40 PM](https://user-images.githubusercontent.com/90711743/161163396-dbf885ab-d335-489c-bbb3-93e2011cdcaf.png)
+
+## List of Bookings
+
+![Screen Shot 2022-03-31 at 4 02 28 PM](https://user-images.githubusercontent.com/90711743/161163484-bd16ea12-1f56-4c90-afbd-d696c68e3da4.png)
+
+## Install
 
 1. Clone this repo at: 
    - git clone git@github.com:casey-cochran/airbeanb-clone.git

@@ -1,4 +1,20 @@
-# airbeanb-clone
+## Welcome to my airbnb clone 
+   
+   This was my first solo react project in which I attempted to make a light clone of airbnb. I took most stylistic designs from airbnb
+   themselves, but also incorporated my own design choices in certain areas of the application. While browsing this application as a user
+   you are able to create a spot listing, edit that listing, view your listings, and delete that listing. As a user you can also view all 
+   listings made from other users and book a listing for an upcoming vacation. Even non-users are able to explore the application to an extent. 
+   They are able to view the home page as well as view all the listings, but if they try to create or book a listing, they will be prompted
+   to signup or login. 
+   
+   As my first solo project I faced a lot of difficulties with rendering data and structuring my redux state. Given only 1 week to accomplish
+   this project after having just learned react/redux for 2 weeks, it was definitely a challenge. It goes to show that with dedication and
+   diligence, anyone can accomplish their goal. I hope to come back to this project in the future and continue working on new features such
+   as incorporating reviews, search, and integegrating google maps API. 
+   
+## Live link
+   
+   * To experience this application immeditaly please navigate to https://airbeanb.herokuapp.com/ and sign up or login as a demo user!
 
 
 1. Clone this repo at: 

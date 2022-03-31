@@ -14,7 +14,7 @@
    
 ## Live link
    
-   * To experience this application immeditaly please navigate to https://airbeanb.herokuapp.com/ and sign up or login as a demo user!
+   * To experience this application immediately please navigate to https://airbeanb.herokuapp.com/ and sign up or login as a demo user!
 
 ## Wiki Links
 

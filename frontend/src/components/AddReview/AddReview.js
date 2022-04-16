@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addReview } from "../../store/spotReducer";
+import reviewsReducer, { addReview, loadSpotReviews } from "../../store/reviewsReducer";
 
-const AddReview = () => {
+const AddReview = ({spotId, userId}) => {
   const dispatch = useDispatch();
+const spotReviews = useSelector((state) => Object.values(state.reviewsReducer?.Reviews))
 
   const [review, setReview] = useState('');
   const [rating, setRating] = useState(0);
@@ -12,13 +13,13 @@ const AddReview = () => {
     const handleSubmit = async(e) => {
         e.preventDefault();
 
-        const review = {
+        const newReview = {
             spotId,
             userId,
             review,
             rating,
         }
-        const value = await dispatch(addReview(review)).catch(async (err) => {
+        const value = await dispatch(addReview(newReview)).catch(async (err) => {
             const errors = await err.json();
             if (errors) {
               return errors;
@@ -28,6 +29,10 @@ const AddReview = () => {
             return setErrors(value.errors);
           }
     }
+
+    useEffect(() => {
+        dispatch(loadSpotReviews(spotId))
+    },[dispatch])
 
   return (
     <>
@@ -40,17 +45,27 @@ const AddReview = () => {
         </ul>
         <label htmlFor="review">Review</label>
         <input
-            onChange={((e) => setReview)}
+            onChange={((e) => setReview(e.target.value))}
             value={review}
+            type='text'
             />
         <label htmlFor='rating'>Rating</label>
         <input
-        onChange={((e) => setRating)}
+        onChange={((e) => setRating(e.target.value))}
         required
         type='number'
         />
         <button>Add Review</button>
       </form>
+      <div>
+          {spotReviews.map((review) => {
+              return (
+                <div>
+                    {review.review},  {review.rating}
+                </div>
+              )
+          })}
+      </div>
     </>
   );
 };

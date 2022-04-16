@@ -124,7 +124,7 @@ const ViewOneSpot = () => {
             <h3>Please Login or Signup to view further Details</h3>
           )}
         </div >
-        <AddReview />
+        <AddReview spotId={spotId} userId={userId}/>
         </div>
       </div>
 

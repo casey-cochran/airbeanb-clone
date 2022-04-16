@@ -15,22 +15,9 @@ const FIND_SPOT = 'user/FIND_SPOT';
 const LOAD_ALL_SPOTS = '/api/LOAD_ALL_SPOTS';
 const ADD_IMAGE = '/spot/ADD_IMAGE';
 
-// const LOAD_REVIEWS = '/spot/LOAD_REVIEWS'
+//
 
-// export const loadReviews = (reviews) => {
-//     return ({
-//         type: LOAD_REVIEWS,
-//         reviews
-//     })
-// }
 
-// export const loadSpotReviews = (spotId) => async dispatch => {
-//     const response = await csrfFetch(`/api/spots/${spotId}/review`)
-//     const allReviews = await response.json();
-//     console.log(allReviews, ' what are these')
-//      dispatch(loadReviews(allReviews))
-//     // return allReviews
-// }
 
 
 

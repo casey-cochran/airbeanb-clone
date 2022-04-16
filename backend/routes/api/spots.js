@@ -147,22 +147,20 @@ router.post(
   })
 );
 
-// router.get('/spots/:spotId/review', asyncHandler(async(req,res) => {
-//   const {spotId} = req.params;
-//   const reviews = await Spot.findByPk(spotId, {include: Review})
-//   console.log(reviews, 'any?')
-//   res.json({reviews: reviews})
-// }))
+router.get('/spots/:spotId/review', asyncHandler(async(req,res) => {
+  const {spotId} = req.params;
+  const reviews = await Spot.findByPk(spotId, {include: Review})
+  res.json(reviews)
+}))
 
 
-// router.post('/spots/:spotId/review', requireAuth, asyncHandler(async(req,res) => {
-//   const {userId, spotId, review, rating} = req.body;
-//   const newReview = {userId,spotId, review, rating};
+router.post('/spots/:spotId/review', requireAuth, asyncHandler(async(req,res) => {
+  const {userId, spotId, review, rating} = req.body;
+  const newReview = {userId,spotId, review, rating};
+  const sendReview = await Review.create(newReview);
+  res.json(sendReview)
 
-//   const sendReview = await Review.create(newReview);
-//   res.json(sendReview)
-
-// }) )
+}) )
 
 
 module.exports = router;

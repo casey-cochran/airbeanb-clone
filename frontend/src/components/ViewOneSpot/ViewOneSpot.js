@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { viewOneSpot, loadSpotReviews } from "../../store/spotReducer";
 import { bookOneSpot } from "../../store/bookingsReducer";
 import "./ViewOneSpot.css";
+import AddReview from "../AddReview/AddReview";
 
 
 const ViewOneSpot = () => {
@@ -93,7 +94,7 @@ const ViewOneSpot = () => {
                   <label htmlFor="startDate">Start Date</label>
                   <input
                     onChange={(e) => setStartDate(e.target.value)}
-                    type={startDate}
+                    value={startDate}
                     type="date"
                     required
                     id={userId}
@@ -104,7 +105,7 @@ const ViewOneSpot = () => {
                   <label htmlFor="endDate">End Date</label>
                   <input
                     onChange={(e) => setEndDate(e.target.value)}
-                    type={endDate}
+                    value={endDate}
                     type="date"
                     required
                     id="endDate"
@@ -123,6 +124,7 @@ const ViewOneSpot = () => {
             <h3>Please Login or Signup to view further Details</h3>
           )}
         </div >
+        <AddReview />
         </div>
       </div>
 

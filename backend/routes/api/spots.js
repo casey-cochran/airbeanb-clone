@@ -159,8 +159,22 @@ router.post('/spots/:spotId/review', requireAuth, asyncHandler(async(req,res) =>
   const newReview = {userId,spotId, review, rating};
   const sendReview = await Review.create(newReview);
   res.json(sendReview)
+}))
 
-}) )
+router.patch('/spots/:spotId/review/:reviewId/edit', requireAuth, asyncHandler(async(req,res) => {
+  const {review, rating, spotId, userId, reviewId} = req.body;
+  const editReview = {review, rating, spotId, userId}
+  const userReview = await Review.findByPk(reviewId);
+  await userReview.update(editReview)
+  res.json(userReview)
+}))
+
+router.delete('/spots/:spotId/review/:reviewId', requireAuth, asyncHandler(async(req,res) => {
+  const {reviewId} = req.params;
+  const review = await Review.findByPk(reviewId);
+  await review.destroy();
+  res.json({msg: 'success'});
+}))
 
 
 module.exports = router;

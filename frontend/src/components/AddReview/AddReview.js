@@ -2,7 +2,7 @@ import {  useState } from "react";
 import { useDispatch } from "react-redux";
 import { addReview } from "../../store/reviewsReducer";
 
-const AddReview = ({spotId, userId}) => {
+const AddReview = ({spotId, userId, closeModal}) => {
   const dispatch = useDispatch();
 
 
@@ -28,6 +28,7 @@ const AddReview = ({spotId, userId}) => {
           if (value.errors) {
             return setErrors(value.errors);
           }
+          closeModal();
     }
 
   return (

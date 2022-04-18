@@ -4,6 +4,28 @@ import { csrfFetch } from "./csrf";
 const ADD_REVIEW = '/spot/ADD_REVIEW';
 const LOAD_REVIEWS = '/spot/LOAD_REVIEWS';
 const DELETE_REVIEW = '/spot/DELETE_REVIEW';
+const EDIT_REVIEW = '/spot/EDIT_REVIEW';
+
+export const editReview = (review) => {
+    return ({
+        type: EDIT_REVIEW,
+        review
+    })
+}
+
+export const editOneReivew = (review) => async dispatch => {
+    const response = await csrfFetch(`/api/spots/${review.spotId}/review/${review.id}/edit`, {
+        method: 'PATCH',
+        body: JSON.stringify(
+            review
+        )
+    })
+    const editedReview = await response.json();
+    if(response.ok){
+        dispatch(editReview(editedReview))
+    }
+    return editedReview;
+}
 
 export const deleteReview = (reviewId) => {
     return ({
@@ -75,6 +97,10 @@ const reviewsReducer = (state = initialState, action) => {
         case DELETE_REVIEW:
             newState = {...state}
             delete newState.Reviews[action.reviewId]
+            return newState;
+        case EDIT_REVIEW:
+            newState = {...state}
+            newState.Reviews[action.review.id] = action.review;
             return newState;
         default:
             return state;

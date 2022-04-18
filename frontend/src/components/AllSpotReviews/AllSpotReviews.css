@@ -23,10 +23,8 @@
     width: 500px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    /* border: 1px solid black; */
     align-items: center;
-    overflow: auto;
+    overflow-y: auto;
 }
 
 .reviews-list{

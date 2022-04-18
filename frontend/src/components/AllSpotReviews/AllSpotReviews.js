@@ -6,14 +6,17 @@ import AddReview from "../AddReview/AddReview";
 import Modal from "react-modal";
 import {BsTrash} from 'react-icons/bs'
 import {FiEdit2} from 'react-icons/fi'
+import EditReview from "../EditReview/EditReview";
 
 const AllSpotReviews = ({ spotId, userId }) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
-  const spotReviews = useSelector((state) =>
+  const spotReviewsArr = useSelector((state) =>
     Object.values(state.reviewsReducer?.Reviews)
   );
+  const spotReviews = spotReviewsArr?.reverse()
   const [modalIsOpen, setIsOpen] = useState(false);
+  const [openEdit, setOpenEdit] = useState(false);
 
   const customStyles = {
     content: {
@@ -32,6 +35,13 @@ const AllSpotReviews = ({ spotId, userId }) => {
 
   function closeModal() {
     setIsOpen(false);
+  }
+
+  const openEditModal = () => {
+      setOpenEdit(true)
+  }
+  const closeEditModal = () => {
+      setOpenEdit(false)
   }
 
   useEffect(() => {
@@ -55,7 +65,7 @@ const AllSpotReviews = ({ spotId, userId }) => {
                 {user?.id === review.userId && (
                   <div>
                     <BsTrash onClick={() => dispatch(deleteOneReview(review))}/>
-                    {/* <FiEdit2 onClick={(() =>)}/> */}
+                    <FiEdit2 onClick={(() => openEditModal())}/>
 
                   </div>
                 )}
@@ -65,12 +75,18 @@ const AllSpotReviews = ({ spotId, userId }) => {
         </div>
         <Modal
           isOpen={modalIsOpen}
-          // onAfterOpen={afterOpenModal}
           onRequestClose={closeModal}
           style={customStyles}
         >
-          <AddReview spotId={spotId} userId={userId} openModal={openModal} />
+          <AddReview spotId={spotId} userId={userId} openModal={openModal} closeModal={closeModal} />
         </Modal>
+        <Modal
+            isOpen={openEdit}
+            onRequestClose={closeEditModal}
+            style={customStyles}
+            >
+                <EditReview closeEditModal={closeEditModal} />
+            </Modal>
       </div>
     </div>
   );

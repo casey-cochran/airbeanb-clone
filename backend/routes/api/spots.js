@@ -161,7 +161,22 @@ router.post('/spots/:spotId/review', requireAuth, asyncHandler(async(req,res) =>
   res.json(sendReview)
 }))
 
-router.patch('/spots/:spotId/review/:reviewId/edit', requireAuth, asyncHandler(async(req,res) => {
+const validateReviewEdit = [
+  check("review")
+    .exists({checkFalsy: true})
+    .trim()
+    .isLength({min: 1, max: 500})
+    .withMessage("Must provide a review between 1 and 500 characters"),
+  check('rating')
+    .exists({checkFalsy: true})
+    .isInt({min: 0, max: 5})
+    .withMessage('Rating must be between 0 and 5'),
+    handleValidationErrors
+
+]
+
+
+router.patch('/spots/:spotId/review/:reviewId/edit', requireAuth, validateReviewEdit, asyncHandler(async(req,res) => {
   const {review, rating, spotId, userId, reviewId} = req.body;
   const editReview = {review, rating, spotId, userId}
   const userReview = await Review.findByPk(reviewId);

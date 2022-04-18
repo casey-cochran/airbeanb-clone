@@ -169,9 +169,12 @@ router.patch('/spots/:spotId/review/:reviewId/edit', requireAuth, asyncHandler(a
   res.json(userReview)
 }))
 
-router.delete('/spots/:spotId/review/:reviewId', requireAuth, asyncHandler(async(req,res) => {
+
+router.delete('/spots/:spotId/review/:reviewId/delete', requireAuth, asyncHandler(async(req,res) => {
+  console.log('\n \n   where am i \n \n ')
   const {reviewId} = req.params;
-  const review = await Review.findByPk(reviewId);
+  console.log(reviewId, 'whats the id \n \n ')
+  const review = await Review.findByPk(+reviewId);
   await review.destroy();
   res.json({msg: 'success'});
 }))

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import reviewsReducer, { addReview, loadSpotReviews } from "../../store/reviewsReducer";
+import reviewsReducer, { addReview, loadSpotReviews, deleteOneReview } from "../../store/reviewsReducer";
 
 const AddReview = ({spotId, userId}) => {
   const dispatch = useDispatch();
@@ -58,11 +58,15 @@ const spotReviews = useSelector((state) => Object.values(state.reviewsReducer?.R
         <button>Add Review</button>
       </form>
       <div>
-          {spotReviews.map((review) => {
+          {spotReviews.map((review, i) => {
               return (
+                  <>
                 <div>
                     {review.review},  {review.rating}
                 </div>
+                <button onClick={(() => dispatch(deleteOneReview(review)))}>delete</button>
+                <button>edit</button>
+                </>
               )
           })}
       </div>

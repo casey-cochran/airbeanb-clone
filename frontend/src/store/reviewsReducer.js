@@ -13,10 +13,10 @@ export const deleteReview = (reviewId) => {
 }
 
 export const deleteOneReview = (review) => async dispatch => {
-    console.log(review, ' what is this  ?')
-    const response = await csrfFetch(`/api/spots/${review.spotId}/review/${review.id}/delete`);
+    const response = await csrfFetch(`/api/spots/${review.spotId}/review/${review.id}/delete`, {
+        method: 'DELETE'
+    });
     const deleted = await response.json();
-    console.log(deleted, ' wahts coming back ')
     dispatch(deleteReview(review.id))
 }
 

@@ -17,6 +17,7 @@ const AllSpotReviews = ({ spotId, userId }) => {
   const spotReviews = spotReviewsArr?.reverse()
   const [modalIsOpen, setIsOpen] = useState(false);
   const [openEdit, setOpenEdit] = useState(false);
+  const [modalReview, setModalReview] = useState(null);
 
   const customStyles = {
     content: {
@@ -65,7 +66,11 @@ const AllSpotReviews = ({ spotId, userId }) => {
                 {user?.id === review.userId && (
                   <div>
                     <BsTrash onClick={() => dispatch(deleteOneReview(review))}/>
-                    <FiEdit2 onClick={(() => openEditModal())}/>
+                    <FiEdit2 onClick={(() =>{
+                        openEditModal()
+                        setModalReview(review)})
+                    }
+                        />
 
                   </div>
                 )}
@@ -84,8 +89,9 @@ const AllSpotReviews = ({ spotId, userId }) => {
             isOpen={openEdit}
             onRequestClose={closeEditModal}
             style={customStyles}
+
             >
-                <EditReview closeEditModal={closeEditModal} />
+                <EditReview modalReview={modalReview} closeEditModal={closeEditModal} spotId={spotId} userId={userId}  />
             </Modal>
       </div>
     </div>

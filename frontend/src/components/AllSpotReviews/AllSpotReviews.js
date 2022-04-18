@@ -1,77 +1,79 @@
-import './AllSpotReviews.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
-import { loadSpotReviews, deleteOneReview } from '../../store/reviewsReducer';
-import AddReview from '../AddReview/AddReview';
-import Modal from 'react-modal';
+import "./AllSpotReviews.css";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { loadSpotReviews, deleteOneReview } from "../../store/reviewsReducer";
+import AddReview from "../AddReview/AddReview";
+import Modal from "react-modal";
+import {BsTrash} from 'react-icons/bs'
+import {FiEdit2} from 'react-icons/fi'
 
+const AllSpotReviews = ({ spotId, userId }) => {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.session.user);
+  const spotReviews = useSelector((state) =>
+    Object.values(state.reviewsReducer?.Reviews)
+  );
+  const [modalIsOpen, setIsOpen] = useState(false);
 
+  const customStyles = {
+    content: {
+      top: "50%",
+      left: "50%",
+      right: "auto",
+      bottom: "auto",
+      marginRight: "-50%",
+      transform: "translate(-50%, -50%)",
+    },
+  };
 
-const AllSpotReviews = ({spotId, userId}) => {
-    const dispatch = useDispatch();
-    const user = useSelector((state) => state.session.user)
-    const spotReviews = useSelector((state) => Object.values(state.reviewsReducer?.Reviews))
-    const [modalIsOpen, setIsOpen] = useState(false);
+  function openModal() {
+    setIsOpen(true);
+  }
 
-    const customStyles = {
-        content: {
-          top: '50%',
-          left: '50%',
-          right: 'auto',
-          bottom: 'auto',
-          marginRight: '-50%',
-          transform: 'translate(-50%, -50%)',
-        },
-      };
+  function closeModal() {
+    setIsOpen(false);
+  }
 
-      function openModal() {
-        setIsOpen(true);
-      }
+  useEffect(() => {
+    dispatch(loadSpotReviews(spotId));
+  }, [dispatch]);
 
-      function closeModal() {
-        setIsOpen(false);
-      }
-
-
-
-    useEffect(() => {
-        dispatch(loadSpotReviews(spotId))
-    },[dispatch])
-
-
-    return (
-        <>
-            <div>
-                <h2>Add review here</h2>
-                <button onClick={openModal}>Add Review</button>
-            </div>
-            <div>
+  return (
+    <div className="all-spot-reviews">
+      <div>
+        <div className="add-review-title">
+          <p>Reviews by guests</p>
+          <button onClick={openModal}>Add Review</button>
+        </div>
+        <div className="reviews-list-cont">
           {spotReviews.map((review, i) => {
-              return (
-                  <>
-                <div>
-                    {review.review},  {review.rating}
+            return (
+              <div key={i} className='reviews-list'>
+                <div >
+                  {review.review}, {review.rating}
                 </div>
-                {user?.id === review.userId && <>
-                <button onClick={(() => dispatch(deleteOneReview(review)))}>delete</button>
-                <button>edit</button>
-         </> }
-                </>
-              )
+                {user?.id === review.userId && (
+                  <div>
+                    <BsTrash onClick={() => dispatch(deleteOneReview(review))}/>
+                    {/* <FiEdit2 onClick={(() =>)}/> */}
+
+                  </div>
+                )}
+              </div>
+            );
           })}
-      </div>
-      <Modal
+        </div>
+        <Modal
           isOpen={modalIsOpen}
           // onAfterOpen={afterOpenModal}
           onRequestClose={closeModal}
           style={customStyles}
-          >
+        >
           <AddReview spotId={spotId} userId={userId} openModal={openModal} />
-
-          </Modal>
-        </>
-    )
-}
-
+        </Modal>
+      </div>
+    </div>
+  );
+};
 
 export default AllSpotReviews;

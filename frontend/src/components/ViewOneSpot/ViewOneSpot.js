@@ -51,8 +51,8 @@ const ViewOneSpot = () => {
   return (
     <div id="view-one-spot-cont-top">
       <div>
-        <div className="border-testing">
-          <div className="testingthis">
+        <div className="one-spot-cont">
+          <div className="spot-reviews-cont">
             <div className="view-one-spot">
               <p className="one-spot-name title">{spot?.name}</p>
               <div>
@@ -132,8 +132,6 @@ const ViewOneSpot = () => {
               <AllSpotReviews spotId={spotId} userId={userId} />
             </div>
           </div>
-
-
         </div>
       </div>
     </div>

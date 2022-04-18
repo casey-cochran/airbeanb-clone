@@ -18,11 +18,15 @@ const AllSpotReviews = ({ spotId, userId }) => {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [openEdit, setOpenEdit] = useState(false);
   const [modalReview, setModalReview] = useState(null);
+  let rate = 0;
+  spotReviewsArr?.forEach((rev) => rate += rev.rating)
 
   const customStyles = {
     content: {
-      top: "50%",
+      top: "56%",
       left: "50%",
+      height: '500px',
+      width: '500px',
       right: "auto",
       bottom: "auto",
       marginRight: "-50%",
@@ -49,24 +53,29 @@ const AllSpotReviews = ({ spotId, userId }) => {
     dispatch(loadSpotReviews(spotId));
   }, [dispatch]);
 
+
   return (
     <div className="all-spot-reviews">
       <div>
         <div className="add-review-title">
-          <p>Reviews by guests</p>
-          <button onClick={openModal}>Add Review</button>
+          <p className="rating">Reviews by guests </p>
+          <p className="rating num">
+          {(rate / spotReviewsArr?.length).toFixed(1)} stars
+
+          </p>
+          <button className="review-btn wid" onClick={openModal}>Add Review</button>
         </div>
         <div className="reviews-list-cont">
           {spotReviews.map((review, i) => {
             return (
               <div key={i} className='reviews-list'>
                 <div >
-                  {review.review}, {review.rating}
+                  {review.review}
                 </div>
                 {user?.id === review.userId && (
-                  <div>
-                    <BsTrash onClick={() => dispatch(deleteOneReview(review))}/>
-                    <FiEdit2 onClick={(() =>{
+                  <div className="edit-delete-icons">
+                    <BsTrash className="react-icons" onClick={() => dispatch(deleteOneReview(review))}/>
+                    <FiEdit2 className="react-icons" onClick={(() =>{
                         openEditModal()
                         setModalReview(review)})
                     }

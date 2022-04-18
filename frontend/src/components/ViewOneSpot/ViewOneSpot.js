@@ -116,7 +116,7 @@ const ViewOneSpot = () => {
                         className="create-spot-input reserve"
                       />
                     </div>
-                    <button className="create-spot-btn listing" type="submit">
+                    <button className="review-btn wid res" type="submit">
                       Reserve
                     </button>
                     <Link className="back-home" to="/spots">

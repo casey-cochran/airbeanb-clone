@@ -14,7 +14,6 @@ export const editReview = (review) => {
 }
 
 export const editOneReivew = (review) => async dispatch => {
-    console.log(review, 'what is review in thunk ')
     const response = await csrfFetch(`/api/spots/${review.spotId}/review/${review.id}/edit`, {
         method: 'PATCH',
         body: JSON.stringify(

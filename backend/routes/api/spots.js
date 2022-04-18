@@ -153,8 +153,17 @@ router.get('/spots/:spotId/review', asyncHandler(async(req,res) => {
   res.json(reviews)
 }))
 
+const validateReview = [
+  check("review")
+    .exists({checkFalsy: true})
+    .trim()
+    .isLength({min: 1, max: 500})
+    .withMessage("Must provide a review between 1 and 500 characters"),
+    handleValidationErrors
+]
 
-router.post('/spots/:spotId/review', requireAuth, asyncHandler(async(req,res) => {
+
+router.post('/spots/:spotId/review', requireAuth, validateReview, asyncHandler(async(req,res) => {
   const {userId, spotId, review, rating} = req.body;
   const newReview = {userId,spotId, review, rating};
   const sendReview = await Review.create(newReview);
@@ -169,7 +178,7 @@ const validateReviewEdit = [
     .withMessage("Must provide a review between 1 and 500 characters"),
   check('rating')
     .exists({checkFalsy: true})
-    .isInt({min: 0, max: 5})
+    // .isInt({min: 0, max: 5})
     .withMessage('Rating must be between 0 and 5'),
     handleValidationErrors
 

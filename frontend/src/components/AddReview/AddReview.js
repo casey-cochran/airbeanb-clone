@@ -1,13 +1,19 @@
 import {  useState } from "react";
 import { useDispatch } from "react-redux";
 import { addReview } from "../../store/reviewsReducer";
+import './AddReview.css';
+import { Rating } from 'react-simple-star-rating'
+
 
 const AddReview = ({spotId, userId, closeModal}) => {
   const dispatch = useDispatch();
 
+  const [rating, setRating] = useState(0)
+  const handleRating = (rate) => {
+    setRating(rate / 20)
+  }
 
   const [review, setReview] = useState('');
-  const [rating, setRating] = useState(0);
     const [errors, setErrors] = useState([]);
 
     const handleSubmit = async(e) => {
@@ -33,26 +39,22 @@ const AddReview = ({spotId, userId, closeModal}) => {
 
   return (
     <>
-      <h2>hello from add review</h2>
-      <form onSubmit={handleSubmit}>
+
+      <form onSubmit={handleSubmit} className='add-review-form'>
         <ul>
           {errors.map((error, index) => (
             <li key={index}>{error}</li>
           ))}
         </ul>
-        <label htmlFor="review">Review</label>
-        <input
+        <textarea
             onChange={((e) => setReview(e.target.value))}
             value={review}
             type='text'
+            placeholder="Write a review"
             />
         <label htmlFor='rating'>Rating</label>
-        <input
-        onChange={((e) => setRating(e.target.value))}
-        required
-        type='number'
-        />
-        <button>Add Review</button>
+        <Rating onClick={handleRating} ratingValue={rating} /* Available Props */ />
+        <button className="review-btn">Add Review</button>
       </form>
     </>
   );

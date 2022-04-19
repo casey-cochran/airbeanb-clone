@@ -1,7 +1,7 @@
 /* TODO Add site wide styles */
 body, html{
     font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
-    overflow-x: hidden;
+
 }
 
 input:focus{
@@ -15,4 +15,9 @@ textarea:focus{
 
 textarea[placeholder]{
     font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+}
+
+body{
+    max-width: 100vw;
+  overflow-x: hidden;
 }

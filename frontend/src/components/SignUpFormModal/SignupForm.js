@@ -53,11 +53,11 @@ const SignupFormPage = () => {
         <div id="welcome">
           <label>Welcome to airbeanb !</label>
         </div>
-        <ul>
+        <div className="add-review-error">
           {errors.map((error, index) => (
-            <li key={index}>{error}</li>
+            <div key={index}>{error}</div>
           ))}
-        </ul>
+        </div>
         <div className="credentials">
           <label htmlFor="email">Email</label>
           <input

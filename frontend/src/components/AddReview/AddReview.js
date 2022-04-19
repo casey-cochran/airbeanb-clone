@@ -2,7 +2,8 @@ import {  useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addReview } from "../../store/reviewsReducer";
 import './AddReview.css';
-import { Rating } from 'react-simple-star-rating'
+import { Rating } from 'react-simple-star-rating';
+import { loadSpotReviews } from "../../store/reviewsReducer";
 
 
 const AddReview = ({spotId, userId, closeModal}) => {
@@ -34,6 +35,7 @@ const AddReview = ({spotId, userId, closeModal}) => {
             return setErrors(value.errors);
           }
           closeModal();
+          dispatch(loadSpotReviews(spotId))
     }
 
   return (

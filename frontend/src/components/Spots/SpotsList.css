@@ -2,7 +2,8 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 30px;
+    padding: 20px;
     width: 75%;
     margin: auto;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;

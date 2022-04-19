@@ -1,0 +1,53 @@
+
+.add-review-form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.add-review-form > textarea{
+    height: 300px;
+}
+
+.review-btn{
+    border:none;
+    background-color: #FF385C;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 10px;
+}
+
+.review-btn:hover{
+    background-color: #fd2149;
+}
+
+.review-btn.wid{
+    width: 250px;
+    margin-bottom: 15px;
+}
+
+textarea[placeholder]{
+    font-size: 18px;
+    padding: 15px;
+}
+
+textarea:focus{
+    outline: none;
+    font-size: 18px;
+    padding: 15px;
+}
+
+
+.add-review-error{
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    position: relative;
+    padding: 0.75rem 1.25rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    box-sizing: border-box;
+}

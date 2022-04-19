@@ -14,41 +14,13 @@ const UPDATE_SPOT = 'user/UPDATE_SPOT';
 const FIND_SPOT = 'user/FIND_SPOT';
 const LOAD_ALL_SPOTS = '/api/LOAD_ALL_SPOTS';
 const ADD_IMAGE = '/spot/ADD_IMAGE';
-// const ADD_REVIEW = '/spot/ADD_REVIEW';
-// const LOAD_REVIEWS = '/spot/LOAD_REVIEWS'
 
-// export const loadReviews = (reviews) => {
-//     return ({
-//         type: LOAD_REVIEWS,
-//         reviews
-//     })
-// }
-
-// export const loadSpotReviews = (spotId) => async dispatch => {
-//     const response = await csrfFetch(`/api/spots/${spotId}/review`)
-//     const allReviews = await response.json();
-//     console.log(allReviews, ' what are these')
-//      dispatch(loadReviews(allReviews))
-//     // return allReviews
-// }
+//
 
 
-// export const writeReview = (review) => {
-//     return ({
-//         type: ADD_REVIEW,
-//         review
-//     })
-// }
 
-// export const addReview = (reviewData) => async dispatch => {
-//     const response = await csrfFetch(`/api/spots/${reviewData.spotId}/review`, {
-//         method: 'POST',
-//         body: JSON.stringify(reviewData)
-//     })
-//     const review = await response.json();
-//     dispatch(writeReview(review))
-//     return review;
-// }
+
+
 // const DELETE_IMAGE = '/spot/DELETE_IMAGE';
 
 

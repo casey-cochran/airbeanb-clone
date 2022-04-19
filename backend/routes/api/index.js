@@ -5,10 +5,12 @@ const {User} = require('../../db/models');
 const sessionRouter = require('./session');
 const usersRouter = require('./users');
 const spotsRouter = require('./spots');
+const searchRouter = require('./search');
 
 router.use('/session', sessionRouter);
 router.use('/users', usersRouter);
 router.use('/', spotsRouter);
+router.use('/search', searchRouter)
 
 
 

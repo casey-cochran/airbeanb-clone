@@ -41,7 +41,7 @@ const UserBookings = () => {
                   <div className="booking-det-txt">{booking?.Spot?.name}</div>
                   <div className="booking-det-txt">{booking?.Spot?.address}, {booking?.Spot?.state}</div>
                   <div className="booking-det-txt">{booking?.startDate}, {booking?.endDate}</div>
-                  <div className="booking-det-txt">${booking?.Spot?.price}</div>
+                  <div className="booking-det-txt">${booking?.Spot?.price} a night</div>
                   <div className="booking-det-txt">Rooms: {booking?.Spot?.room}, Beds: {booking?.Spot?.bed}</div>
                   <div>
                   <Link className="bookings-btn link" to="/spots">Return to Spots List</Link>
@@ -61,7 +61,7 @@ const UserBookings = () => {
           <div className="spots-empty booking">
             <h2 className="empty-spot-text">Your next adventure awaits </h2>
             <Link to="/spots" className="create-spot-btn empty booking">
-              Book your next Vacation here 
+              Book your next Vacation here
             </Link>{" "}
           </div>{" "}
         </div>

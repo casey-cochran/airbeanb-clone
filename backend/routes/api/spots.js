@@ -2,7 +2,7 @@ const express = require("express");
 const asyncHandler = require("express-async-handler");
 const { check } = require("express-validator");
 const { handleValidationErrors } = require("../../utils/validation");
-const { Spot, Image, Booking, Review } = require("../../db/models");
+const { Spot, Image, Booking, Review, User } = require("../../db/models");
 const {requireAuth} = require('../../utils/auth')
 
 const router = express.Router();
@@ -147,22 +147,63 @@ router.post(
   })
 );
 
-// router.get('/spots/:spotId/review', asyncHandler(async(req,res) => {
-//   const {spotId} = req.params;
-//   const reviews = await Spot.findByPk(spotId, {include: Review})
-//   console.log(reviews, 'any?')
-//   res.json({reviews: reviews})
-// }))
+router.get('/spots/:spotId/review', asyncHandler(async(req,res) => {
+  const {spotId} = req.params;
+  const reviews = await Spot.findByPk(spotId, {include: [{model: Review, include: User}, ]})
+  res.json(reviews)
+}))
+
+const validateReview = [
+  check("review")
+    .exists({checkFalsy: true})
+    .trim()
+    .isLength({min: 1, max: 500})
+    .withMessage("Must provide a review between 1 and 500 characters"),
+    check('rating')
+    .exists({checkFalsy: true})
+    // .isInt({min: 0, max: 5})
+    .withMessage('Rating must be between 1 and 5'),
+    handleValidationErrors
+]
 
 
-// router.post('/spots/:spotId/review', requireAuth, asyncHandler(async(req,res) => {
-//   const {userId, spotId, review, rating} = req.body;
-//   const newReview = {userId,spotId, review, rating};
+router.post('/spots/:spotId/review', requireAuth, validateReview, asyncHandler(async(req,res) => {
+  const {userId, spotId, review, rating} = req.body;
+  const newReview = {userId,spotId, review, rating};
+  const sendReview = await Review.create(newReview);
+  res.json(sendReview)
+}))
 
-//   const sendReview = await Review.create(newReview);
-//   res.json(sendReview)
+const validateReviewEdit = [
+  check("review")
+    .exists({checkFalsy: true})
+    .trim()
+    .isLength({min: 1, max: 500})
+    .withMessage("Must provide a review between 1 and 500 characters"),
+  check('rating')
+    .exists({checkFalsy: true})
+    // .isInt({min: 0, max: 5})
+    .withMessage('Rating must be between 1 and 5'),
+    handleValidationErrors
 
-// }) )
+]
+
+
+router.patch('/spots/:spotId/review/:reviewId/edit', requireAuth, validateReviewEdit, asyncHandler(async(req,res) => {
+  const {review, rating, spotId, userId, reviewId} = req.body;
+  const editReview = {review, rating, spotId, userId}
+  const userReview = await Review.findByPk(+reviewId);
+  await userReview.update(editReview)
+  res.json(userReview)
+}))
+
+
+router.delete('/spots/:spotId/review/:reviewId/delete', requireAuth, asyncHandler(async(req,res) => {
+  const {reviewId} = req.params;
+  const review = await Review.findByPk(+reviewId);
+  await review.destroy();
+  res.json({msg: 'success'});
+}))
 
 
 module.exports = router;

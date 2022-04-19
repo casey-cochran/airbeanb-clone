@@ -5,6 +5,7 @@ import ProfileButton from "./ProfileButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignUpFormModal";
 import "./Navigation.css";
+import Search from "../Search/Search.js";
 
 const Navigation = ({ isLoaded }) => {
   const sessionUser = useSelector((state) => state.session.user);
@@ -72,6 +73,7 @@ const Navigation = ({ isLoaded }) => {
           <p>airbeanb</p>
           </NavLink>
         </div>
+        <Search />
         <div id='please-work'>{isLoaded && sessionLinks}</div>
       </div>
       {/* <div className="home-page-container">

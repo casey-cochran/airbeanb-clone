@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    gap: 300px;
+    gap: 200px;
     padding-top: 40px;
     margin-bottom: 0;
     padding-bottom: 40px;
@@ -198,3 +198,5 @@ link:visited{
     display: flex;
     flex-direction: column;
 }
+
+

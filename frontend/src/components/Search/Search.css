@@ -1,0 +1,20 @@
+.search-input{
+    width: 300px;
+    border-radius: 15px;
+    padding: 5px;
+    position: relative;
+}
+
+.search-cont{
+    width: 300px;
+    height: 150px;
+    border-radius: 15px;
+    position: absolute;
+    background-color: white;
+    overflow: auto;
+}
+
+.search-results-list{
+    padding: 10px;
+
+}

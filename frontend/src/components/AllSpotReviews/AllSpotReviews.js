@@ -60,17 +60,21 @@ const AllSpotReviews = ({ spotId, userId }) => {
         <div className="add-review-title">
           <p className="rating">Reviews by guests </p>
           <p className="rating num">
-          {(rate / spotReviewsArr?.length).toFixed(1)} stars
+          {spotReviewsArr?.length > 0 ? (rate / spotReviewsArr?.length).toFixed(1) : 0} stars
 
           </p>
+          {user &&
           <button className="review-btn wid" onClick={openModal}>Add Review</button>
+          }
         </div>
         <div className="reviews-list-cont">
           {spotReviews.map((review, i) => {
             return (
               <div key={i} className='reviews-list'>
+                <div className="user-review">{review?.User?.username}</div>
                 <div >
                   {review.review}
+
                 </div>
                 {user?.id === review.userId && (
                   <div className="edit-delete-icons">
@@ -80,7 +84,6 @@ const AllSpotReviews = ({ spotId, userId }) => {
                         setModalReview(review)})
                     }
                         />
-
                   </div>
                 )}
               </div>

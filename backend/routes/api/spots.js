@@ -2,7 +2,7 @@ const express = require("express");
 const asyncHandler = require("express-async-handler");
 const { check } = require("express-validator");
 const { handleValidationErrors } = require("../../utils/validation");
-const { Spot, Image, Booking, Review } = require("../../db/models");
+const { Spot, Image, Booking, Review, User } = require("../../db/models");
 const {requireAuth} = require('../../utils/auth')
 
 const router = express.Router();
@@ -149,7 +149,7 @@ router.post(
 
 router.get('/spots/:spotId/review', asyncHandler(async(req,res) => {
   const {spotId} = req.params;
-  const reviews = await Spot.findByPk(spotId, {include: Review})
+  const reviews = await Spot.findByPk(spotId, {include: [{model: Review, include: User}, ]})
   res.json(reviews)
 }))
 
@@ -159,6 +159,10 @@ const validateReview = [
     .trim()
     .isLength({min: 1, max: 500})
     .withMessage("Must provide a review between 1 and 500 characters"),
+    check('rating')
+    .exists({checkFalsy: true})
+    // .isInt({min: 0, max: 5})
+    .withMessage('Rating must be between 1 and 5'),
     handleValidationErrors
 ]
 
@@ -179,7 +183,7 @@ const validateReviewEdit = [
   check('rating')
     .exists({checkFalsy: true})
     // .isInt({min: 0, max: 5})
-    .withMessage('Rating must be between 0 and 5'),
+    .withMessage('Rating must be between 1 and 5'),
     handleValidationErrors
 
 ]

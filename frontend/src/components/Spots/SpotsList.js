@@ -16,6 +16,8 @@ const SpotsList = () => {
     dispatch(loadAllSpots());
   }, [dispatch]);
 
+
+
   return (
     <>
       <div id="spots-list-cont">

@@ -125,7 +125,7 @@ const ViewOneSpot = () => {
                   </form>
                 </div>
               ) : (
-                <h3>Please Login or Signup to view further Details</h3>
+                <h3 style={{paddingLeft: '30px'}}>Please Login or Signup to view further Details</h3>
               )}
             </div>
             <div className="all-reviews">

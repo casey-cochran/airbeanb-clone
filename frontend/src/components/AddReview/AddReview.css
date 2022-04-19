@@ -29,8 +29,25 @@
     margin-bottom: 15px;
 }
 
+textarea[placeholder]{
+    font-size: 18px;
+    padding: 15px;
+}
+
 textarea:focus{
     outline: none;
     font-size: 18px;
     padding: 15px;
+}
+
+
+.add-review-error{
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    position: relative;
+    padding: 0.75rem 1.25rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    box-sizing: border-box;
 }

@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, Redirect, Link } from "react-router-dom";
-import { restoreUser } from "../../store/session";
 import { createUserSpot } from "../../store/spotReducer";
 import "./CreateUserSpot.css";
 
@@ -88,7 +87,6 @@ const CreateUserSpots = () => {
               type="text"
               id="name"
               placeholder="Spot Name"
-              className="create-spot-input"
             />
           </div>
           <div className="sep-text">
@@ -101,7 +99,6 @@ const CreateUserSpots = () => {
               required
               type="text"
               id="address"
-              className="create-spot-input"
             />
           </div>
           <div className="sep-text">
@@ -114,7 +111,6 @@ const CreateUserSpots = () => {
               required
               type="text"
               id="city"
-              className="create-spot-input"
             />
           </div>
           <div className="sep-text">
@@ -127,7 +123,6 @@ const CreateUserSpots = () => {
               placeholder="State"
               type="text"
               id="state"
-              className="create-spot-input"
             />
           </div>
           <div className="sep-text">
@@ -140,7 +135,6 @@ const CreateUserSpots = () => {
               placeholder="Zip Code"
               type="text"
               id="zipcode"
-              className="create-spot-input"
             />
           </div>
           <div className="sep-text">
@@ -153,7 +147,6 @@ const CreateUserSpots = () => {
               required
               type="text"
               id="country"
-              className="create-spot-input"
             />
           </div>
           <div className="sep-text">
@@ -166,7 +159,6 @@ const CreateUserSpots = () => {
               required
               type="text"
               id="price"
-              className="create-spot-input"
             />
           </div>
           <div className="sep-text bedroom">
@@ -187,7 +179,7 @@ const CreateUserSpots = () => {
               className="create-spot-input bedroom"
             />
           </div>
-          <div className="edit-cancel bm">
+          <div className="edit-cancel bm cr">
             <button className="create-spot-btn sub" type="submit">
               Host your Spot
             </button>

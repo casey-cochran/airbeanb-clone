@@ -25,7 +25,11 @@ const Search = () => {
 
 
   useEffect(() => {
-    dispatch(searchSpots(searchVal));
+    if(searchVal.length){
+      dispatch(searchSpots(searchVal));
+      setShowMenu(true)
+    }
+    if(!searchVal.length) setShowMenu(false)
   }, [searchVal]);
 
   return (
@@ -36,6 +40,7 @@ const Search = () => {
     //   onBlur={(() => setOpen(false))}
         className="search-input"
         type="search"
+        autoFocus
         onChange={(e) => setSearchVal(e.target.value)}
         value={searchVal}
       />
@@ -43,7 +48,7 @@ const Search = () => {
       <div className="search-cont">
           {searchResults.length > 0 ? searchResults?.map((ele, i) => {
               return (
-                  <NavLink className="spot-links" to={`/spots/${ele.id}`}>
+                  <NavLink onClick={(() => setSearchVal(''))} className="spot-links" to={`/spots/${ele.id}`}>
                   <div onClick={(() => dispatch(viewOneSpot(ele.id)))} className="search-results-list" key={i}>
                   {ele.name}
                       </div>

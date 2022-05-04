@@ -29,9 +29,17 @@ const Navigation = ({ isLoaded }) => {
   }, [])
 
   const toggleMenu = () => {
-      setMenu(!menu)
+      setMenu(true)
+  }
+  const closeMenu = () => {
+    setMenu(false)
   }
 
+  useEffect(() => {
+    if(!menu) return;
+    document.addEventListener('click', closeMenu);
+    return () => document.removeEventListener('click', closeMenu)
+  },[menu])
 
   let sessionLinks;
   if (sessionUser) {
@@ -54,7 +62,7 @@ const Navigation = ({ isLoaded }) => {
                   <LoginFormModal />
                 </div>
                 <div>
-                  <SignupFormModal />
+                  <SignupFormModal closeMenu={closeMenu}/>
                 </div>
               </div>
             </div>

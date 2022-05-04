@@ -1,17 +1,23 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Modal } from '../../context/Modal';
 import SignupFormPage from './SignupForm'
 import { useDispatch } from 'react-redux';
 import { login } from '../../store/session';
 
-const SignupFormModal = () => {
+const SignupFormModal = ({setMenu, closeMenu}) => {
   const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
+
+  const openModal = (e) => {
+    e.stopPropagation();
+    setShowModal(true)
+  }
+
 
   return (
     <>
       <div className='menu-btn-div'>
-        <button className='btn primary form' id='login-btn' onClick={() => setShowModal(true)}>Sign Up</button>
+        <button className='btn primary form' id='login-btn' onClick={openModal}>Sign Up</button>
       </div>
        <div className='menu-btn-div'><button onClick={(() => dispatch(login({credential: 'demo@user.io', password: 'password'})))} className='btn primary form' >Demo User</button></div>
       {showModal && (

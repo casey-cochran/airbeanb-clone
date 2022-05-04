@@ -10,6 +10,7 @@ import Search from "../Search/Search.js";
 const Navigation = ({ isLoaded }) => {
   const sessionUser = useSelector((state) => state.session.user);
   const [menu, setMenu] = useState(false);
+  const [hideMenu, setHideMenu] = useState('profile-dropdown2')
 
   const [show, setShow] = useState(false)
   const navbar = () => {
@@ -56,13 +57,13 @@ const Navigation = ({ isLoaded }) => {
         </div>
         <div >
           {menu && (
-            <div className="profile-dropdown2">
+            <div className={hideMenu}>
               <div id='anotherone'>
                 <div id='textform'>
                   <LoginFormModal />
                 </div>
                 <div>
-                  <SignupFormModal closeMenu={closeMenu}/>
+                  <SignupFormModal setHideMenu={setHideMenu} closeMenu={closeMenu}/>
                 </div>
               </div>
             </div>

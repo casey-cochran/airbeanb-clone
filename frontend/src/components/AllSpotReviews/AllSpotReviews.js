@@ -26,7 +26,7 @@ const AllSpotReviews = ({ spotId, userId }) => {
     content: {
       top: "56%",
       left: "50%",
-      height: '500px',
+      height: '550px',
       width: '500px',
       right: "auto",
       bottom: "auto",
@@ -79,18 +79,7 @@ const AllSpotReviews = ({ spotId, userId }) => {
                 <div className="user-review">{review?.User?.username}</div>
                 <div >
                   {review.review}
-
                 </div>
-                {user?.id === review.userId && (
-                  <div className="edit-delete-icons">
-                    <BsTrash className="react-icons" onClick={() => dispatch(deleteOneReview(review))}/>
-                    {/* <FiEdit2 className="react-icons" onClick={(() =>{
-                        openEditModal()
-                        setModalReview(review)})
-                    }
-                        /> */}
-                  </div>
-                )}
               </div>
             );
           })}

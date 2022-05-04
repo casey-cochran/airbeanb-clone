@@ -1,23 +1,21 @@
 import "./EditReview.css";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { editOneReivew } from "../../store/reviewsReducer";
-import { Rating } from 'react-simple-star-rating'
-
+import { editOneReivew, deleteOneReview } from "../../store/reviewsReducer";
+import { Rating } from "react-simple-star-rating";
 
 const EditReview = ({ closeEditModal, spotId, userId, modalReview }) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
 
-
   const [review, setReview] = useState(modalReview.review);
   const [rating, setRating] = useState(0);
   const [errors, setErrors] = useState([]);
-  const reviewId = modalReview?.id
+  const reviewId = modalReview?.id;
 
   const handleRating = (rate) => {
-    setRating(rate / 20)
-  }
+    setRating(rate / 20);
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -26,7 +24,7 @@ const EditReview = ({ closeEditModal, spotId, userId, modalReview }) => {
       userId,
       review,
       rating,
-      reviewId
+      reviewId,
     };
     const value = await dispatch(editOneReivew(editReview)).catch(
       async (err) => {
@@ -42,24 +40,31 @@ const EditReview = ({ closeEditModal, spotId, userId, modalReview }) => {
     closeEditModal();
   };
 
+  const deleteReview = (e) => {
+    e.stopPropagation();
+    dispatch(deleteOneReview(modalReview));
+    closeEditModal();
+  }
+
   return (
     <>
       <div>
-        <form onSubmit={handleSubmit} className='add-review-form'>
+        <form onSubmit={handleSubmit} className="add-review-form">
           <div>
             {errors?.map((error, index) => (
               <div key={index}>{error}</div>
             ))}
           </div>
           <textarea
-            onChange={((e) => setReview(e.target.value))}
+            onChange={(e) => setReview(e.target.value)}
             value={review}
-            type='text'
+            type="text"
             placeholder="Write a review"
-            />
+          />
           <label htmlFor="rating">Please provide a new rating</label>
-          <Rating onClick={handleRating} ratingValue={rating}
- />          <button className="review-btn">Edit</button>
+          <Rating onClick={handleRating} ratingValue={rating} />{" "}
+          <button className="review-btn">Edit</button>
+          <button onClick={deleteReview} className="review-btn">Delete</button>
         </form>
       </div>
     </>

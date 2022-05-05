@@ -51,7 +51,7 @@ const SignupFormPage = () => {
     <div className="form-container sign-up">
       <form className="login-form-data sign-up" onSubmit={handleSubmit}>
         <div id="welcome">
-          <label>Welcome to airbeanb !</label>
+          <label>Welcome to airbeanb </label>
         </div>
         <div >
           {errors.map((error, index) => (

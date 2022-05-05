@@ -4,6 +4,7 @@ import SignupFormPage from './SignupForm'
 import { useDispatch } from 'react-redux';
 import { login } from '../../store/session';
 import Modal from 'react-modal';
+import './SignUpFormPage.css';
 
 const SignupFormModal = ({setHideMenu, closeMenu}) => {
   const dispatch = useDispatch();
@@ -45,6 +46,7 @@ const SignupFormModal = ({setHideMenu, closeMenu}) => {
           isOpen={modalIsOpen}
           style={customStyles}
           onRequestClose={closeModal}
+          overlayClassName='overlay'
         >
           <SignupFormPage />
         </Modal>

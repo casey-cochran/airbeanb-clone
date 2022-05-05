@@ -38,13 +38,13 @@ const LoginForm = () => {
     <div className="form-container">
       <form className='login-form-data' onSubmit={handleSubmit}>
         <div id='welcome'>
-          <label>Welcome to airbeanb !</label>
+          <label>Welcome to airbeanb</label>
         </div>
-        <ul>
+        <div>
           {errors.map((error, index) => (
-            <li key={index}>{error}</li>
+            <div className="signup-error" key={index}>{error}</div>
           ))}
-        </ul>
+        </div>
         <div className="credentials">
           <label htmlFor="credential">Username or Email</label>
           <input

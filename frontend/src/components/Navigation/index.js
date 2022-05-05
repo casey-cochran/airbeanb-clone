@@ -10,7 +10,7 @@ import Search from "../Search/Search.js";
 const Navigation = ({ isLoaded }) => {
   const sessionUser = useSelector((state) => state.session.user);
   const [menu, setMenu] = useState(false);
-
+  const [hideMenu, setHideMenu] = useState('profile-dropdown2')
   const [show, setShow] = useState(false)
   const navbar = () => {
     if(window.scrollY>20){
@@ -30,12 +30,21 @@ const Navigation = ({ isLoaded }) => {
 
   const toggleMenu = () => {
       setMenu(!menu)
+      setHideMenu('profile-dropdown2')
+  }
+  const closeMenu = () => {
+    setMenu(false)
   }
 
+  useEffect(() => {
+    if(!menu) return;
+    document.addEventListener('click', closeMenu);
+    return () => document.removeEventListener('click', closeMenu)
+  },[menu])
 
   let sessionLinks;
   if (sessionUser) {
-    sessionLinks = <ProfileButton user={sessionUser} />;
+    sessionLinks = <ProfileButton user={sessionUser} closeMenu={closeMenu} />;
   } else {
     sessionLinks = (
       <div>
@@ -43,18 +52,18 @@ const Navigation = ({ isLoaded }) => {
           <NavLink id='place-to-stay' className={`home-text ${show ? 'trans' : false}`} to='/spots'>Places to Stay</NavLink>
           <button className="menu-icon" onClick={toggleMenu} >
             <i id='homeMenu' className="fas fa-bars icon"></i>
-            <i id='userIcon' className="fa fa-user-circle icon"></i>
+            <i  id='userIcon' className="fa fa-user-circle icon"></i>
           </button>
         </div>
         <div >
           {menu && (
-            <div className="profile-dropdown2">
+            <div className={hideMenu}>
               <div id='anotherone'>
                 <div id='textform'>
-                  <LoginFormModal />
+                  <LoginFormModal setHideMenu={setHideMenu} closeMenu={closeMenu} />
                 </div>
                 <div>
-                  <SignupFormModal />
+                  <SignupFormModal setHideMenu={setHideMenu} closeMenu={closeMenu}/>
                 </div>
               </div>
             </div>

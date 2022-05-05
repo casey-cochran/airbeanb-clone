@@ -1,1 +1,52 @@
 
+.sign-up-btn{
+    margin-top: 20px;
+    padding: 8px 100px;
+    color: white;
+    font-weight: 600;
+    font-size: 18px;
+    border: none;
+    background-color: #FF385C;
+    cursor: pointer;
+}
+
+.sign-up-btn:hover{
+    background-color: #fd2149;
+}
+
+
+.login-form-data.sign-up {
+    padding-top: 0px;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.signup-error{
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    position: relative;
+    padding: 0.75rem 1.25rem;
+    border: 1px solid transparent;
+    border-radius: 0.5rem;
+    box-sizing: border-box;
+    width: 450px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+
+.hidden-menu{
+    display: none;
+}
+
+.overlay{
+    position: fixed;
+    top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+}

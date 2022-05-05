@@ -192,7 +192,7 @@ const validateReviewEdit = [
 router.patch('/spots/:spotId/review/:reviewId/edit', requireAuth, validateReviewEdit, asyncHandler(async(req,res) => {
   const {review, rating, spotId, userId, reviewId} = req.body;
   const editReview = {review, rating, spotId, userId}
-  const userReview = await Review.findByPk(+reviewId);
+  const userReview = await Review.findByPk(+reviewId, {include: User});
   await userReview.update(editReview)
   res.json(userReview)
 }))

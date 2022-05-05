@@ -15,6 +15,7 @@ const AllSpotReviews = ({ spotId, userId }) => {
     Object.values(state.reviewsReducer?.Reviews)
   );
   const spotReviews = spotReviewsArr?.reverse()
+  const userReview = spotReviewsArr.find((review) => userId === review.userId)
   const [modalIsOpen, setIsOpen] = useState(false);
   const [openEdit, setOpenEdit] = useState(false);
   const [modalReview, setModalReview] = useState(null);
@@ -25,7 +26,7 @@ const AllSpotReviews = ({ spotId, userId }) => {
     content: {
       top: "56%",
       left: "50%",
-      height: '500px',
+      height: '550px',
       width: '500px',
       right: "auto",
       bottom: "auto",
@@ -42,7 +43,9 @@ const AllSpotReviews = ({ spotId, userId }) => {
     setIsOpen(false);
   }
 
-  const openEditModal = () => {
+  const openEditModal = (e) => {
+    e.stopPropagation()
+    setModalReview(userReview)
       setOpenEdit(true)
   }
   const closeEditModal = () => {
@@ -52,6 +55,8 @@ const AllSpotReviews = ({ spotId, userId }) => {
   useEffect(() => {
     dispatch(loadSpotReviews(spotId));
   }, [dispatch]);
+
+
 
 
   return (
@@ -64,7 +69,7 @@ const AllSpotReviews = ({ spotId, userId }) => {
 
           </p>
           {user &&
-          <button className="review-btn wid" onClick={openModal}>Add Review</button>
+          <button className="review-btn wid" onClick={userReview ? openEditModal : openModal}>{userReview ? 'Edit Review' : 'Add Review'}</button>
           }
         </div>
         <div className="reviews-list-cont">
@@ -74,18 +79,7 @@ const AllSpotReviews = ({ spotId, userId }) => {
                 <div className="user-review">{review?.User?.username}</div>
                 <div >
                   {review.review}
-
                 </div>
-                {user?.id === review.userId && (
-                  <div className="edit-delete-icons">
-                    <BsTrash className="react-icons" onClick={() => dispatch(deleteOneReview(review))}/>
-                    <FiEdit2 className="react-icons" onClick={(() =>{
-                        openEditModal()
-                        setModalReview(review)})
-                    }
-                        />
-                  </div>
-                )}
               </div>
             );
           })}

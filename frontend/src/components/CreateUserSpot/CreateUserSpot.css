@@ -1,21 +1,20 @@
 .create-spot {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 15px;
     flex: 1;
 }
 
-.error-handler{
 
-}
 .error-text-handle{
     font-size: 24px;
 }
 
 .create-spot-container {
     display: flex;
+    height: 100%;
     justify-content: flex-end;
     align-items: flex-start;
 
@@ -169,6 +168,7 @@ body, html {
 .edit-cancel.bm{
     display: flex;
     align-items: center;
-
-
+}
+.edit-cancel.bm.cr{
+    padding-bottom: 0;
 }

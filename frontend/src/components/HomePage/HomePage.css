@@ -54,8 +54,9 @@
     font-weight: 500;
 }
 
-.flexible.all-links:active{
-    color: rgb(131, 34, 158);
+.flexible.all-links:hover{
+    color: rgb(100, 15, 123);
+    background-color: rgb(232, 229, 229);
 }
 
 .container-children.four{

@@ -5,17 +5,14 @@
     height: 500px;
 }
 
-.login-form-data.sign-up {
-    padding-top: 70px;
-}
+
 
 .login-form-data{
-    height: 90px;
+    height: 500px;
     display:flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-    padding-top: 110px;
+    justify-content: center;
 }
 
 .login-btn-modal{
@@ -35,6 +32,7 @@
 
 #welcome{
     font-size: 30px;
+    padding-bottom: 15px;
     font-weight: 600;
     opacity: .6;
 }

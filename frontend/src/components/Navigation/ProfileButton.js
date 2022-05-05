@@ -4,43 +4,40 @@ import {logout} from '../../store/session';
 import {NavLink, useHistory} from 'react-router-dom';
 
 
-const ProfileButton = ({ user }) => {
+const ProfileButton = ({ user, closeMenu }) => {
   const history = useHistory();
   const dispatch = useDispatch();
   const userId = user.id
   const [showMenu, setShowMenu] = useState(false);
 
   const openMenu = () => {
-   if (showMenu) return;
     setShowMenu(!showMenu);
+  };
+  const closeShowMenu = () => {
+    setShowMenu(false);
   };
 
   useEffect(() => {
     if (!showMenu) return;
-
-    const closeMenu = () => {
-      setShowMenu(false);
-    };
-
-    document.addEventListener('click', closeMenu);
-
-    return () => document.removeEventListener("click", closeMenu);
+    document.addEventListener('click', closeShowMenu);
+    return () => document.removeEventListener('click', closeShowMenu);
   }, [showMenu]);
 
 
 
   const logoutUser = (e) => {
     e.preventDefault();
-    // setShowMenu(false)
+     setShowMenu(false)
+     closeMenu()
     dispatch(logout());
     history.push('/');
   };
 
   return (
     <div id='icons'>
-      <div onClick={openMenu} className="menu-icon">
-        <i id='homeMenu' className="fas fa-bars icon"></i>
-        <i id='userIcon' className="fa fa-user-circle icon"></i>
+      <div onClick={openMenu}  className="menu-icon">
+        <i  id='homeMenu' className="fas fa-bars icon"></i>
+        <i  id='userIcon' className="fa fa-user-circle icon"></i>
       </div>
       {showMenu && (
         <div className="profile-dropdown">

@@ -51,11 +51,11 @@ const SignupFormPage = () => {
     <div className="form-container sign-up">
       <form className="login-form-data sign-up" onSubmit={handleSubmit}>
         <div id="welcome">
-          <label>Welcome to airbeanb !</label>
+          <label>Welcome to airbeanb </label>
         </div>
-        <div className="add-review-error">
+        <div >
           {errors.map((error, index) => (
-            <div key={index}>{error}</div>
+            <div className="signup-error" key={index}>{error}</div>
           ))}
         </div>
         <div className="credentials">
@@ -103,7 +103,7 @@ const SignupFormPage = () => {
           />
         </div>
         <div>
-          <button className='login-btn-modal' type="submit">Submit</button>
+          <button onClick={((e) => e.stopPropagation())} className='sign-up-btn' type="submit">Sign up</button>
         </div>
       </form>
     </div>

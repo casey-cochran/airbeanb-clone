@@ -70,7 +70,7 @@ const LoginForm = () => {
           />
         </div>
         <div>
-          <button className='login-btn-modal' type="submit">Log In</button>
+          <button className='sign-up-btn' type="submit">Log In</button>
         </div>
       </form>
     </div>

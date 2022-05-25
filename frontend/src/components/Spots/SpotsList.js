@@ -1,11 +1,18 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 import { loadAllSpots } from "../../store/spotReducer";
 import "./SpotsList.css";
+import { Modal } from "../../context/Modal";
+import LoginForm from "../LoginFormModal/LoginForm";
+
+import SignupFormPage from "../SignUpFormModal/SignupForm";
 
 const SpotsList = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
+  const [showModal, setShowModal] = useState(false);
+  const [signupModal, setSignupModal] = useState(false);
   const allSpots = useSelector((state) =>
     Object.values(state.spotReducer.spot)
   );
@@ -15,6 +22,14 @@ const SpotsList = () => {
   useEffect(() => {
     dispatch(loadAllSpots());
   }, [dispatch]);
+
+  const closeModal = () => {
+    setShowModal(false)
+  }
+
+  const closeSignup = () => {
+    setSignupModal(false)
+  }
 
 
 
@@ -26,8 +41,19 @@ const SpotsList = () => {
             {userId ? (
               <h2 id="spots-list-title">Your Dream Vacation Awaits</h2>
             ) : (
-              <h1>Please Login or Signup to experience these Spots</h1>
+              <h1>Please <button onClick={(() => setShowModal(true))} className="login-su">Login</button>
+              or
+              <button onClick={(() => setSignupModal(true))} className="login-su">Sign Up</button> to experience these Spots</h1>
             )}
+            {showModal && (
+              <Modal onClose={closeModal}>
+                <LoginForm />
+              </Modal>
+            )}
+            {signupModal && <Modal onClose={closeSignup}>
+                <SignupFormPage />
+              </Modal>
+              }
           </div>
         </div>
         <div className="all-spots-container">

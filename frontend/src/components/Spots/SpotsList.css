@@ -108,3 +108,13 @@
     text-decoration: none;
 
 }
+
+
+.login-su{
+    border: none;
+    color:#FF385C;
+    background-color: white;
+    font-weight: 600;
+    font-size: 30px;
+    cursor: pointer;
+}

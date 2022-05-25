@@ -1,11 +1,9 @@
 import "./AllSpotReviews.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { loadSpotReviews, deleteOneReview } from "../../store/reviewsReducer";
+import { loadSpotReviews} from "../../store/reviewsReducer";
 import AddReview from "../AddReview/AddReview";
 import Modal from "react-modal";
-import {BsTrash} from 'react-icons/bs'
-import {FiEdit2} from 'react-icons/fi'
 import EditReview from "../EditReview/EditReview";
 
 const AllSpotReviews = ({ spotId, userId }) => {
